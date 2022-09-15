@@ -1,10 +1,6 @@
-﻿using Org.BouncyCastle.Crypto.Modes.Gcm;
-using System;
-using System.Configuration;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO.Ports;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -164,15 +160,15 @@ namespace TamTarti2202
                 db.RunQuery("CREATE DATABASE IF NOT EXISTS TARTIM CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;", connectionForCreate);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS FIRMALAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE," +
-                    " VERGI_DAIRESI VARCHAR(255), VERGI_NO VERCHAR(10) UNIQUE, TELEFON_NO VARCHAR(18) UNIQUE, FAX_NO VARCHAR(16) UNIQUE, " +
-                    "WEB_SITE VARCHAR(255) UNIQUE, EMAIL VARCHAR(255) UNIQUE, ADRES VARCHAR(255) NOT NULL UNIQUE, ADRES_2 VARCHAR(255)," +
+                    " VERGI_DAIRESI VARCHAR(255), VERGI_NO VARCHAR(10), TELEFON_NO VARCHAR(18), FAX_NO VARCHAR(16), " +
+                    "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, ADRES_2 VARCHAR(255)," +
                     " PRIMARY KEY(ID))", connectionTartim);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(8) NOT NULL UNIQUE, " +
-                    "DARA BOOLEAN NOT NULL, DARA_KG INT UNSIGNED, DORSE BOOLEAN NOT NULL, DORSE_PLAKA VARCHAR(8) UNIQUE, PRIMARY KEY(ID))", connectionTartim);
+                    "DARA INT(1) NOT NULL, DARA_KG DOUBLE, DORSE INT(1) NOT NULL, DORSE_PLAKA VARCHAR(8), PRIMARY KEY(ID))", connectionTartim);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS SOFORLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL, " +
-                    "TC_NO INT(11) UNIQUE, TELEFON_NO VARCHAR(18) UNIQUE, ADRES VARCHAR(255), PRIMARY KEY(ID))", connectionTartim);
+                    "TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))", connectionTartim);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS URUNLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE, PRIMARY KEY(ID))", connectionTartim);
             }
@@ -196,7 +192,6 @@ namespace TamTarti2202
                 var delayTask = Task.Delay(10000);
                 if (!serialPort1.IsOpen)
                 {
-                    MessageBox.Show("OpenPortEveryTenSeconds if serialport is open == false " + serialPort1.IsOpen.ToString());     
                     StartReadSerialPort();                   
                 }
                 await delayTask;
@@ -208,10 +203,8 @@ namespace TamTarti2202
             try
             {         
                 serialPort1.Open();
-                MessageBox.Show("StartReadSerialPort before if " + serialPort1.IsOpen.ToString());
                 if (serialPort1.IsOpen)
                 {
-                    MessageBox.Show("StartReadSerialPort in if serial port is open == true" + serialPort1.IsOpen.ToString());
                     ReadSerialData();
                 }
             }
@@ -245,7 +238,7 @@ namespace TamTarti2202
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + " ReadSerial");
+                    //MessageBox.Show(ex.Message + " ReadSerial");
                 }
             }
         }

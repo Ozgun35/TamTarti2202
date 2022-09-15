@@ -133,7 +133,7 @@ namespace TamTarti2202
             this.KgLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.KgLabel.AutoSize = true;
             this.KgLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.KgLabel.Location = new System.Drawing.Point(65, 8);
+            this.KgLabel.Location = new System.Drawing.Point(66, 8);
             this.KgLabel.Name = "KgLabel";
             this.KgLabel.Size = new System.Drawing.Size(128, 45);
             this.KgLabel.TabIndex = 0;

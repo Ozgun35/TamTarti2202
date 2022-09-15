@@ -16,10 +16,18 @@ namespace TamTarti2202
 
         private void closeDb()
         {
-            if (con != null)
-            { 
-                con.Close(); 
+            try
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         public string GetStringFromQuery(string query, string connection)
@@ -47,7 +55,7 @@ namespace TamTarti2202
             }
         }
 
-        public void RunQuery(string query, string connection)
+        public Boolean RunQuery(string query, string connection)
         {
             try
             {
@@ -58,9 +66,12 @@ namespace TamTarti2202
                 reader = cmd.ExecuteReader();
 
                 closeDb();
+                return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message + " runquery exception");
+                return false;
             }
         }
 
@@ -78,8 +89,9 @@ namespace TamTarti2202
 
                 return dt;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message + " dettable exception");
                 return null;
             }
         }

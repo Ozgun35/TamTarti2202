@@ -1713,6 +1713,7 @@
             this.UrunEklemeButton.TabIndex = 91;
             this.UrunEklemeButton.Text = "ÜRÜNÜ KAYDET";
             this.UrunEklemeButton.UseVisualStyleBackColor = true;
+            this.UrunEklemeButton.Click += new System.EventHandler(this.UrunEklemeButton_Click);
             // 
             // l62
             // 
@@ -1849,6 +1850,7 @@
             this.SoforTcTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SoforTcTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SoforTcTextBox.Location = new System.Drawing.Point(168, 63);
+            this.SoforTcTextBox.MaxLength = 11;
             this.SoforTcTextBox.Name = "SoforTcTextBox";
             this.SoforTcTextBox.Size = new System.Drawing.Size(489, 26);
             this.SoforTcTextBox.TabIndex = 30;
@@ -1908,6 +1910,7 @@
             this.SoforEklemeButton.TabIndex = 91;
             this.SoforEklemeButton.Text = "ŞÖFÖRÜ KAYDET";
             this.SoforEklemeButton.UseVisualStyleBackColor = true;
+            this.SoforEklemeButton.Click += new System.EventHandler(this.SoforEklemeButton_Click);
             // 
             // AracKayitTab
             // 
@@ -1993,6 +1996,7 @@
             this.AracPlakaTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AracPlakaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AracPlakaTextBox.Location = new System.Drawing.Point(168, 33);
+            this.AracPlakaTextBox.MaxLength = 7;
             this.AracPlakaTextBox.Name = "AracPlakaTextBox";
             this.AracPlakaTextBox.Size = new System.Drawing.Size(489, 26);
             this.AracPlakaTextBox.TabIndex = 26;
@@ -2043,6 +2047,7 @@
             this.AracDorsePlakaTextBox.Enabled = false;
             this.AracDorsePlakaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AracDorsePlakaTextBox.Location = new System.Drawing.Point(168, 315);
+            this.AracDorsePlakaTextBox.MaxLength = 7;
             this.AracDorsePlakaTextBox.Name = "AracDorsePlakaTextBox";
             this.AracDorsePlakaTextBox.Size = new System.Drawing.Size(489, 26);
             this.AracDorsePlakaTextBox.TabIndex = 86;

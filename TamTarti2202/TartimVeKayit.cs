@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -52,20 +53,18 @@ namespace TamTarti2202
 
         private void FirmaEklemeButton_Click(object sender, EventArgs e)
         {
-            try
-            {   
-                db.RunQuery("INSERT INTO FIRMALAR(ADI, VERGI_DAIRESI, VERGI_NO, TELEFON_NO, FAX_NO, WEB_SITE, EMAIL, ADRES, ADRES_2) " +
-                    "VALUES('" + FirmaAdiTextBox.Text.ToUpper() + "', '" + FirmaVergiDairesiTextBox.Text.ToUpper() + "', " +
-                    "'" + FirmaVergiNoTextBox.Text + "', '" + FirmaTelNoTextBox.Text.ToUpper() + "', '" + FirmaFaxNoTextBox.Text.ToUpper() + "', " +
-                    "'" + FirmaWebSiteTextBox.Text.ToUpper() + "', '" + FirmaEmailTextBoxt.Text.ToUpper() + "', " +
-                    "'" + FirmaAdresiTextBox.Text.ToUpper() + "', '" + FirmaAdresiIkiTextBox.Text.ToUpper() + "')", connectionTartim);
-
-                MessageBox.Show("Firma barşarıyla kayıt edildi.");
+            if (db.RunQuery("INSERT INTO FIRMALAR(ADI, VERGI_DAIRESI, VERGI_NO, TELEFON_NO, FAX_NO, WEB_SITE, EMAIL, ADRES, ADRES_2) " +
+                "VALUES('" + FirmaAdiTextBox.Text.ToUpper() + "', '" + FirmaVergiDairesiTextBox.Text.ToUpper() + "', " +
+                "'" + FirmaVergiNoTextBox.Text + "', '" + FirmaTelNoTextBox.Text.ToUpper() + "', '" + FirmaFaxNoTextBox.Text.ToUpper() + "', " +
+                "'" + FirmaWebSiteTextBox.Text.ToUpper() + "', '" + FirmaEmailTextBoxt.Text.ToUpper() + "', " +
+                "'" + FirmaAdresiTextBox.Text.ToUpper() + "', '" + FirmaAdresiIkiTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+            {
+                MessageBox.Show("Firma Kaydı Başarılı!");
                 FirmaFormClear();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Firma Kaydı Yapılamadı!");
             }
         }
 
@@ -84,49 +83,102 @@ namespace TamTarti2202
 
         private void AracEklemeButton_Click(object sender, EventArgs e)
         {
-            try
+            if (AracEkleSwitch() == 1)
             {
-                db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA, DARA_KG, DORSE, DORSE_PLAKA) VALUES('" + AracPlakaTextBox.Text + "', '" + DaraVarCheck() + "', " +
-                    "'" + Convert.ToDouble(AracDaraTextBox.Text) + "', '" + DorseVarCheck() + "', '" + AracDorsePlakaTextBox.Text + "')", connectionTartim);
-                AracFormClear();
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA, DARA_KG, DORSE, DORSE_PLAKA) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + 1 + "', '" + Convert.ToDouble(AracDaraTextBox.Text) + "', " +
+                    "'" + 1 + "', '" + AracDorsePlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                {
+
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AracFormClear();
+                }
+                else
+                {
+                    MessageBox.Show("Araç Kaydı Yapılamadı!");
+                }
             }
-            catch(Exception ex)
+            else if (AracEkleSwitch() == 2)
             {
-                MessageBox.Show(ex.Message);
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA, DARA_KG, DORSE) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + 1 + "', '" + Convert.ToDouble(AracDaraTextBox.Text) + "', " +
+                    "'" + 0 + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AracFormClear();
+                }
+                else
+                {
+                    MessageBox.Show("Araç Kaydı Yapılamadı!");
+                }
+            }
+            else if (AracEkleSwitch() == 3)
+            {
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA, DORSE, DORSE_PLAKA) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + 0 + "', " +
+                    "'" + 1 + "', '" + AracDorsePlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AracFormClear();
+                }
+                else
+                {
+                    MessageBox.Show("Araç Kaydı Yapılamadı!");
+                }
+            }
+            else if (AracEkleSwitch() == 4)
+            {
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA, DORSE) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + 0 + "', '" + 0 + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AracFormClear();
+                }
+                else
+                {
+                    MessageBox.Show("Araç Kaydı Yapılamadı!");
+                }
+            }
+            else if(AracEkleSwitch() == 0)
+            {
+                MessageBox.Show("Hatalı Giriş!");
+            }
+        }
+
+        private int AracEkleSwitch()
+        {
+            if(AracDaraVarRadioButton.Checked == true && AracDorseVarRadioButton.Checked == true
+                && AracDaraTextBox.Text != "" && AracDorsePlakaTextBox.Text.Length == 7
+                && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 1;
+            }
+            if(AracDaraVarRadioButton.Checked == true && AracDorseVarRadioButton.Checked == false
+                && AracDaraTextBox.Text != "" && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 2;
+            }
+            if(AracDaraVarRadioButton.Checked == false  && AracDorseVarRadioButton.Checked == true
+                && AracDorsePlakaTextBox.Text.Length == 7 && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 3;
+            }
+            if(AracDorseVarRadioButton.Checked == false && AracDaraVarRadioButton.Checked == false
+                && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 4;
+            }
+            else
+            {
+                return 0;
             }
         }
 
         private void AracFormClear()
         {
             AracPlakaTextBox.Text = "";
-            AracDaraTextBox.Text = "";
-            AracDorsePlakaTextBox.Text = "";
-            AracDorseYokRadioButton.Checked = true;
             AracDaraYokRadioButton.Checked = true;
-        }
-        
-        private Boolean DaraVarCheck()
-        {
-            if(AracDaraVarRadioButton.Checked == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private Boolean DorseVarCheck()
-        {
-            if (AracDorseVarRadioButton.Checked == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            AracDorseYokRadioButton.Checked = true; 
         }
 
         private void AracDaraVarRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -160,6 +212,57 @@ namespace TamTarti2202
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SoforEklemeButton_Click(object sender, EventArgs e)
+        {
+            if (SoforAdiTextBox.Text.Length >= 6 && SoforTcTextBox.Text == "")
+            {
+                if (db.RunQuery("INSERT INTO SOFORLER(ADI, TELEFON_NO, ADRES) VALUES('" + SoforAdiTextBox.Text.ToUpper() + "', " +
+                 "'" + SoforTelNoTextBox.Text.ToUpper() + "', '" + SoforAdresTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Şöför Kaydı Başarılı!");
+                    SoforFormClear();
+                }   
+                else if (SoforAdiTextBox.Text.Length >= 6 && SoforTcTextBox.Text.Length == 11)
+                {
+                    if (db.RunQuery("INSERT INTO SOFORLER(ADI, TC_NO, TELEFON_NO, ADRES) VALUES('" + SoforAdiTextBox.Text.ToUpper() + "', " +
+                    "'" + SoforTcTextBox.Text.ToUpper() + "', '" + SoforTelNoTextBox.Text.ToUpper() + "', " +
+                    "'" + SoforAdresTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                    {
+                        MessageBox.Show("Şöför Kaydı Başarılı!");
+                        SoforFormClear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Hatalı Giriş");
+                }
+            }
+        }
+
+        private void SoforFormClear()
+        {
+            SoforAdiTextBox.Text = "";
+            SoforTcTextBox.Text = "";
+            SoforTelNoTextBox.Text = "";
+            SoforAdresTextBox.Text = "";
+        }
+
+        private void UrunEklemeButton_Click(object sender, EventArgs e)
+        {
+            if(UrunAdiTextBox.Text.Length >= 2)
+            {
+                if(db.RunQuery("INSERT INTO URUNLER(ADI) VALUES('" + UrunAdiTextBox.Text.ToUpper() + "'", connectionTartim) == true)
+                {
+                    MessageBox.Show("Ürün Kaydı Başarılı!");
+                    UrunAdiTextBox.Text = "";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Giriş!");
             }
         }
     }
