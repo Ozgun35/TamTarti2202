@@ -60,6 +60,7 @@ namespace TamTarti2202
                 "'" + FirmaAdresiTextBox.Text.ToUpper() + "', '" + FirmaAdresiIkiTextBox.Text.ToUpper() + "')", connectionTartim) == true)
             {
                 MessageBox.Show("Firma Kaydı Başarılı!");
+                FirmalarComboBoxMembers();
                 FirmaFormClear();
             }
             else
@@ -91,6 +92,7 @@ namespace TamTarti2202
                 {
 
                     MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
                     AracFormClear();
                 }
                 else
@@ -105,6 +107,7 @@ namespace TamTarti2202
                     "'" + 0 + "')", connectionTartim) == true)
                 {
                     MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
                     AracFormClear();
                 }
                 else
@@ -119,6 +122,7 @@ namespace TamTarti2202
                     "'" + 1 + "', '" + AracDorsePlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
                 {
                     MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
                     AracFormClear();
                 }
                 else
@@ -132,6 +136,7 @@ namespace TamTarti2202
                     "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + 0 + "', '" + 0 + "')", connectionTartim) == true)
                 {
                     MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
                     AracFormClear();
                 }
                 else
@@ -223,22 +228,24 @@ namespace TamTarti2202
                  "'" + SoforTelNoTextBox.Text.ToUpper() + "', '" + SoforAdresTextBox.Text.ToUpper() + "')", connectionTartim) == true)
                 {
                     MessageBox.Show("Şöför Kaydı Başarılı!");
+                    SoforlerComboBoxMembers();
                     SoforFormClear();
-                }   
-                else if (SoforAdiTextBox.Text.Length >= 6 && SoforTcTextBox.Text.Length == 11)
+                }                 
+            }
+            else if (SoforAdiTextBox.Text.Length >= 6 && SoforTcTextBox.Text.Length == 11)
+            {
+                if (db.RunQuery("INSERT INTO SOFORLER(ADI, TC_NO, TELEFON_NO, ADRES) VALUES('" + SoforAdiTextBox.Text.ToUpper() + "', " +
+                "'" + SoforTcTextBox.Text + "', '" + SoforTelNoTextBox.Text.ToUpper() + "', " +
+                "'" + SoforAdresTextBox.Text.ToUpper() + "')", connectionTartim) == true)
                 {
-                    if (db.RunQuery("INSERT INTO SOFORLER(ADI, TC_NO, TELEFON_NO, ADRES) VALUES('" + SoforAdiTextBox.Text.ToUpper() + "', " +
-                    "'" + SoforTcTextBox.Text.ToUpper() + "', '" + SoforTelNoTextBox.Text.ToUpper() + "', " +
-                    "'" + SoforAdresTextBox.Text.ToUpper() + "')", connectionTartim) == true)
-                    {
-                        MessageBox.Show("Şöför Kaydı Başarılı!");
-                        SoforFormClear();
-                    }
+                    MessageBox.Show("Şöför Kaydı Başarılı!");
+                    SoforlerComboBoxMembers();
+                    SoforFormClear(); 
                 }
-                else
-                {
-                    MessageBox.Show("Hatalı Giriş");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Giriş");
             }
         }
 
@@ -254,15 +261,333 @@ namespace TamTarti2202
         {
             if(UrunAdiTextBox.Text.Length >= 2)
             {
-                if(db.RunQuery("INSERT INTO URUNLER(ADI) VALUES('" + UrunAdiTextBox.Text.ToUpper() + "'", connectionTartim) == true)
+                if(db.RunQuery("INSERT INTO URUNLER(ADI) VALUES('" + UrunAdiTextBox.Text.ToUpper() + "')", connectionTartim) == true)
                 {
                     MessageBox.Show("Ürün Kaydı Başarılı!");
+                    UrunlerComboBoxMembers();
                     UrunAdiTextBox.Text = "";
                 }
             }
             else
             {
                 MessageBox.Show("Hatalı Giriş!");
+            }
+        }
+
+        private void AlimSatimUrunlerDuzenleme()
+        {
+            try
+            {
+                SatimTartimSayisiComboBox.SelectedIndex = 0;
+                SatimUrunIkiComboBox.SelectedIndex = -1;
+                SatimUrunIkiComboBox.Enabled = false;
+                SatimUrunUcComboBox.SelectedIndex = -1;
+                SatimUrunUcComboBox.Enabled = false;
+                SatimUrunDortComboBox.SelectedIndex = -1;
+                SatimUrunDortComboBox.Enabled = false;
+                SatimUrunBesComboBox.SelectedIndex = -1;
+                SatimUrunBesComboBox.Enabled = false;
+
+                AlimTartimSayisiComboBox.SelectedIndex = 0;
+                AlimUrunIkiComboBox.SelectedIndex = -1;
+                AlimUrunIkiComboBox.Enabled = false;
+                AlimUrunUcComboBox.SelectedIndex = -1;
+                AlimUrunUcComboBox.Enabled = false;
+                AlimUrunDortComboBox.SelectedIndex = -1;
+                AlimUrunDortComboBox.Enabled = false;
+                AlimUrunBesComboBox.SelectedIndex = -1;
+                AlimUrunBesComboBox.Enabled = false;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FirmalarComboBoxMembers()
+        {
+            try
+            {
+                SatimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR", connectionTartim);
+                SatimFirmalarComboBox.ValueMember = "ADI";
+                AlimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR", connectionTartim);
+                AlimFirmalarComboBox.ValueMember = "ADI";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }     
+        }
+
+        private void AraclarComboBoxMembers()
+        {
+            try
+            {
+                SatimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR", connectionTartim);
+                SatimPlakalarComboBox.ValueMember = "PLAKA";
+                AlimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR", connectionTartim);
+                AlimPlakalarComboBox.ValueMember = "PLAKA";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
+        }
+
+        private void SoforlerComboBoxMembers()
+        {
+            try
+            {
+                SatimSoforComboBox.DataSource = db.GetTable("SELECT ADI FROM SOFORLER", connectionTartim);
+                SatimSoforComboBox.ValueMember = "ADI";
+                AlimSoforComboBox.DataSource = db.GetTable("SELECT ADI FROM SOFORLER", connectionTartim);
+                AlimSoforComboBox.ValueMember = "ADI";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UrunlerComboBoxMembers()
+        {
+            try
+            {
+                SatimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunBirComboBox.ValueMember = "ADI";
+                SatimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunIkiComboBox.ValueMember = "ADI";
+                SatimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunUcComboBox.ValueMember = "ADI";
+                SatimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunDortComboBox.ValueMember = "ADI";
+                SatimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunBesComboBox.ValueMember = "ADI";
+
+                AlimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunBirComboBox.ValueMember = "ADI";
+                AlimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunIkiComboBox.ValueMember = "ADI";
+                AlimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunUcComboBox.ValueMember = "ADI";
+                AlimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunDortComboBox.ValueMember = "ADI";
+                AlimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunBesComboBox.ValueMember = "ADI";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ComboBoxMembers()
+        {
+            try
+            {
+                FirmalarComboBoxMembers();
+                AraclarComboBoxMembers();
+                SoforlerComboBoxMembers();
+                UrunlerComboBoxMembers();
+                if (SatimFirmalarComboBox.SelectedIndex == -1 || SatimPlakalarComboBox.SelectedIndex == -1)
+                {
+                    SatimTartimButton.Enabled = false;
+                }
+                else
+                {
+                    SatimTartimButton.Enabled = true;
+                }
+                if(AlimFirmalarComboBox.SelectedIndex == -1 || AlimPlakalarComboBox.SelectedIndex == -1)
+                {
+                    AlimTartimButton.Enabled = false;
+                }
+                else
+                {
+                    AlimTartimButton.Enabled = true;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + " comboboxmembers");
+            }
+
+        }
+
+        private void SatimTartimButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SatimTartimSayisiComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SatimTartimSayisiComboBox.SelectedIndex == 0)
+                {
+                    SatimUrunBirComboBox.Enabled = true;
+                    SatimUrunBirComboBox.SelectedIndex = 0;             
+                    SatimUrunIkiComboBox.Enabled = false;
+                    SatimUrunIkiComboBox.SelectedIndex = -1;                   
+                    SatimUrunUcComboBox.Enabled = false;
+                    SatimUrunUcComboBox.SelectedIndex = -1;
+                    SatimUrunDortComboBox.Enabled = false;
+                    SatimUrunDortComboBox.SelectedIndex = -1;
+                    SatimUrunBesComboBox.Enabled = false;
+                    SatimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 1)
+                {
+                    SatimUrunBirComboBox.Enabled = true;
+                    SatimUrunBirComboBox.SelectedIndex = 0;
+                    SatimUrunIkiComboBox.Enabled = true;
+                    SatimUrunIkiComboBox.SelectedIndex = 1;
+                    SatimUrunUcComboBox.Enabled = false;
+                    SatimUrunUcComboBox.SelectedIndex = -1;
+                    SatimUrunDortComboBox.Enabled = false;
+                    SatimUrunDortComboBox.SelectedIndex = -1;
+                    SatimUrunBesComboBox.Enabled = false;
+                    SatimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 2)
+                {
+                    SatimUrunBirComboBox.Enabled = true;
+                    SatimUrunBirComboBox.SelectedIndex = 0;
+                    SatimUrunIkiComboBox.Enabled = true;
+                    SatimUrunIkiComboBox.SelectedIndex = 1;
+                    SatimUrunUcComboBox.Enabled = true;
+                    SatimUrunUcComboBox.SelectedIndex = 2;
+                    SatimUrunDortComboBox.Enabled = false;
+                    SatimUrunDortComboBox.SelectedIndex = -1;
+                    SatimUrunBesComboBox.Enabled = false;
+                    SatimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 3)
+                {
+                    SatimUrunBirComboBox.Enabled = true;
+                    SatimUrunBirComboBox.SelectedIndex = 0;
+                    SatimUrunIkiComboBox.Enabled = true;
+                    SatimUrunIkiComboBox.SelectedIndex = 1;
+                    SatimUrunUcComboBox.Enabled = true;
+                    SatimUrunUcComboBox.SelectedIndex = 2;
+                    SatimUrunDortComboBox.Enabled = true;
+                    SatimUrunDortComboBox.SelectedIndex = 3;
+                    SatimUrunBesComboBox.Enabled = false;
+                    SatimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 4)
+                {
+                    SatimUrunBirComboBox.Enabled = true;
+                    SatimUrunBirComboBox.SelectedIndex = 0;
+                    SatimUrunIkiComboBox.Enabled = true;
+                    SatimUrunIkiComboBox.SelectedIndex = 1;
+                    SatimUrunUcComboBox.Enabled = true;
+                    SatimUrunUcComboBox.SelectedIndex = 2;
+                    SatimUrunDortComboBox.Enabled = true;
+                    SatimUrunDortComboBox.SelectedIndex = 3;
+                    SatimUrunBesComboBox.Enabled = true;
+                    SatimUrunBesComboBox.SelectedIndex = 4;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void AlimTartimSayisiComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (AlimTartimSayisiComboBox.SelectedIndex == 0)
+                {
+                    AlimUrunBirComboBox.Enabled = true;
+                    AlimUrunBirComboBox.SelectedIndex = 0;
+                    AlimUrunIkiComboBox.Enabled = false;
+                    AlimUrunIkiComboBox.SelectedIndex = -1;
+                    AlimUrunUcComboBox.Enabled = false;
+                    AlimUrunUcComboBox.SelectedIndex = -1;
+                    AlimUrunDortComboBox.Enabled = false;
+                    AlimUrunDortComboBox.SelectedIndex = -1;
+                    AlimUrunBesComboBox.Enabled = false;
+                    AlimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (AlimTartimSayisiComboBox.SelectedIndex == 1)
+                {
+                    AlimUrunBirComboBox.Enabled = true;
+                    AlimUrunBirComboBox.SelectedIndex = 0;
+                    AlimUrunIkiComboBox.Enabled = true;
+                    AlimUrunIkiComboBox.SelectedIndex = 1;
+                    AlimUrunUcComboBox.Enabled = false;
+                    AlimUrunUcComboBox.SelectedIndex = -1;
+                    AlimUrunDortComboBox.Enabled = false;
+                    AlimUrunDortComboBox.SelectedIndex = -1;
+                    AlimUrunBesComboBox.Enabled = false;
+                    AlimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (AlimTartimSayisiComboBox.SelectedIndex == 2)
+                {
+                    AlimUrunBirComboBox.Enabled = true;
+                    AlimUrunBirComboBox.SelectedIndex = 0;
+                    AlimUrunIkiComboBox.Enabled = true;
+                    AlimUrunIkiComboBox.SelectedIndex = 1;
+                    AlimUrunUcComboBox.Enabled = true;
+                    AlimUrunUcComboBox.SelectedIndex = 2;
+                    AlimUrunDortComboBox.Enabled = false;
+                    AlimUrunDortComboBox.SelectedIndex = -1;
+                    AlimUrunBesComboBox.Enabled = false;
+                    AlimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (AlimTartimSayisiComboBox.SelectedIndex == 3)
+                {
+                    AlimUrunBirComboBox.Enabled = true;
+                    AlimUrunBirComboBox.SelectedIndex = 0;
+                    AlimUrunIkiComboBox.Enabled = true;
+                    AlimUrunIkiComboBox.SelectedIndex = 1;
+                    AlimUrunUcComboBox.Enabled = true;
+                    AlimUrunUcComboBox.SelectedIndex = 2;
+                    AlimUrunDortComboBox.Enabled = true;
+                    AlimUrunDortComboBox.SelectedIndex = 3;
+                    AlimUrunBesComboBox.Enabled = false;
+                    AlimUrunBesComboBox.SelectedIndex = -1;
+                }
+                if (AlimTartimSayisiComboBox.SelectedIndex == 4)
+                {
+                    AlimUrunBirComboBox.Enabled = true;
+                    AlimUrunBirComboBox.SelectedIndex = 0;
+                    AlimUrunIkiComboBox.Enabled = true;
+                    AlimUrunIkiComboBox.SelectedIndex = 1;
+                    AlimUrunUcComboBox.Enabled = true;
+                    AlimUrunUcComboBox.SelectedIndex = 2;
+                    AlimUrunDortComboBox.Enabled = true;
+                    AlimUrunDortComboBox.SelectedIndex = 3;
+                    AlimUrunBesComboBox.Enabled = true;
+                    AlimUrunBesComboBox.SelectedIndex = 4;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void TartimVeKayit_Load(object sender, EventArgs e)
+        {
+            ComboBoxMembers();
+            AlimSatimUrunlerDuzenleme();
+        }
+
+        private void AlimPlakalarComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string plaka = AlimPlakalarComboBox.SelectedText;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

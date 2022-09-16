@@ -13,7 +13,8 @@ namespace TamTarti2202
         private DataBaseModifier db = new DataBaseModifier();
         private static string connectionForCreate = "server=localhost;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;";
         private static string connectionTartim = "server=localhost;database=tartim;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;";
-
+        private static string connectionUrunler = "server=localhost;database=urunler;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;";
+        private static int i = 1;
         private Thread readSerialDataUsingThread;
         private string serialData;
         private static string kgLabelData;
@@ -77,6 +78,7 @@ namespace TamTarti2202
             DialogResult dialogResult = MessageBox.Show("Programı kapatmak için Evet'e tıklayın.", "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                i = 0;
                 SeriPortClose();
                 Application.Exit();
             }
@@ -127,9 +129,7 @@ namespace TamTarti2202
 
         private void LoadConfigurationSettings()
         {
-            CreateDataBaseAndTables();
             StartXampp();
-
             try
             {
                 serialPort1.PortName = Properties.KullaniciAyarlari.Default.PortName;
@@ -138,10 +138,11 @@ namespace TamTarti2202
                 serialPort1.StopBits = Properties.KullaniciAyarlari.Default.StopBits;
                 serialPort1.DataBits = Properties.KullaniciAyarlari.Default.DataBits;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + " load configurationsettings");
             }
+            CreateDataBaseAndTables();       
         }
 
         private void StartXampp()
@@ -158,6 +159,7 @@ namespace TamTarti2202
             try
             {
                 db.RunQuery("CREATE DATABASE IF NOT EXISTS TARTIM CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;", connectionForCreate);
+                db.RunQuery("CREATE DATABASE IF NOT EXISTS URUNLER CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;", connectionForCreate);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS FIRMALAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE," +
                     " VERGI_DAIRESI VARCHAR(255), VERGI_NO VARCHAR(10), TELEFON_NO VARCHAR(18), FAX_NO VARCHAR(16), " +
@@ -187,13 +189,21 @@ namespace TamTarti2202
 
         private async Task OpenPortEveryTenSeconds()
         {
-            while (true)
+            while (i == 1)
             {
-                var delayTask = Task.Delay(10000);
-                if (!serialPort1.IsOpen)
+                var delayTask = Task.Delay(1000);
+                try
                 {
-                    StartReadSerialPort();                   
+                    if (!serialPort1.IsOpen)
+                    {
+                        StartReadSerialPort();
+                    }
                 }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message + " openporteverytencsecons");
+                }
+                
                 await delayTask;
             }
         }
@@ -203,10 +213,8 @@ namespace TamTarti2202
             try
             {         
                 serialPort1.Open();
-                if (serialPort1.IsOpen)
-                {
-                    ReadSerialData();
-                }
+                ReadSerialData();
+                
             }
             catch (Exception ex)
             {

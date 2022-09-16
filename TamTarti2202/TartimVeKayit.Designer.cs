@@ -166,7 +166,7 @@
             this.AracDorseVarRadioButton = new System.Windows.Forms.RadioButton();
             this.l56 = new System.Windows.Forms.Label();
             this.AracDaraTextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.AracTPL1 = new System.Windows.Forms.TableLayoutPanel();
             this.AracDaraYokRadioButton = new System.Windows.Forms.RadioButton();
             this.AracDaraVarRadioButton = new System.Windows.Forms.RadioButton();
             this.EklemeTabControl = new System.Windows.Forms.TabControl();
@@ -218,7 +218,7 @@
             this.AracKayitTab.SuspendLayout();
             this.AracEklemeTableLayoutPanel.SuspendLayout();
             this.AracTPL2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.AracTPL1.SuspendLayout();
             this.EklemeTabControl.SuspendLayout();
             this.FirmaKayitTab.SuspendLayout();
             this.FirmaEklemeTableLayoutPanel.SuspendLayout();
@@ -323,6 +323,7 @@
             this.SatimTartimButton.TabIndex = 90;
             this.SatimTartimButton.Text = "TARTIMA BAŞLA";
             this.SatimTartimButton.UseVisualStyleBackColor = true;
+            this.SatimTartimButton.Click += new System.EventHandler(this.SatimTartimButton_Click);
             // 
             // l2
             // 
@@ -385,7 +386,7 @@
             this.l19.Size = new System.Drawing.Size(157, 24);
             this.l19.TabIndex = 30;
             this.l19.Text = "Tartım 5:";
-            this.l19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTartimBesTextBox
             // 
@@ -407,7 +408,7 @@
             this.l21.Size = new System.Drawing.Size(159, 30);
             this.l21.TabIndex = 89;
             this.l21.Text = "Not 2:";
-            this.l21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTLP6
             // 
@@ -449,7 +450,7 @@
             this.l17.Size = new System.Drawing.Size(157, 24);
             this.l17.TabIndex = 31;
             this.l17.Text = "Tartım 4:";
-            this.l17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTartimDortTextBox
             // 
@@ -510,7 +511,7 @@
             this.l15.Size = new System.Drawing.Size(157, 24);
             this.l15.TabIndex = 32;
             this.l15.Text = "Tartım 3:";
-            this.l15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTartimUcTextBox
             // 
@@ -532,7 +533,7 @@
             this.l20.Size = new System.Drawing.Size(159, 30);
             this.l20.TabIndex = 87;
             this.l20.Text = "Not 1:";
-            this.l20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l1
             // 
@@ -591,7 +592,7 @@
             this.l18.Size = new System.Drawing.Size(159, 30);
             this.l18.TabIndex = 28;
             this.l18.Text = "5. Ürün Seçimi:";
-            this.l18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l4
             // 
@@ -651,7 +652,7 @@
             this.l16.Size = new System.Drawing.Size(159, 30);
             this.l16.TabIndex = 26;
             this.l16.Text = "4. Ürün Seçimi:";
-            this.l16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimSoforComboBox
             // 
@@ -711,7 +712,7 @@
             this.l14.Size = new System.Drawing.Size(159, 30);
             this.l14.TabIndex = 24;
             this.l14.Text = "3. Ürün Seçimi:";
-            this.l14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTlp1
             // 
@@ -733,12 +734,13 @@
             this.l8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l8.ForeColor = System.Drawing.Color.White;
+            this.l8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.l8.Location = new System.Drawing.Point(3, 0);
             this.l8.Name = "l8";
             this.l8.Size = new System.Drawing.Size(360, 24);
             this.l8.TabIndex = 13;
             this.l8.Text = "Yapılacak Tartım Sayısı Seçiniz";
-            this.l8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // SatimTartimSayisiComboBox
             // 
@@ -757,6 +759,7 @@
             this.SatimTartimSayisiComboBox.Name = "SatimTartimSayisiComboBox";
             this.SatimTartimSayisiComboBox.Size = new System.Drawing.Size(117, 26);
             this.SatimTartimSayisiComboBox.TabIndex = 14;
+            this.SatimTartimSayisiComboBox.SelectedIndexChanged += new System.EventHandler(this.SatimTartimSayisiComboBox_SelectedIndexChanged);
             // 
             // SatimTLP2
             // 
@@ -865,7 +868,7 @@
             this.l11.Size = new System.Drawing.Size(157, 24);
             this.l11.TabIndex = 34;
             this.l11.Text = "Tartım 1:";
-            this.l11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTartimBirTextBox
             // 
@@ -917,7 +920,7 @@
             this.l13.Size = new System.Drawing.Size(157, 24);
             this.l13.TabIndex = 33;
             this.l13.Text = "Tartım 2:";
-            this.l13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SatimTartimIkiTextBox
             // 
@@ -939,7 +942,7 @@
             this.l12.Size = new System.Drawing.Size(159, 30);
             this.l12.TabIndex = 22;
             this.l12.Text = "2. Ürün Seçimi:";
-            this.l12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l10
             // 
@@ -951,7 +954,7 @@
             this.l10.Size = new System.Drawing.Size(159, 30);
             this.l10.TabIndex = 20;
             this.l10.Text = "1. Ürün Seçimi:";
-            this.l10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l9
             // 
@@ -963,7 +966,7 @@
             this.l9.Size = new System.Drawing.Size(159, 54);
             this.l9.TabIndex = 91;
             this.l9.Text = "Dara Seçimi:";
-            this.l9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimTab
             // 
@@ -1090,7 +1093,7 @@
             this.l40.Size = new System.Drawing.Size(157, 24);
             this.l40.TabIndex = 71;
             this.l40.Text = "Tartım 5:";
-            this.l40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l40.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimUrunBesComboBox
             // 
@@ -1142,7 +1145,7 @@
             this.l38.Size = new System.Drawing.Size(157, 24);
             this.l38.TabIndex = 72;
             this.l38.Text = "Tartım 4:";
-            this.l38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimUrunDortComboBox
             // 
@@ -1188,6 +1191,7 @@
             this.AlimTartimSayisiComboBox.Name = "AlimTartimSayisiComboBox";
             this.AlimTartimSayisiComboBox.Size = new System.Drawing.Size(117, 26);
             this.AlimTartimSayisiComboBox.TabIndex = 55;
+            this.AlimTartimSayisiComboBox.SelectedIndexChanged += new System.EventHandler(this.AlimTartimSayisiComboBox_SelectedIndexChanged);
             // 
             // l29
             // 
@@ -1199,7 +1203,7 @@
             this.l29.Size = new System.Drawing.Size(360, 24);
             this.l29.TabIndex = 54;
             this.l29.Text = "Yapılacak Tartım Sayısı Seçiniz";
-            this.l29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l29.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // AlimTLP5
             // 
@@ -1239,7 +1243,7 @@
             this.l36.Size = new System.Drawing.Size(157, 24);
             this.l36.TabIndex = 73;
             this.l36.Text = "Tartım 3:";
-            this.l36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l36.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimUrunUcComboBox
             // 
@@ -1289,7 +1293,7 @@
             this.l30.Size = new System.Drawing.Size(116, 48);
             this.l30.TabIndex = 56;
             this.l30.Text = "Toplam:";
-            this.l30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimTLP3
             // 
@@ -1329,7 +1333,7 @@
             this.l32.Size = new System.Drawing.Size(157, 24);
             this.l32.TabIndex = 75;
             this.l32.Text = "Tartım 1:";
-            this.l32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimUrunBirComboBox
             // 
@@ -1381,7 +1385,7 @@
             this.l34.Size = new System.Drawing.Size(157, 24);
             this.l34.TabIndex = 74;
             this.l34.Text = "Tartım 2:";
-            this.l34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimUrunIkiComboBox
             // 
@@ -1399,6 +1403,7 @@
             // 
             this.l22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.l22.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.l22.Location = new System.Drawing.Point(168, 0);
             this.l22.Name = "l22";
             this.l22.Size = new System.Drawing.Size(489, 30);
@@ -1437,7 +1442,7 @@
             this.l42.Size = new System.Drawing.Size(159, 30);
             this.l42.TabIndex = 93;
             this.l42.Text = "Not 2:";
-            this.l42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimNotBirTextBox
             // 
@@ -1458,7 +1463,7 @@
             this.l41.Size = new System.Drawing.Size(159, 30);
             this.l41.TabIndex = 91;
             this.l41.Text = "Not 1:";
-            this.l41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AlimFirmalarComboBox
             // 
@@ -1506,7 +1511,7 @@
             this.l31.Size = new System.Drawing.Size(159, 30);
             this.l31.TabIndex = 61;
             this.l31.Text = "1. Ürün Seçimi:";
-            this.l31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l33
             // 
@@ -1518,7 +1523,7 @@
             this.l33.Size = new System.Drawing.Size(159, 30);
             this.l33.TabIndex = 63;
             this.l33.Text = "2. Ürün Seçimi:";
-            this.l33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l35
             // 
@@ -1530,7 +1535,7 @@
             this.l35.Size = new System.Drawing.Size(159, 30);
             this.l35.TabIndex = 65;
             this.l35.Text = "3. Ürün Seçimi:";
-            this.l35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l37
             // 
@@ -1542,7 +1547,7 @@
             this.l37.Size = new System.Drawing.Size(159, 30);
             this.l37.TabIndex = 67;
             this.l37.Text = "4. Ürün Seçimi:";
-            this.l37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l39
             // 
@@ -1554,7 +1559,7 @@
             this.l39.Size = new System.Drawing.Size(159, 30);
             this.l39.TabIndex = 69;
             this.l39.Text = "5. Ürün Seçimi:";
-            this.l39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.l39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // l25
             // 
@@ -1627,6 +1632,7 @@
             this.AlimPlakalarComboBox.Name = "AlimPlakalarComboBox";
             this.AlimPlakalarComboBox.Size = new System.Drawing.Size(489, 26);
             this.AlimPlakalarComboBox.TabIndex = 49;
+            this.AlimPlakalarComboBox.SelectedIndexChanged += new System.EventHandler(this.AlimPlakalarComboBox_SelectedIndexChanged);
             // 
             // AlimDorseComboBox
             // 
@@ -1810,7 +1816,7 @@
             this.SoforAdresTextBox.Multiline = true;
             this.SoforAdresTextBox.Name = "SoforAdresTextBox";
             this.SoforAdresTextBox.Size = new System.Drawing.Size(489, 72);
-            this.SoforAdresTextBox.TabIndex = 93;
+            this.SoforAdresTextBox.TabIndex = 91;
             // 
             // l58
             // 
@@ -1907,7 +1913,7 @@
             this.SoforEklemeButton.Location = new System.Drawing.Point(168, 231);
             this.SoforEklemeButton.Name = "SoforEklemeButton";
             this.SoforEklemeButton.Size = new System.Drawing.Size(489, 47);
-            this.SoforEklemeButton.TabIndex = 91;
+            this.SoforEklemeButton.TabIndex = 93;
             this.SoforEklemeButton.Text = "ŞÖFÖRÜ KAYDET";
             this.SoforEklemeButton.UseVisualStyleBackColor = true;
             this.SoforEklemeButton.Click += new System.EventHandler(this.SoforEklemeButton_Click);
@@ -1941,7 +1947,7 @@
             this.AracEklemeTableLayoutPanel.Controls.Add(this.AracTPL2, 1, 7);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.l56, 0, 7);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.AracDaraTextBox, 1, 3);
-            this.AracEklemeTableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 1, 2);
+            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracTPL1, 1, 2);
             this.AracEklemeTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.AracEklemeTableLayoutPanel.Name = "AracEklemeTableLayoutPanel";
             this.AracEklemeTableLayoutPanel.RowCount = 20;
@@ -2117,21 +2123,21 @@
             this.AracDaraTextBox.Size = new System.Drawing.Size(489, 26);
             this.AracDaraTextBox.TabIndex = 28;
             // 
-            // tableLayoutPanel1
+            // AracTPL1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.AracDaraYokRadioButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.AracDaraVarRadioButton, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(168, 63);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(489, 48);
-            this.tableLayoutPanel1.TabIndex = 89;
+            this.AracTPL1.ColumnCount = 2;
+            this.AracTPL1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AracTPL1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AracTPL1.Controls.Add(this.AracDaraYokRadioButton, 0, 0);
+            this.AracTPL1.Controls.Add(this.AracDaraVarRadioButton, 0, 0);
+            this.AracTPL1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AracTPL1.Location = new System.Drawing.Point(168, 63);
+            this.AracTPL1.Name = "AracTPL1";
+            this.AracTPL1.RowCount = 1;
+            this.AracTPL1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AracTPL1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.AracTPL1.Size = new System.Drawing.Size(489, 48);
+            this.AracTPL1.TabIndex = 89;
             // 
             // AracDaraYokRadioButton
             // 
@@ -2478,6 +2484,7 @@
             this.Name = "TartimVeKayit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "TartimVeKayit";
+            this.Load += new System.EventHandler(this.TartimVeKayit_Load);
             this.Resize += new System.EventHandler(this.TartimVeKayit_Resize);
             this.AlimSatimTabControl.ResumeLayout(false);
             this.SatimTab.ResumeLayout(false);
@@ -2522,7 +2529,7 @@
             this.AracEklemeTableLayoutPanel.ResumeLayout(false);
             this.AracEklemeTableLayoutPanel.PerformLayout();
             this.AracTPL2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.AracTPL1.ResumeLayout(false);
             this.EklemeTabControl.ResumeLayout(false);
             this.FirmaKayitTab.ResumeLayout(false);
             this.FirmaEklemeTableLayoutPanel.ResumeLayout(false);
@@ -2691,7 +2698,7 @@
         private System.Windows.Forms.TextBox UrunAdiTextBox;
         private System.Windows.Forms.Label l63;
         private System.Windows.Forms.Label l62;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel AracTPL1;
         private System.Windows.Forms.RadioButton AracDaraYokRadioButton;
         private System.Windows.Forms.RadioButton AracDaraVarRadioButton;
         private System.Windows.Forms.Label l64;
