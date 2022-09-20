@@ -56,7 +56,6 @@
             this.l18 = new System.Windows.Forms.Label();
             this.l4 = new System.Windows.Forms.Label();
             this.l5 = new System.Windows.Forms.Label();
-            this.SatimDorseComboBox = new System.Windows.Forms.ComboBox();
             this.l6 = new System.Windows.Forms.Label();
             this.l16 = new System.Windows.Forms.Label();
             this.SatimSoforComboBox = new System.Windows.Forms.ComboBox();
@@ -83,6 +82,7 @@
             this.l12 = new System.Windows.Forms.Label();
             this.l10 = new System.Windows.Forms.Label();
             this.l9 = new System.Windows.Forms.Label();
+            this.SatimDorseTextBox = new System.Windows.Forms.TextBox();
             this.AlimTab = new System.Windows.Forms.TabPage();
             this.AlimTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.AlimVarisAdresiComboBox = new System.Windows.Forms.ComboBox();
@@ -132,8 +132,8 @@
             this.l28 = new System.Windows.Forms.Label();
             this.AlimCıkısAdresiComboBox = new System.Windows.Forms.ComboBox();
             this.AlimPlakalarComboBox = new System.Windows.Forms.ComboBox();
-            this.AlimDorseComboBox = new System.Windows.Forms.ComboBox();
             this.AlimSoforComboBox = new System.Windows.Forms.ComboBox();
+            this.AlimDorseTextBox = new System.Windows.Forms.TextBox();
             this.UrunEkleTab = new System.Windows.Forms.TabPage();
             this.UrunEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.UrunEklemeButton = new System.Windows.Forms.Button();
@@ -229,7 +229,7 @@
             this.AlimSatimTabControl.Controls.Add(this.SatimTab);
             this.AlimSatimTabControl.Controls.Add(this.AlimTab);
             this.AlimSatimTabControl.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.AlimSatimTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AlimSatimTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.AlimSatimTabControl.Location = new System.Drawing.Point(2, 4);
             this.AlimSatimTabControl.Name = "AlimSatimTabControl";
             this.AlimSatimTabControl.SelectedIndex = 0;
@@ -240,10 +240,10 @@
             // 
             this.SatimTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(200)))));
             this.SatimTab.Controls.Add(this.SatimTableLayoutPanel);
-            this.SatimTab.Location = new System.Drawing.Point(4, 33);
+            this.SatimTab.Location = new System.Drawing.Point(4, 29);
             this.SatimTab.Name = "SatimTab";
             this.SatimTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SatimTab.Size = new System.Drawing.Size(662, 603);
+            this.SatimTab.Size = new System.Drawing.Size(662, 607);
             this.SatimTab.TabIndex = 0;
             this.SatimTab.Text = "Satım               ";
             // 
@@ -271,7 +271,6 @@
             this.SatimTableLayoutPanel.Controls.Add(this.l18, 0, 13);
             this.SatimTableLayoutPanel.Controls.Add(this.l4, 0, 3);
             this.SatimTableLayoutPanel.Controls.Add(this.l5, 0, 4);
-            this.SatimTableLayoutPanel.Controls.Add(this.SatimDorseComboBox, 1, 3);
             this.SatimTableLayoutPanel.Controls.Add(this.l6, 0, 5);
             this.SatimTableLayoutPanel.Controls.Add(this.l16, 0, 12);
             this.SatimTableLayoutPanel.Controls.Add(this.SatimSoforComboBox, 1, 4);
@@ -286,6 +285,7 @@
             this.SatimTableLayoutPanel.Controls.Add(this.l12, 0, 10);
             this.SatimTableLayoutPanel.Controls.Add(this.l10, 0, 9);
             this.SatimTableLayoutPanel.Controls.Add(this.l9, 0, 8);
+            this.SatimTableLayoutPanel.Controls.Add(this.SatimDorseTextBox, 1, 3);
             this.SatimTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.SatimTableLayoutPanel.Name = "SatimTableLayoutPanel";
             this.SatimTableLayoutPanel.RowCount = 20;
@@ -296,8 +296,8 @@
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
+            this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -309,7 +309,7 @@
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.SatimTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
+            this.SatimTableLayoutPanel.Size = new System.Drawing.Size(660, 604);
             this.SatimTableLayoutPanel.TabIndex = 1;
             // 
             // SatimTartimButton
@@ -320,7 +320,7 @@
             this.SatimTartimButton.Location = new System.Drawing.Point(168, 537);
             this.SatimTartimButton.Name = "SatimTartimButton";
             this.SatimTartimButton.Size = new System.Drawing.Size(489, 48);
-            this.SatimTartimButton.TabIndex = 90;
+            this.SatimTartimButton.TabIndex = 24;
             this.SatimTartimButton.Text = "TARTIMA BAŞLA";
             this.SatimTartimButton.UseVisualStyleBackColor = true;
             this.SatimTartimButton.Click += new System.EventHandler(this.SatimTartimButton_Click);
@@ -344,7 +344,7 @@
             this.SatimNotIkiTextBox.Location = new System.Drawing.Point(168, 477);
             this.SatimNotIkiTextBox.Name = "SatimNotIkiTextBox";
             this.SatimNotIkiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimNotIkiTextBox.TabIndex = 88;
+            this.SatimNotIkiTextBox.TabIndex = 23;
             // 
             // SatimTLP7
             // 
@@ -374,7 +374,7 @@
             this.SatimUrunBesComboBox.Location = new System.Drawing.Point(3, 3);
             this.SatimUrunBesComboBox.Name = "SatimUrunBesComboBox";
             this.SatimUrunBesComboBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimUrunBesComboBox.TabIndex = 39;
+            this.SatimUrunBesComboBox.TabIndex = 20;
             // 
             // l19
             // 
@@ -396,7 +396,7 @@
             this.SatimTartimBesTextBox.Location = new System.Drawing.Point(329, 3);
             this.SatimTartimBesTextBox.Name = "SatimTartimBesTextBox";
             this.SatimTartimBesTextBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimTartimBesTextBox.TabIndex = 29;
+            this.SatimTartimBesTextBox.TabIndex = 21;
             // 
             // l21
             // 
@@ -438,7 +438,7 @@
             this.SatimUrunDortComboBox.Location = new System.Drawing.Point(3, 3);
             this.SatimUrunDortComboBox.Name = "SatimUrunDortComboBox";
             this.SatimUrunDortComboBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimUrunDortComboBox.TabIndex = 38;
+            this.SatimUrunDortComboBox.TabIndex = 18;
             // 
             // l17
             // 
@@ -460,7 +460,7 @@
             this.SatimTartimDortTextBox.Location = new System.Drawing.Point(329, 3);
             this.SatimTartimDortTextBox.Name = "SatimTartimDortTextBox";
             this.SatimTartimDortTextBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimTartimDortTextBox.TabIndex = 27;
+            this.SatimTartimDortTextBox.TabIndex = 19;
             // 
             // SatimNotBirTextBox
             // 
@@ -469,7 +469,7 @@
             this.SatimNotBirTextBox.Location = new System.Drawing.Point(168, 447);
             this.SatimNotBirTextBox.Name = "SatimNotBirTextBox";
             this.SatimNotBirTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimNotBirTextBox.TabIndex = 40;
+            this.SatimNotBirTextBox.TabIndex = 22;
             // 
             // SatimTLP5
             // 
@@ -499,7 +499,7 @@
             this.SatimUrunUcComboBox.Location = new System.Drawing.Point(3, 3);
             this.SatimUrunUcComboBox.Name = "SatimUrunUcComboBox";
             this.SatimUrunUcComboBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimUrunUcComboBox.TabIndex = 37;
+            this.SatimUrunUcComboBox.TabIndex = 16;
             // 
             // l15
             // 
@@ -521,7 +521,7 @@
             this.SatimTartimUcTextBox.Location = new System.Drawing.Point(329, 3);
             this.SatimTartimUcTextBox.Name = "SatimTartimUcTextBox";
             this.SatimTartimUcTextBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimTartimUcTextBox.TabIndex = 25;
+            this.SatimTartimUcTextBox.TabIndex = 17;
             // 
             // l20
             // 
@@ -556,7 +556,7 @@
             this.SatimFirmalarComboBox.Location = new System.Drawing.Point(168, 33);
             this.SatimFirmalarComboBox.Name = "SatimFirmalarComboBox";
             this.SatimFirmalarComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimFirmalarComboBox.TabIndex = 7;
+            this.SatimFirmalarComboBox.TabIndex = 1;
             // 
             // l3
             // 
@@ -580,7 +580,8 @@
             this.SatimPlakalarComboBox.Location = new System.Drawing.Point(168, 63);
             this.SatimPlakalarComboBox.Name = "SatimPlakalarComboBox";
             this.SatimPlakalarComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimPlakalarComboBox.TabIndex = 8;
+            this.SatimPlakalarComboBox.TabIndex = 2;
+            this.SatimPlakalarComboBox.SelectedIndexChanged += new System.EventHandler(this.SatimPlakalarComboBox_SelectedIndexChanged);
             // 
             // l18
             // 
@@ -618,18 +619,6 @@
             this.l5.Text = "Şöför Adı:";
             this.l5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SatimDorseComboBox
-            // 
-            this.SatimDorseComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SatimDorseComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SatimDorseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SatimDorseComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SatimDorseComboBox.FormattingEnabled = true;
-            this.SatimDorseComboBox.Location = new System.Drawing.Point(168, 93);
-            this.SatimDorseComboBox.Name = "SatimDorseComboBox";
-            this.SatimDorseComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimDorseComboBox.TabIndex = 9;
-            // 
             // l6
             // 
             this.l6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -664,7 +653,7 @@
             this.SatimSoforComboBox.Location = new System.Drawing.Point(168, 123);
             this.SatimSoforComboBox.Name = "SatimSoforComboBox";
             this.SatimSoforComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimSoforComboBox.TabIndex = 10;
+            this.SatimSoforComboBox.TabIndex = 4;
             // 
             // SatimCıkısAdresiComboBox
             // 
@@ -676,7 +665,7 @@
             this.SatimCıkısAdresiComboBox.Location = new System.Drawing.Point(168, 153);
             this.SatimCıkısAdresiComboBox.Name = "SatimCıkısAdresiComboBox";
             this.SatimCıkısAdresiComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimCıkısAdresiComboBox.TabIndex = 11;
+            this.SatimCıkısAdresiComboBox.TabIndex = 5;
             // 
             // SatimVarisAdresiComboBox
             // 
@@ -688,7 +677,7 @@
             this.SatimVarisAdresiComboBox.Location = new System.Drawing.Point(168, 183);
             this.SatimVarisAdresiComboBox.Name = "SatimVarisAdresiComboBox";
             this.SatimVarisAdresiComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimVarisAdresiComboBox.TabIndex = 12;
+            this.SatimVarisAdresiComboBox.TabIndex = 6;
             // 
             // l7
             // 
@@ -726,7 +715,7 @@
             this.SatimTlp1.Name = "SatimTlp1";
             this.SatimTlp1.RowCount = 1;
             this.SatimTlp1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.SatimTlp1.Size = new System.Drawing.Size(489, 24);
+            this.SatimTlp1.Size = new System.Drawing.Size(489, 30);
             this.SatimTlp1.TabIndex = 13;
             // 
             // l8
@@ -737,7 +726,7 @@
             this.l8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.l8.Location = new System.Drawing.Point(3, 0);
             this.l8.Name = "l8";
-            this.l8.Size = new System.Drawing.Size(360, 24);
+            this.l8.Size = new System.Drawing.Size(360, 30);
             this.l8.TabIndex = 13;
             this.l8.Text = "Yapılacak Tartım Sayısı Seçiniz";
             this.l8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -758,7 +747,7 @@
             this.SatimTartimSayisiComboBox.Location = new System.Drawing.Point(369, 3);
             this.SatimTartimSayisiComboBox.Name = "SatimTartimSayisiComboBox";
             this.SatimTartimSayisiComboBox.Size = new System.Drawing.Size(117, 26);
-            this.SatimTartimSayisiComboBox.TabIndex = 14;
+            this.SatimTartimSayisiComboBox.TabIndex = 7;
             this.SatimTartimSayisiComboBox.SelectedIndexChanged += new System.EventHandler(this.SatimTartimSayisiComboBox_SelectedIndexChanged);
             // 
             // SatimTLP2
@@ -773,11 +762,11 @@
             this.SatimTLP2.Controls.Add(this.SatimKayitliDaraRadioButton, 2, 0);
             this.SatimTLP2.Controls.Add(this.SatimDaraTextBox, 3, 0);
             this.SatimTLP2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SatimTLP2.Location = new System.Drawing.Point(168, 243);
+            this.SatimTLP2.Location = new System.Drawing.Point(168, 249);
             this.SatimTLP2.Name = "SatimTLP2";
             this.SatimTLP2.RowCount = 1;
             this.SatimTLP2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.SatimTLP2.Size = new System.Drawing.Size(489, 48);
+            this.SatimTLP2.Size = new System.Drawing.Size(489, 42);
             this.SatimTLP2.TabIndex = 16;
             // 
             // SatimDaraYokRadioButton
@@ -788,11 +777,12 @@
             this.SatimDaraYokRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimDaraYokRadioButton.Location = new System.Drawing.Point(3, 3);
             this.SatimDaraYokRadioButton.Name = "SatimDaraYokRadioButton";
-            this.SatimDaraYokRadioButton.Size = new System.Drawing.Size(116, 42);
-            this.SatimDaraYokRadioButton.TabIndex = 16;
+            this.SatimDaraYokRadioButton.Size = new System.Drawing.Size(116, 36);
+            this.SatimDaraYokRadioButton.TabIndex = 8;
             this.SatimDaraYokRadioButton.TabStop = true;
             this.SatimDaraYokRadioButton.Text = "Dara Yok";
             this.SatimDaraYokRadioButton.UseVisualStyleBackColor = true;
+            this.SatimDaraYokRadioButton.CheckedChanged += new System.EventHandler(this.SatimDaraYokRadioButton_CheckedChanged);
             // 
             // SatimDaraTartRadioButton
             // 
@@ -801,10 +791,11 @@
             this.SatimDaraTartRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimDaraTartRadioButton.Location = new System.Drawing.Point(125, 3);
             this.SatimDaraTartRadioButton.Name = "SatimDaraTartRadioButton";
-            this.SatimDaraTartRadioButton.Size = new System.Drawing.Size(116, 42);
-            this.SatimDaraTartRadioButton.TabIndex = 17;
+            this.SatimDaraTartRadioButton.Size = new System.Drawing.Size(116, 36);
+            this.SatimDaraTartRadioButton.TabIndex = 9;
             this.SatimDaraTartRadioButton.Text = "Dara Tart";
             this.SatimDaraTartRadioButton.UseVisualStyleBackColor = true;
+            this.SatimDaraTartRadioButton.CheckedChanged += new System.EventHandler(this.SatimDaraTartRadioButton_CheckedChanged);
             // 
             // SatimKayitliDaraRadioButton
             // 
@@ -813,20 +804,21 @@
             this.SatimKayitliDaraRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimKayitliDaraRadioButton.Location = new System.Drawing.Point(247, 3);
             this.SatimKayitliDaraRadioButton.Name = "SatimKayitliDaraRadioButton";
-            this.SatimKayitliDaraRadioButton.Size = new System.Drawing.Size(116, 42);
-            this.SatimKayitliDaraRadioButton.TabIndex = 18;
+            this.SatimKayitliDaraRadioButton.Size = new System.Drawing.Size(116, 36);
+            this.SatimKayitliDaraRadioButton.TabIndex = 10;
             this.SatimKayitliDaraRadioButton.Text = "Kayıtlı Dara";
             this.SatimKayitliDaraRadioButton.UseVisualStyleBackColor = true;
+            this.SatimKayitliDaraRadioButton.CheckedChanged += new System.EventHandler(this.SatimKayitliDaraRadioButton_CheckedChanged);
             // 
             // SatimDaraTextBox
             // 
             this.SatimDaraTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.SatimDaraTextBox.Enabled = false;
             this.SatimDaraTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SatimDaraTextBox.Location = new System.Drawing.Point(369, 11);
+            this.SatimDaraTextBox.Location = new System.Drawing.Point(369, 8);
             this.SatimDaraTextBox.Name = "SatimDaraTextBox";
             this.SatimDaraTextBox.Size = new System.Drawing.Size(117, 26);
-            this.SatimDaraTextBox.TabIndex = 19;
+            this.SatimDaraTextBox.TabIndex = 11;
             // 
             // SatimTLP3
             // 
@@ -856,7 +848,7 @@
             this.SatimUrunBirComboBox.Location = new System.Drawing.Point(3, 3);
             this.SatimUrunBirComboBox.Name = "SatimUrunBirComboBox";
             this.SatimUrunBirComboBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimUrunBirComboBox.TabIndex = 35;
+            this.SatimUrunBirComboBox.TabIndex = 12;
             // 
             // l11
             // 
@@ -878,7 +870,7 @@
             this.SatimTartimBirTextBox.Location = new System.Drawing.Point(329, 3);
             this.SatimTartimBirTextBox.Name = "SatimTartimBirTextBox";
             this.SatimTartimBirTextBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimTartimBirTextBox.TabIndex = 21;
+            this.SatimTartimBirTextBox.TabIndex = 13;
             // 
             // SatimTLP4
             // 
@@ -908,7 +900,7 @@
             this.SatimUrunIkiComboBox.Location = new System.Drawing.Point(3, 3);
             this.SatimUrunIkiComboBox.Name = "SatimUrunIkiComboBox";
             this.SatimUrunIkiComboBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimUrunIkiComboBox.TabIndex = 36;
+            this.SatimUrunIkiComboBox.TabIndex = 14;
             // 
             // l13
             // 
@@ -930,7 +922,7 @@
             this.SatimTartimIkiTextBox.Location = new System.Drawing.Point(329, 3);
             this.SatimTartimIkiTextBox.Name = "SatimTartimIkiTextBox";
             this.SatimTartimIkiTextBox.Size = new System.Drawing.Size(157, 26);
-            this.SatimTartimIkiTextBox.TabIndex = 23;
+            this.SatimTartimIkiTextBox.TabIndex = 15;
             // 
             // l12
             // 
@@ -961,21 +953,30 @@
             this.l9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l9.ForeColor = System.Drawing.Color.White;
-            this.l9.Location = new System.Drawing.Point(3, 240);
+            this.l9.Location = new System.Drawing.Point(3, 246);
             this.l9.Name = "l9";
-            this.l9.Size = new System.Drawing.Size(159, 54);
+            this.l9.Size = new System.Drawing.Size(159, 48);
             this.l9.TabIndex = 91;
             this.l9.Text = "Dara Seçimi:";
             this.l9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // SatimDorseTextBox
+            // 
+            this.SatimDorseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SatimDorseTextBox.Enabled = false;
+            this.SatimDorseTextBox.Location = new System.Drawing.Point(168, 93);
+            this.SatimDorseTextBox.Name = "SatimDorseTextBox";
+            this.SatimDorseTextBox.Size = new System.Drawing.Size(489, 26);
+            this.SatimDorseTextBox.TabIndex = 3;
             // 
             // AlimTab
             // 
             this.AlimTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(110)))), ((int)(((byte)(200)))));
             this.AlimTab.Controls.Add(this.AlimTableLayoutPanel);
-            this.AlimTab.Location = new System.Drawing.Point(4, 33);
+            this.AlimTab.Location = new System.Drawing.Point(4, 29);
             this.AlimTab.Name = "AlimTab";
             this.AlimTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AlimTab.Size = new System.Drawing.Size(662, 603);
+            this.AlimTab.Size = new System.Drawing.Size(662, 607);
             this.AlimTab.TabIndex = 1;
             this.AlimTab.Text = "Alım                ";
             // 
@@ -1015,8 +1016,8 @@
             this.AlimTableLayoutPanel.Controls.Add(this.l28, 0, 6);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimCıkısAdresiComboBox, 1, 5);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimPlakalarComboBox, 1, 2);
-            this.AlimTableLayoutPanel.Controls.Add(this.AlimDorseComboBox, 1, 4);
-            this.AlimTableLayoutPanel.Controls.Add(this.AlimSoforComboBox, 1, 3);
+            this.AlimTableLayoutPanel.Controls.Add(this.AlimSoforComboBox, 1, 4);
+            this.AlimTableLayoutPanel.Controls.Add(this.AlimDorseTextBox, 1, 3);
             this.AlimTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.AlimTableLayoutPanel.Name = "AlimTableLayoutPanel";
             this.AlimTableLayoutPanel.RowCount = 20;
@@ -1027,8 +1028,8 @@
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
+            this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -1040,7 +1041,7 @@
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.AlimTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
+            this.AlimTableLayoutPanel.Size = new System.Drawing.Size(660, 604);
             this.AlimTableLayoutPanel.TabIndex = 3;
             // 
             // AlimVarisAdresiComboBox
@@ -1053,7 +1054,7 @@
             this.AlimVarisAdresiComboBox.Location = new System.Drawing.Point(168, 183);
             this.AlimVarisAdresiComboBox.Name = "AlimVarisAdresiComboBox";
             this.AlimVarisAdresiComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimVarisAdresiComboBox.TabIndex = 53;
+            this.AlimVarisAdresiComboBox.TabIndex = 6;
             // 
             // AlimTLP7
             // 
@@ -1081,7 +1082,7 @@
             this.AlimTartimBesTextBox.Location = new System.Drawing.Point(329, 3);
             this.AlimTartimBesTextBox.Name = "AlimTartimBesTextBox";
             this.AlimTartimBesTextBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimTartimBesTextBox.TabIndex = 70;
+            this.AlimTartimBesTextBox.TabIndex = 18;
             // 
             // l40
             // 
@@ -1105,7 +1106,7 @@
             this.AlimUrunBesComboBox.Location = new System.Drawing.Point(3, 3);
             this.AlimUrunBesComboBox.Name = "AlimUrunBesComboBox";
             this.AlimUrunBesComboBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimUrunBesComboBox.TabIndex = 80;
+            this.AlimUrunBesComboBox.TabIndex = 17;
             // 
             // AlimTLP6
             // 
@@ -1133,7 +1134,7 @@
             this.AlimTartimDortTextBox.Location = new System.Drawing.Point(329, 3);
             this.AlimTartimDortTextBox.Name = "AlimTartimDortTextBox";
             this.AlimTartimDortTextBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimTartimDortTextBox.TabIndex = 68;
+            this.AlimTartimDortTextBox.TabIndex = 16;
             // 
             // l38
             // 
@@ -1157,7 +1158,7 @@
             this.AlimUrunDortComboBox.Location = new System.Drawing.Point(3, 3);
             this.AlimUrunDortComboBox.Name = "AlimUrunDortComboBox";
             this.AlimUrunDortComboBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimUrunDortComboBox.TabIndex = 79;
+            this.AlimUrunDortComboBox.TabIndex = 15;
             // 
             // AlimTPL1
             // 
@@ -1171,7 +1172,7 @@
             this.AlimTPL1.Name = "AlimTPL1";
             this.AlimTPL1.RowCount = 1;
             this.AlimTPL1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AlimTPL1.Size = new System.Drawing.Size(489, 24);
+            this.AlimTPL1.Size = new System.Drawing.Size(489, 30);
             this.AlimTPL1.TabIndex = 13;
             // 
             // AlimTartimSayisiComboBox
@@ -1190,7 +1191,7 @@
             this.AlimTartimSayisiComboBox.Location = new System.Drawing.Point(369, 3);
             this.AlimTartimSayisiComboBox.Name = "AlimTartimSayisiComboBox";
             this.AlimTartimSayisiComboBox.Size = new System.Drawing.Size(117, 26);
-            this.AlimTartimSayisiComboBox.TabIndex = 55;
+            this.AlimTartimSayisiComboBox.TabIndex = 7;
             this.AlimTartimSayisiComboBox.SelectedIndexChanged += new System.EventHandler(this.AlimTartimSayisiComboBox_SelectedIndexChanged);
             // 
             // l29
@@ -1200,7 +1201,7 @@
             this.l29.ForeColor = System.Drawing.Color.White;
             this.l29.Location = new System.Drawing.Point(3, 0);
             this.l29.Name = "l29";
-            this.l29.Size = new System.Drawing.Size(360, 24);
+            this.l29.Size = new System.Drawing.Size(360, 30);
             this.l29.TabIndex = 54;
             this.l29.Text = "Yapılacak Tartım Sayısı Seçiniz";
             this.l29.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -1221,7 +1222,7 @@
             this.AlimTLP5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.AlimTLP5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.AlimTLP5.Size = new System.Drawing.Size(489, 24);
-            this.AlimTLP5.TabIndex = 22;
+            this.AlimTLP5.TabIndex = 14;
             // 
             // AlimTatimUcTextBox
             // 
@@ -1254,7 +1255,7 @@
             this.AlimUrunUcComboBox.Location = new System.Drawing.Point(3, 3);
             this.AlimUrunUcComboBox.Name = "AlimUrunUcComboBox";
             this.AlimUrunUcComboBox.Size = new System.Drawing.Size(156, 26);
-            this.AlimUrunUcComboBox.TabIndex = 78;
+            this.AlimUrunUcComboBox.TabIndex = 13;
             // 
             // AlimTLP2
             // 
@@ -1266,11 +1267,11 @@
             this.AlimTLP2.Controls.Add(this.AlimToplamTextBox, 3, 0);
             this.AlimTLP2.Controls.Add(this.l30, 2, 0);
             this.AlimTLP2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlimTLP2.Location = new System.Drawing.Point(168, 243);
+            this.AlimTLP2.Location = new System.Drawing.Point(168, 249);
             this.AlimTLP2.Name = "AlimTLP2";
             this.AlimTLP2.RowCount = 1;
             this.AlimTLP2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AlimTLP2.Size = new System.Drawing.Size(489, 48);
+            this.AlimTLP2.Size = new System.Drawing.Size(489, 42);
             this.AlimTLP2.TabIndex = 16;
             // 
             // AlimToplamTextBox
@@ -1278,10 +1279,10 @@
             this.AlimToplamTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.AlimToplamTextBox.Enabled = false;
             this.AlimToplamTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AlimToplamTextBox.Location = new System.Drawing.Point(369, 11);
+            this.AlimToplamTextBox.Location = new System.Drawing.Point(369, 8);
             this.AlimToplamTextBox.Name = "AlimToplamTextBox";
             this.AlimToplamTextBox.Size = new System.Drawing.Size(117, 26);
-            this.AlimToplamTextBox.TabIndex = 60;
+            this.AlimToplamTextBox.TabIndex = 8;
             // 
             // l30
             // 
@@ -1290,7 +1291,7 @@
             this.l30.ForeColor = System.Drawing.Color.White;
             this.l30.Location = new System.Drawing.Point(247, 0);
             this.l30.Name = "l30";
-            this.l30.Size = new System.Drawing.Size(116, 48);
+            this.l30.Size = new System.Drawing.Size(116, 42);
             this.l30.TabIndex = 56;
             this.l30.Text = "Toplam:";
             this.l30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1321,7 +1322,7 @@
             this.AlimTartimBirTextBox.Location = new System.Drawing.Point(329, 3);
             this.AlimTartimBirTextBox.Name = "AlimTartimBirTextBox";
             this.AlimTartimBirTextBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimTartimBirTextBox.TabIndex = 62;
+            this.AlimTartimBirTextBox.TabIndex = 10;
             // 
             // l32
             // 
@@ -1345,7 +1346,7 @@
             this.AlimUrunBirComboBox.Location = new System.Drawing.Point(3, 3);
             this.AlimUrunBirComboBox.Name = "AlimUrunBirComboBox";
             this.AlimUrunBirComboBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimUrunBirComboBox.TabIndex = 76;
+            this.AlimUrunBirComboBox.TabIndex = 9;
             // 
             // AlimTLP4
             // 
@@ -1373,7 +1374,7 @@
             this.AlimTartimIkiTextBox.Location = new System.Drawing.Point(329, 3);
             this.AlimTartimIkiTextBox.Name = "AlimTartimIkiTextBox";
             this.AlimTartimIkiTextBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimTartimIkiTextBox.TabIndex = 64;
+            this.AlimTartimIkiTextBox.TabIndex = 12;
             // 
             // l34
             // 
@@ -1397,7 +1398,7 @@
             this.AlimUrunIkiComboBox.Location = new System.Drawing.Point(3, 3);
             this.AlimUrunIkiComboBox.Name = "AlimUrunIkiComboBox";
             this.AlimUrunIkiComboBox.Size = new System.Drawing.Size(157, 26);
-            this.AlimUrunIkiComboBox.TabIndex = 77;
+            this.AlimUrunIkiComboBox.TabIndex = 11;
             // 
             // l22
             // 
@@ -1419,7 +1420,7 @@
             this.AlimTartimButton.Location = new System.Drawing.Point(168, 537);
             this.AlimTartimButton.Name = "AlimTartimButton";
             this.AlimTartimButton.Size = new System.Drawing.Size(489, 48);
-            this.AlimTartimButton.TabIndex = 94;
+            this.AlimTartimButton.TabIndex = 21;
             this.AlimTartimButton.Text = "TARTIMA BAŞLA";
             this.AlimTartimButton.UseVisualStyleBackColor = true;
             // 
@@ -1430,7 +1431,7 @@
             this.AlimNotIkiTextBox.Location = new System.Drawing.Point(168, 477);
             this.AlimNotIkiTextBox.Name = "AlimNotIkiTextBox";
             this.AlimNotIkiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimNotIkiTextBox.TabIndex = 92;
+            this.AlimNotIkiTextBox.TabIndex = 20;
             // 
             // l42
             // 
@@ -1451,7 +1452,7 @@
             this.AlimNotBirTextBox.Location = new System.Drawing.Point(168, 447);
             this.AlimNotBirTextBox.Name = "AlimNotBirTextBox";
             this.AlimNotBirTextBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimNotBirTextBox.TabIndex = 81;
+            this.AlimNotBirTextBox.TabIndex = 19;
             // 
             // l41
             // 
@@ -1475,7 +1476,7 @@
             this.AlimFirmalarComboBox.Location = new System.Drawing.Point(168, 33);
             this.AlimFirmalarComboBox.Name = "AlimFirmalarComboBox";
             this.AlimFirmalarComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimFirmalarComboBox.TabIndex = 48;
+            this.AlimFirmalarComboBox.TabIndex = 1;
             // 
             // l23
             // 
@@ -1619,7 +1620,7 @@
             this.AlimCıkısAdresiComboBox.Location = new System.Drawing.Point(168, 153);
             this.AlimCıkısAdresiComboBox.Name = "AlimCıkısAdresiComboBox";
             this.AlimCıkısAdresiComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimCıkısAdresiComboBox.TabIndex = 52;
+            this.AlimCıkısAdresiComboBox.TabIndex = 5;
             // 
             // AlimPlakalarComboBox
             // 
@@ -1631,20 +1632,8 @@
             this.AlimPlakalarComboBox.Location = new System.Drawing.Point(168, 63);
             this.AlimPlakalarComboBox.Name = "AlimPlakalarComboBox";
             this.AlimPlakalarComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimPlakalarComboBox.TabIndex = 49;
+            this.AlimPlakalarComboBox.TabIndex = 2;
             this.AlimPlakalarComboBox.SelectedIndexChanged += new System.EventHandler(this.AlimPlakalarComboBox_SelectedIndexChanged);
-            // 
-            // AlimDorseComboBox
-            // 
-            this.AlimDorseComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AlimDorseComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlimDorseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AlimDorseComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AlimDorseComboBox.FormattingEnabled = true;
-            this.AlimDorseComboBox.Location = new System.Drawing.Point(168, 123);
-            this.AlimDorseComboBox.Name = "AlimDorseComboBox";
-            this.AlimDorseComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimDorseComboBox.TabIndex = 50;
             // 
             // AlimSoforComboBox
             // 
@@ -1653,10 +1642,20 @@
             this.AlimSoforComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AlimSoforComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AlimSoforComboBox.FormattingEnabled = true;
-            this.AlimSoforComboBox.Location = new System.Drawing.Point(168, 93);
+            this.AlimSoforComboBox.Location = new System.Drawing.Point(168, 123);
             this.AlimSoforComboBox.Name = "AlimSoforComboBox";
             this.AlimSoforComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimSoforComboBox.TabIndex = 51;
+            this.AlimSoforComboBox.TabIndex = 4;
+            // 
+            // AlimDorseTextBox
+            // 
+            this.AlimDorseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AlimDorseTextBox.Enabled = false;
+            this.AlimDorseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AlimDorseTextBox.Location = new System.Drawing.Point(168, 93);
+            this.AlimDorseTextBox.Name = "AlimDorseTextBox";
+            this.AlimDorseTextBox.Size = new System.Drawing.Size(489, 26);
+            this.AlimDorseTextBox.TabIndex = 3;
             // 
             // UrunEkleTab
             // 
@@ -1716,7 +1715,7 @@
             this.UrunEklemeButton.Location = new System.Drawing.Point(168, 93);
             this.UrunEklemeButton.Name = "UrunEklemeButton";
             this.UrunEklemeButton.Size = new System.Drawing.Size(489, 48);
-            this.UrunEklemeButton.TabIndex = 91;
+            this.UrunEklemeButton.TabIndex = 31;
             this.UrunEklemeButton.Text = "ÜRÜNÜ KAYDET";
             this.UrunEklemeButton.UseVisualStyleBackColor = true;
             this.UrunEklemeButton.Click += new System.EventHandler(this.UrunEklemeButton_Click);
@@ -1739,7 +1738,7 @@
             this.UrunAdiTextBox.Location = new System.Drawing.Point(168, 33);
             this.UrunAdiTextBox.Name = "UrunAdiTextBox";
             this.UrunAdiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.UrunAdiTextBox.TabIndex = 26;
+            this.UrunAdiTextBox.TabIndex = 30;
             // 
             // l63
             // 
@@ -1816,7 +1815,7 @@
             this.SoforAdresTextBox.Multiline = true;
             this.SoforAdresTextBox.Name = "SoforAdresTextBox";
             this.SoforAdresTextBox.Size = new System.Drawing.Size(489, 72);
-            this.SoforAdresTextBox.TabIndex = 91;
+            this.SoforAdresTextBox.TabIndex = 33;
             // 
             // l58
             // 
@@ -1859,7 +1858,7 @@
             this.SoforTcTextBox.MaxLength = 11;
             this.SoforTcTextBox.Name = "SoforTcTextBox";
             this.SoforTcTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SoforTcTextBox.TabIndex = 30;
+            this.SoforTcTextBox.TabIndex = 31;
             // 
             // l60
             // 
@@ -1891,7 +1890,7 @@
             this.SoforAdiTextBox.Location = new System.Drawing.Point(168, 33);
             this.SoforAdiTextBox.Name = "SoforAdiTextBox";
             this.SoforAdiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SoforAdiTextBox.TabIndex = 28;
+            this.SoforAdiTextBox.TabIndex = 30;
             // 
             // l59
             // 
@@ -1913,7 +1912,7 @@
             this.SoforEklemeButton.Location = new System.Drawing.Point(168, 231);
             this.SoforEklemeButton.Name = "SoforEklemeButton";
             this.SoforEklemeButton.Size = new System.Drawing.Size(489, 47);
-            this.SoforEklemeButton.TabIndex = 93;
+            this.SoforEklemeButton.TabIndex = 34;
             this.SoforEklemeButton.Text = "ŞÖFÖRÜ KAYDET";
             this.SoforEklemeButton.UseVisualStyleBackColor = true;
             this.SoforEklemeButton.Click += new System.EventHandler(this.SoforEklemeButton_Click);
@@ -2005,7 +2004,7 @@
             this.AracPlakaTextBox.MaxLength = 7;
             this.AracPlakaTextBox.Name = "AracPlakaTextBox";
             this.AracPlakaTextBox.Size = new System.Drawing.Size(489, 26);
-            this.AracPlakaTextBox.TabIndex = 26;
+            this.AracPlakaTextBox.TabIndex = 30;
             // 
             // l55
             // 
@@ -2028,7 +2027,7 @@
             this.AracDaraAlButton.Location = new System.Drawing.Point(168, 177);
             this.AracDaraAlButton.Name = "AracDaraAlButton";
             this.AracDaraAlButton.Size = new System.Drawing.Size(489, 48);
-            this.AracDaraAlButton.TabIndex = 82;
+            this.AracDaraAlButton.TabIndex = 34;
             this.AracDaraAlButton.Text = "DARA AL";
             this.AracDaraAlButton.UseVisualStyleBackColor = true;
             this.AracDaraAlButton.Click += new System.EventHandler(this.AracDaraAlButton_Click);
@@ -2041,7 +2040,7 @@
             this.AracEklemeButton.Location = new System.Drawing.Point(168, 375);
             this.AracEklemeButton.Name = "AracEklemeButton";
             this.AracEklemeButton.Size = new System.Drawing.Size(489, 48);
-            this.AracEklemeButton.TabIndex = 88;
+            this.AracEklemeButton.TabIndex = 38;
             this.AracEklemeButton.Text = "ARACI KAYDET";
             this.AracEklemeButton.UseVisualStyleBackColor = true;
             this.AracEklemeButton.Click += new System.EventHandler(this.AracEklemeButton_Click);
@@ -2056,7 +2055,7 @@
             this.AracDorsePlakaTextBox.MaxLength = 7;
             this.AracDorsePlakaTextBox.Name = "AracDorsePlakaTextBox";
             this.AracDorsePlakaTextBox.Size = new System.Drawing.Size(489, 26);
-            this.AracDorsePlakaTextBox.TabIndex = 86;
+            this.AracDorsePlakaTextBox.TabIndex = 37;
             // 
             // AracTPL2
             // 
@@ -2082,7 +2081,7 @@
             this.AracDorseYokRadioButton.Location = new System.Drawing.Point(247, 3);
             this.AracDorseYokRadioButton.Name = "AracDorseYokRadioButton";
             this.AracDorseYokRadioButton.Size = new System.Drawing.Size(239, 42);
-            this.AracDorseYokRadioButton.TabIndex = 84;
+            this.AracDorseYokRadioButton.TabIndex = 36;
             this.AracDorseYokRadioButton.TabStop = true;
             this.AracDorseYokRadioButton.Text = "Dorse Yok";
             this.AracDorseYokRadioButton.UseVisualStyleBackColor = true;
@@ -2096,7 +2095,7 @@
             this.AracDorseVarRadioButton.Location = new System.Drawing.Point(3, 3);
             this.AracDorseVarRadioButton.Name = "AracDorseVarRadioButton";
             this.AracDorseVarRadioButton.Size = new System.Drawing.Size(238, 42);
-            this.AracDorseVarRadioButton.TabIndex = 85;
+            this.AracDorseVarRadioButton.TabIndex = 35;
             this.AracDorseVarRadioButton.Text = "Dorse Var";
             this.AracDorseVarRadioButton.UseVisualStyleBackColor = true;
             this.AracDorseVarRadioButton.CheckedChanged += new System.EventHandler(this.AracDorseVarRadioButton_CheckedChanged);
@@ -2116,12 +2115,11 @@
             // AracDaraTextBox
             // 
             this.AracDaraTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracDaraTextBox.Enabled = false;
             this.AracDaraTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AracDaraTextBox.Location = new System.Drawing.Point(168, 117);
             this.AracDaraTextBox.Name = "AracDaraTextBox";
             this.AracDaraTextBox.Size = new System.Drawing.Size(489, 26);
-            this.AracDaraTextBox.TabIndex = 28;
+            this.AracDaraTextBox.TabIndex = 33;
             // 
             // AracTPL1
             // 
@@ -2148,7 +2146,7 @@
             this.AracDaraYokRadioButton.Location = new System.Drawing.Point(247, 3);
             this.AracDaraYokRadioButton.Name = "AracDaraYokRadioButton";
             this.AracDaraYokRadioButton.Size = new System.Drawing.Size(239, 42);
-            this.AracDaraYokRadioButton.TabIndex = 87;
+            this.AracDaraYokRadioButton.TabIndex = 32;
             this.AracDaraYokRadioButton.TabStop = true;
             this.AracDaraYokRadioButton.Text = "Dara Alınmayacak";
             this.AracDaraYokRadioButton.UseVisualStyleBackColor = true;
@@ -2162,7 +2160,7 @@
             this.AracDaraVarRadioButton.Location = new System.Drawing.Point(3, 3);
             this.AracDaraVarRadioButton.Name = "AracDaraVarRadioButton";
             this.AracDaraVarRadioButton.Size = new System.Drawing.Size(238, 42);
-            this.AracDaraVarRadioButton.TabIndex = 86;
+            this.AracDaraVarRadioButton.TabIndex = 31;
             this.AracDaraVarRadioButton.Text = "Dara Alınacak";
             this.AracDaraVarRadioButton.UseVisualStyleBackColor = true;
             this.AracDaraVarRadioButton.CheckedChanged += new System.EventHandler(this.AracDaraVarRadioButton_CheckedChanged);
@@ -2363,7 +2361,7 @@
             this.FirmaAdiTextBox.MaxLength = 255;
             this.FirmaAdiTextBox.Name = "FirmaAdiTextBox";
             this.FirmaAdiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.FirmaAdiTextBox.TabIndex = 51;
+            this.FirmaAdiTextBox.TabIndex = 30;
             // 
             // FirmaVergiDairesiTextBox
             // 
@@ -2373,7 +2371,7 @@
             this.FirmaVergiDairesiTextBox.MaxLength = 255;
             this.FirmaVergiDairesiTextBox.Name = "FirmaVergiDairesiTextBox";
             this.FirmaVergiDairesiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.FirmaVergiDairesiTextBox.TabIndex = 52;
+            this.FirmaVergiDairesiTextBox.TabIndex = 31;
             // 
             // FirmaVergiNoTextBox
             // 
@@ -2383,7 +2381,7 @@
             this.FirmaVergiNoTextBox.MaxLength = 10;
             this.FirmaVergiNoTextBox.Name = "FirmaVergiNoTextBox";
             this.FirmaVergiNoTextBox.Size = new System.Drawing.Size(489, 26);
-            this.FirmaVergiNoTextBox.TabIndex = 53;
+            this.FirmaVergiNoTextBox.TabIndex = 32;
             // 
             // FirmaTelNoTextBox
             // 
@@ -2393,7 +2391,7 @@
             this.FirmaTelNoTextBox.MaxLength = 18;
             this.FirmaTelNoTextBox.Name = "FirmaTelNoTextBox";
             this.FirmaTelNoTextBox.Size = new System.Drawing.Size(489, 26);
-            this.FirmaTelNoTextBox.TabIndex = 54;
+            this.FirmaTelNoTextBox.TabIndex = 33;
             // 
             // FirmaFaxNoTextBox
             // 
@@ -2403,7 +2401,7 @@
             this.FirmaFaxNoTextBox.MaxLength = 16;
             this.FirmaFaxNoTextBox.Name = "FirmaFaxNoTextBox";
             this.FirmaFaxNoTextBox.Size = new System.Drawing.Size(489, 26);
-            this.FirmaFaxNoTextBox.TabIndex = 55;
+            this.FirmaFaxNoTextBox.TabIndex = 34;
             // 
             // FirmaWebSiteTextBox
             // 
@@ -2413,7 +2411,7 @@
             this.FirmaWebSiteTextBox.MaxLength = 255;
             this.FirmaWebSiteTextBox.Name = "FirmaWebSiteTextBox";
             this.FirmaWebSiteTextBox.Size = new System.Drawing.Size(489, 26);
-            this.FirmaWebSiteTextBox.TabIndex = 56;
+            this.FirmaWebSiteTextBox.TabIndex = 35;
             // 
             // FirmaEmailTextBoxt
             // 
@@ -2423,7 +2421,7 @@
             this.FirmaEmailTextBoxt.MaxLength = 255;
             this.FirmaEmailTextBoxt.Name = "FirmaEmailTextBoxt";
             this.FirmaEmailTextBoxt.Size = new System.Drawing.Size(489, 26);
-            this.FirmaEmailTextBoxt.TabIndex = 57;
+            this.FirmaEmailTextBoxt.TabIndex = 36;
             // 
             // FirmaAdresiTextBox
             // 
@@ -2434,7 +2432,7 @@
             this.FirmaAdresiTextBox.Multiline = true;
             this.FirmaAdresiTextBox.Name = "FirmaAdresiTextBox";
             this.FirmaAdresiTextBox.Size = new System.Drawing.Size(489, 72);
-            this.FirmaAdresiTextBox.TabIndex = 58;
+            this.FirmaAdresiTextBox.TabIndex = 37;
             // 
             // FirmaEklemeButton
             // 
@@ -2444,7 +2442,7 @@
             this.FirmaEklemeButton.Location = new System.Drawing.Point(168, 429);
             this.FirmaEklemeButton.Name = "FirmaEklemeButton";
             this.FirmaEklemeButton.Size = new System.Drawing.Size(489, 48);
-            this.FirmaEklemeButton.TabIndex = 92;
+            this.FirmaEklemeButton.TabIndex = 39;
             this.FirmaEklemeButton.Text = "FİRMAYI KAYDET";
             this.FirmaEklemeButton.UseVisualStyleBackColor = true;
             this.FirmaEklemeButton.Click += new System.EventHandler(this.FirmaEklemeButton_Click);
@@ -2470,7 +2468,7 @@
             this.FirmaAdresiIkiTextBox.Multiline = true;
             this.FirmaAdresiIkiTextBox.Name = "FirmaAdresiIkiTextBox";
             this.FirmaAdresiIkiTextBox.Size = new System.Drawing.Size(489, 72);
-            this.FirmaAdresiIkiTextBox.TabIndex = 94;
+            this.FirmaAdresiIkiTextBox.TabIndex = 38;
             // 
             // TartimVeKayit
             // 
@@ -2567,7 +2565,6 @@
         private System.Windows.Forms.Label l18;
         private System.Windows.Forms.Label l4;
         private System.Windows.Forms.Label l5;
-        private System.Windows.Forms.ComboBox SatimDorseComboBox;
         private System.Windows.Forms.Label l6;
         private System.Windows.Forms.Label l16;
         private System.Windows.Forms.ComboBox SatimSoforComboBox;
@@ -2647,7 +2644,6 @@
         private System.Windows.Forms.Label l28;
         private System.Windows.Forms.ComboBox AlimCıkısAdresiComboBox;
         private System.Windows.Forms.ComboBox AlimPlakalarComboBox;
-        private System.Windows.Forms.ComboBox AlimDorseComboBox;
         private System.Windows.Forms.ComboBox AlimSoforComboBox;
         private System.Windows.Forms.TableLayoutPanel AracEklemeTableLayoutPanel;
         private System.Windows.Forms.Button AracEklemeButton;
@@ -2703,5 +2699,7 @@
         private System.Windows.Forms.RadioButton AracDaraVarRadioButton;
         private System.Windows.Forms.Label l64;
         private System.Windows.Forms.TextBox FirmaAdresiIkiTextBox;
+        private System.Windows.Forms.TextBox AlimDorseTextBox;
+        private System.Windows.Forms.TextBox SatimDorseTextBox;
     }
 }

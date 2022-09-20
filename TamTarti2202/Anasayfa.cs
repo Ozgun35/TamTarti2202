@@ -23,6 +23,7 @@ namespace TamTarti2202
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
+            StartXampp();
         }
 
         private const int cGrip = 16;
@@ -129,7 +130,6 @@ namespace TamTarti2202
 
         private void LoadConfigurationSettings()
         {
-            StartXampp();
             try
             {
                 serialPort1.PortName = Properties.KullaniciAyarlari.Default.PortName;
@@ -166,8 +166,10 @@ namespace TamTarti2202
                     "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, ADRES_2 VARCHAR(255)," +
                     " PRIMARY KEY(ID))", connectionTartim);
 
-                db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(8) NOT NULL UNIQUE, " +
-                    "DARA INT(1) NOT NULL, DARA_KG DOUBLE, DORSE INT(1) NOT NULL, DORSE_PLAKA VARCHAR(8), PRIMARY KEY(ID))", connectionTartim);
+             /* db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(8) NOT NULL UNIQUE, " +
+                    "DARA INT(1) NOT NULL, DARA_KG DOUBLE, DORSE INT(1) NOT NULL, DORSE_PLAKA VARCHAR(8), PRIMARY KEY(ID))", connectionTartim); */
+                db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(7) NOT NULL UNIQUE, " +
+                    "DARA_KG DOUBLE, DORSE_PLAKA VARCHAR(7), PRIMARY KEY(ID))", connectionTartim);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS SOFORLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL, " +
                     "TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))", connectionTartim);
@@ -184,7 +186,7 @@ namespace TamTarti2202
         private void Anasayfa_Load(object sender, EventArgs e)
         {
             LoadConfigurationSettings();
-            OpenPortEveryTenSeconds();
+           // OpenPortEveryTenSeconds();
         }
 
         private async Task OpenPortEveryTenSeconds()

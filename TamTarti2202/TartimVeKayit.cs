@@ -86,6 +86,59 @@ namespace TamTarti2202
         {
             if (AracEkleSwitch() == 1)
             {
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA_KG, DORSE_PLAKA) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + Convert.ToDouble(AracDaraTextBox.Text) + "', " +
+                    "'" + AracDorsePlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
+                    AracFormClear();
+                }
+                else
+                {
+                    MessageBox.Show("Araç Kaydı Yapılamadı!");
+                }
+            }
+            else if (AracEkleSwitch() == 2)
+            {
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA DARA_KG) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + Convert.ToDouble(AracDaraTextBox.Text) + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
+                    AracFormClear();
+                }
+            }
+            else if (AracEkleSwitch() == 3)
+            {
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DORSE_PLAKA) " +
+                    "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + AracDorsePlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
+                    AracFormClear();
+                }
+            }
+            else if (AracEkleSwitch() == 4)
+            {
+                if (db.RunQuery("INSERT INTO ARACLAR(PLAKA) VALUES('" + AracPlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
+                {
+                    MessageBox.Show("Araç Kaydı Başarılı!");
+                    AraclarComboBoxMembers();
+                    AracFormClear();
+                }
+                else
+                {
+                    MessageBox.Show("Araç Kaydı Yapılamadı!");
+                }
+            }
+            else if (AracEkleSwitch() == 0)
+            {
+                MessageBox.Show("Hatalı Giriş!");
+            }
+            /*
+            if (AracEkleSwitch() == 1)
+            {
                 if (db.RunQuery("INSERT INTO ARACLAR(PLAKA, DARA, DARA_KG, DORSE, DORSE_PLAKA) " +
                     "VALUES('" + AracPlakaTextBox.Text.ToUpper() + "', '" + 1 + "', '" + Convert.ToDouble(AracDaraTextBox.Text) + "', " +
                     "'" + 1 + "', '" + AracDorsePlakaTextBox.Text.ToUpper() + "')", connectionTartim) == true)
@@ -147,11 +200,12 @@ namespace TamTarti2202
             else if(AracEkleSwitch() == 0)
             {
                 MessageBox.Show("Hatalı Giriş!");
-            }
+            } */
         }
 
         private int AracEkleSwitch()
         {
+            /*
             if(AracDaraVarRadioButton.Checked == true && AracDorseVarRadioButton.Checked == true
                 && AracDaraTextBox.Text != "" && AracDorsePlakaTextBox.Text.Length == 7
                 && AracPlakaTextBox.Text.Length == 7)
@@ -169,6 +223,31 @@ namespace TamTarti2202
                 return 3;
             }
             if(AracDorseVarRadioButton.Checked == false && AracDaraVarRadioButton.Checked == false
+                && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 4;
+            }
+            else
+            {
+                return 0;
+            } */
+            if (AracDaraVarRadioButton.Checked == true && AracDorseVarRadioButton.Checked == true
+                && AracDaraTextBox.Text != "" && AracDorsePlakaTextBox.Text.Length == 7
+                && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 1;
+            }
+            if (AracDaraVarRadioButton.Checked == true && AracDorseVarRadioButton.Checked == false
+                && AracDaraTextBox.Text != "" && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 2;
+            }
+            if (AracDaraVarRadioButton.Checked == false && AracDorseVarRadioButton.Checked == true
+                && AracDorsePlakaTextBox.Text.Length == 7 && AracPlakaTextBox.Text.Length == 7)
+            {
+                return 3;
+            }
+            if (AracDorseVarRadioButton.Checked == false && AracDaraVarRadioButton.Checked == false
                 && AracPlakaTextBox.Text.Length == 7)
             {
                 return 4;
@@ -582,12 +661,59 @@ namespace TamTarti2202
         {
             try
             {
-                string plaka = AlimPlakalarComboBox.SelectedText;
-
+                AlimDorseTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '" + AlimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SatimPlakalarComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SatimDorseTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '" + SatimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                
+                if(SatimKayitliDaraRadioButton.Checked)
+                {
+                    SatimDaraTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '" + SatimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SatimDaraTartRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SatimDaraTartRadioButton.Checked)
+            {
+                SatimDaraTextBox.Text = "";
+            }
+        }
+
+        private void SatimDaraYokRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SatimDaraYokRadioButton.Checked)
+            {
+                SatimDaraTextBox.Text = "";
+            }
+        }
+
+        private void SatimKayitliDaraRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SatimKayitliDaraRadioButton.Checked)
+            {
+                try
+                {
+                    SatimDaraTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '" + SatimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
