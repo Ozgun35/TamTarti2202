@@ -94,5 +94,55 @@ namespace TamTarti2202.Properties {
                 this["FirmaAdi"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;database=tartim;uid=root;pwd=1960;Charset=utf8;convert zero date" +
+            "time=True;")]
+        public string connectionTartim {
+            get {
+                return ((string)(this["connectionTartim"]));
+            }
+            set {
+                this["connectionTartim"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;")]
+        public string connectionForCreate {
+            get {
+                return ((string)(this["connectionForCreate"]));
+            }
+            set {
+                this["connectionForCreate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;database=urunler;uid=root;pwd=1960;Charset=utf8;convert zero dat" +
+            "etime=True;")]
+        public string connectionUrunler {
+            get {
+                return ((string)(this["connectionUrunler"]));
+            }
+            set {
+                this["connectionUrunler"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\xampp\\xampp-control.exe")]
+        public string xampPath {
+            get {
+                return ((string)(this["xampPath"]));
+            }
+            set {
+                this["xampPath"] = value;
+            }
+        }
     }
 }

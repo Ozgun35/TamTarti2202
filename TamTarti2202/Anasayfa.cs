@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -10,24 +11,25 @@ namespace TamTarti2202
 {
     public partial class Anasayfa : Form
     {
+        private const int cGrip = 16;
+        private const int cCaption = 32;
+
         private DataBaseModifier db = new DataBaseModifier();
-        private static string connectionForCreate = "server=localhost;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;";
-        private static string connectionTartim = "server=localhost;database=tartim;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;";
-        private static string connectionUrunler = "server=localhost;database=urunler;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;";
-        private static int i = 1;
-        private Thread readSerialDataUsingThread;
-        private string serialData;
+        private string connectionForCreate = Properties.KullaniciAyarlari.Default.connectionForCreate;
+        private string connectionTartim = Properties.KullaniciAyarlari.Default.connectionTartim;
+        private string connectionUrunler = Properties.KullaniciAyarlari.Default.connectionUrunler;
+        private string xampPath = Properties.KullaniciAyarlari.Default.xampPath;
+
         private static string kgLabelData;
+        private Thread readSerialDataUsingThread;
+        private string serialData;   
 
         public Anasayfa()
         {
+            StartXampp();
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
-            StartXampp();
         }
-
-        private const int cGrip = 16;
-        private const int cCaption = 32;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -79,7 +81,6 @@ namespace TamTarti2202
             DialogResult dialogResult = MessageBox.Show("Programı kapatmak için Evet'e tıklayın.", "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                i = 0;
                 SeriPortClose();
                 Application.Exit();
             }
@@ -147,10 +148,17 @@ namespace TamTarti2202
 
         private void StartXampp()
         {
-            var runningProcessByName = Process.GetProcessesByName("xampp-control");
-            if (runningProcessByName.Length == 0)
+            try
             {
-                Process.Start(@"C:\xampp\xampp-control.exe");
+                var runningProcessByName = Process.GetProcessesByName("xampp-control");
+                if (runningProcessByName.Length == 0)
+                {
+                    Process.Start(xampPath);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -166,17 +174,15 @@ namespace TamTarti2202
                     "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, ADRES_2 VARCHAR(255)," +
                     " PRIMARY KEY(ID))", connectionTartim);
 
-             /* db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(8) NOT NULL UNIQUE, " +
-                    "DARA INT(1) NOT NULL, DARA_KG DOUBLE, DORSE INT(1) NOT NULL, DORSE_PLAKA VARCHAR(8), PRIMARY KEY(ID))", connectionTartim); */
                 db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(7) NOT NULL UNIQUE, " +
                     "DARA_KG DOUBLE, DORSE_PLAKA VARCHAR(7), PRIMARY KEY(ID))", connectionTartim);
 
-                db.RunQuery("CREATE TABLE IF NOT EXISTS SOFORLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL, " +
-                    "TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))", connectionTartim);
+                db.RunQuery("CREATE TABLE IF NOT EXISTS CALISANLAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL, " +
+                    "UNVAN VARCHAR(255), TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))", connectionTartim);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS URUNLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE, PRIMARY KEY(ID))", connectionTartim);
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -191,7 +197,7 @@ namespace TamTarti2202
 
         private async Task OpenPortEveryTenSeconds()
         {
-            while (i == 1)
+            while (true)
             {
                 var delayTask = Task.Delay(1000);
                 try
@@ -215,8 +221,7 @@ namespace TamTarti2202
             try
             {         
                 serialPort1.Open();
-                ReadSerialData();
-                
+                ReadSerialData();  
             }
             catch (Exception ex)
             {
@@ -246,9 +251,9 @@ namespace TamTarti2202
                     serialData = serialPort1.ReadLine();
                     WriteSerialData(serialData.Substring(6, 7));
                 }
-                catch (Exception ex)
+                catch (TimeoutException ex)
                 {
-                    //MessageBox.Show(ex.Message + " ReadSerial");
+                    MessageBox.Show(ex.Message + " ReadSerial");
                 }
             }
         }

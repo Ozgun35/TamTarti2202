@@ -23,7 +23,7 @@ namespace TamTarti2202
                     con.Close();
                 }
             }
-            catch(Exception ex)
+            catch(MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -48,14 +48,16 @@ namespace TamTarti2202
                 closeDb();
                 return s;
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
+                closeDb();
                 MessageBox.Show(ex.Message);
                 return "";
             }
         }
 
-        public Boolean RunQuery(string query, string connection)
+
+        public void RunQuery(string query, string connection)
         {
             try
             {
@@ -66,12 +68,11 @@ namespace TamTarti2202
                 reader = cmd.ExecuteReader();
 
                 closeDb();
-                return true;
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
+                closeDb();
                 MessageBox.Show(ex.Message + " runquery exception");
-                return false;
             }
         }
 
@@ -89,8 +90,9 @@ namespace TamTarti2202
 
                 return dt;
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
+                closeDb();
                 MessageBox.Show(ex.Message + " dettable exception");
                 return null;
             }

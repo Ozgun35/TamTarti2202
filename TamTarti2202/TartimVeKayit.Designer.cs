@@ -58,7 +58,7 @@
             this.l5 = new System.Windows.Forms.Label();
             this.l6 = new System.Windows.Forms.Label();
             this.l16 = new System.Windows.Forms.Label();
-            this.SatimSoforComboBox = new System.Windows.Forms.ComboBox();
+            this.SatimCalisanComboBox = new System.Windows.Forms.ComboBox();
             this.SatimCıkısAdresiComboBox = new System.Windows.Forms.ComboBox();
             this.SatimVarisAdresiComboBox = new System.Windows.Forms.ComboBox();
             this.l7 = new System.Windows.Forms.Label();
@@ -132,7 +132,7 @@
             this.l28 = new System.Windows.Forms.Label();
             this.AlimCıkısAdresiComboBox = new System.Windows.Forms.ComboBox();
             this.AlimPlakalarComboBox = new System.Windows.Forms.ComboBox();
-            this.AlimSoforComboBox = new System.Windows.Forms.ComboBox();
+            this.AlimCalisanComboBox = new System.Windows.Forms.ComboBox();
             this.AlimDorseTextBox = new System.Windows.Forms.TextBox();
             this.UrunEkleTab = new System.Windows.Forms.TabPage();
             this.UrunEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -141,17 +141,19 @@
             this.UrunAdiTextBox = new System.Windows.Forms.TextBox();
             this.l63 = new System.Windows.Forms.Label();
             this.SoforKayitTab = new System.Windows.Forms.TabPage();
-            this.SoforEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.SoforAdresTextBox = new System.Windows.Forms.TextBox();
+            this.CalisanEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.l58 = new System.Windows.Forms.Label();
-            this.l61 = new System.Windows.Forms.Label();
-            this.SoforTelNoTextBox = new System.Windows.Forms.TextBox();
-            this.SoforTcTextBox = new System.Windows.Forms.TextBox();
-            this.l60 = new System.Windows.Forms.Label();
             this.l57 = new System.Windows.Forms.Label();
-            this.SoforAdiTextBox = new System.Windows.Forms.TextBox();
+            this.CalisanAdiTextBox = new System.Windows.Forms.TextBox();
+            this.CalisanEklemeButton = new System.Windows.Forms.Button();
+            this.CalisanAdresTextBox = new System.Windows.Forms.TextBox();
+            this.l61 = new System.Windows.Forms.Label();
+            this.l60 = new System.Windows.Forms.Label();
+            this.CalisanTelNoTextBox = new System.Windows.Forms.TextBox();
+            this.CalisanTcTextBox = new System.Windows.Forms.TextBox();
             this.l59 = new System.Windows.Forms.Label();
-            this.SoforEklemeButton = new System.Windows.Forms.Button();
+            this.lbl65 = new System.Windows.Forms.Label();
+            this.CalisanUnvanTextBox = new System.Windows.Forms.TextBox();
             this.AracKayitTab = new System.Windows.Forms.TabPage();
             this.AracEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.l53 = new System.Windows.Forms.Label();
@@ -159,16 +161,16 @@
             this.AracPlakaTextBox = new System.Windows.Forms.TextBox();
             this.l55 = new System.Windows.Forms.Label();
             this.AracDaraAlButton = new System.Windows.Forms.Button();
-            this.AracEklemeButton = new System.Windows.Forms.Button();
-            this.AracDorsePlakaTextBox = new System.Windows.Forms.TextBox();
-            this.AracTPL2 = new System.Windows.Forms.TableLayoutPanel();
-            this.AracDorseYokRadioButton = new System.Windows.Forms.RadioButton();
-            this.AracDorseVarRadioButton = new System.Windows.Forms.RadioButton();
             this.l56 = new System.Windows.Forms.Label();
             this.AracDaraTextBox = new System.Windows.Forms.TextBox();
             this.AracTPL1 = new System.Windows.Forms.TableLayoutPanel();
             this.AracDaraYokRadioButton = new System.Windows.Forms.RadioButton();
             this.AracDaraVarRadioButton = new System.Windows.Forms.RadioButton();
+            this.AracEklemeButton = new System.Windows.Forms.Button();
+            this.AracDorsePlakaTextBox = new System.Windows.Forms.TextBox();
+            this.AracTPL2 = new System.Windows.Forms.TableLayoutPanel();
+            this.AracDorseYokRadioButton = new System.Windows.Forms.RadioButton();
+            this.AracDorseVarRadioButton = new System.Windows.Forms.RadioButton();
             this.EklemeTabControl = new System.Windows.Forms.TabControl();
             this.FirmaKayitTab = new System.Windows.Forms.TabPage();
             this.FirmaEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -187,7 +189,7 @@
             this.FirmaTelNoTextBox = new System.Windows.Forms.TextBox();
             this.FirmaFaxNoTextBox = new System.Windows.Forms.TextBox();
             this.FirmaWebSiteTextBox = new System.Windows.Forms.TextBox();
-            this.FirmaEmailTextBoxt = new System.Windows.Forms.TextBox();
+            this.FirmaEmailTextBox = new System.Windows.Forms.TextBox();
             this.FirmaAdresiTextBox = new System.Windows.Forms.TextBox();
             this.FirmaEklemeButton = new System.Windows.Forms.Button();
             this.l64 = new System.Windows.Forms.Label();
@@ -214,11 +216,11 @@
             this.UrunEkleTab.SuspendLayout();
             this.UrunEklemeTableLayoutPanel.SuspendLayout();
             this.SoforKayitTab.SuspendLayout();
-            this.SoforEklemeTableLayoutPanel.SuspendLayout();
+            this.CalisanEklemeTableLayoutPanel.SuspendLayout();
             this.AracKayitTab.SuspendLayout();
             this.AracEklemeTableLayoutPanel.SuspendLayout();
-            this.AracTPL2.SuspendLayout();
             this.AracTPL1.SuspendLayout();
+            this.AracTPL2.SuspendLayout();
             this.EklemeTabControl.SuspendLayout();
             this.FirmaKayitTab.SuspendLayout();
             this.FirmaEklemeTableLayoutPanel.SuspendLayout();
@@ -273,7 +275,7 @@
             this.SatimTableLayoutPanel.Controls.Add(this.l5, 0, 4);
             this.SatimTableLayoutPanel.Controls.Add(this.l6, 0, 5);
             this.SatimTableLayoutPanel.Controls.Add(this.l16, 0, 12);
-            this.SatimTableLayoutPanel.Controls.Add(this.SatimSoforComboBox, 1, 4);
+            this.SatimTableLayoutPanel.Controls.Add(this.SatimCalisanComboBox, 1, 4);
             this.SatimTableLayoutPanel.Controls.Add(this.SatimCıkısAdresiComboBox, 1, 5);
             this.SatimTableLayoutPanel.Controls.Add(this.SatimVarisAdresiComboBox, 1, 6);
             this.SatimTableLayoutPanel.Controls.Add(this.l7, 0, 6);
@@ -616,7 +618,7 @@
             this.l5.Name = "l5";
             this.l5.Size = new System.Drawing.Size(159, 30);
             this.l5.TabIndex = 4;
-            this.l5.Text = "Şöför Adı:";
+            this.l5.Text = "Çalışan Adı:";
             this.l5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // l6
@@ -643,17 +645,17 @@
             this.l16.Text = "4. Ürün Seçimi:";
             this.l16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // SatimSoforComboBox
+            // SatimCalisanComboBox
             // 
-            this.SatimSoforComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SatimSoforComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SatimSoforComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SatimSoforComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SatimSoforComboBox.FormattingEnabled = true;
-            this.SatimSoforComboBox.Location = new System.Drawing.Point(168, 123);
-            this.SatimSoforComboBox.Name = "SatimSoforComboBox";
-            this.SatimSoforComboBox.Size = new System.Drawing.Size(489, 26);
-            this.SatimSoforComboBox.TabIndex = 4;
+            this.SatimCalisanComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SatimCalisanComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SatimCalisanComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SatimCalisanComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.SatimCalisanComboBox.FormattingEnabled = true;
+            this.SatimCalisanComboBox.Location = new System.Drawing.Point(168, 123);
+            this.SatimCalisanComboBox.Name = "SatimCalisanComboBox";
+            this.SatimCalisanComboBox.Size = new System.Drawing.Size(489, 26);
+            this.SatimCalisanComboBox.TabIndex = 4;
             // 
             // SatimCıkısAdresiComboBox
             // 
@@ -771,7 +773,6 @@
             // 
             // SatimDaraYokRadioButton
             // 
-            this.SatimDaraYokRadioButton.Checked = true;
             this.SatimDaraYokRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SatimDaraYokRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SatimDaraYokRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -779,7 +780,6 @@
             this.SatimDaraYokRadioButton.Name = "SatimDaraYokRadioButton";
             this.SatimDaraYokRadioButton.Size = new System.Drawing.Size(116, 36);
             this.SatimDaraYokRadioButton.TabIndex = 8;
-            this.SatimDaraYokRadioButton.TabStop = true;
             this.SatimDaraYokRadioButton.Text = "Dara Yok";
             this.SatimDaraYokRadioButton.UseVisualStyleBackColor = true;
             this.SatimDaraYokRadioButton.CheckedChanged += new System.EventHandler(this.SatimDaraYokRadioButton_CheckedChanged);
@@ -787,10 +787,10 @@
             // SatimDaraTartRadioButton
             // 
             this.SatimDaraTartRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SatimDaraTartRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SatimDaraTartRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimDaraTartRadioButton.Location = new System.Drawing.Point(125, 3);
             this.SatimDaraTartRadioButton.Name = "SatimDaraTartRadioButton";
+            this.SatimDaraTartRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.SatimDaraTartRadioButton.Size = new System.Drawing.Size(116, 36);
             this.SatimDaraTartRadioButton.TabIndex = 9;
             this.SatimDaraTartRadioButton.Text = "Dara Tart";
@@ -799,6 +799,7 @@
             // 
             // SatimKayitliDaraRadioButton
             // 
+            this.SatimKayitliDaraRadioButton.Checked = true;
             this.SatimKayitliDaraRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SatimKayitliDaraRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SatimKayitliDaraRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -806,6 +807,7 @@
             this.SatimKayitliDaraRadioButton.Name = "SatimKayitliDaraRadioButton";
             this.SatimKayitliDaraRadioButton.Size = new System.Drawing.Size(116, 36);
             this.SatimKayitliDaraRadioButton.TabIndex = 10;
+            this.SatimKayitliDaraRadioButton.TabStop = true;
             this.SatimKayitliDaraRadioButton.Text = "Kayıtlı Dara";
             this.SatimKayitliDaraRadioButton.UseVisualStyleBackColor = true;
             this.SatimKayitliDaraRadioButton.CheckedChanged += new System.EventHandler(this.SatimKayitliDaraRadioButton_CheckedChanged);
@@ -1016,7 +1018,7 @@
             this.AlimTableLayoutPanel.Controls.Add(this.l28, 0, 6);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimCıkısAdresiComboBox, 1, 5);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimPlakalarComboBox, 1, 2);
-            this.AlimTableLayoutPanel.Controls.Add(this.AlimSoforComboBox, 1, 4);
+            this.AlimTableLayoutPanel.Controls.Add(this.AlimCalisanComboBox, 1, 4);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimDorseTextBox, 1, 3);
             this.AlimTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.AlimTableLayoutPanel.Name = "AlimTableLayoutPanel";
@@ -1583,7 +1585,7 @@
             this.l26.Name = "l26";
             this.l26.Size = new System.Drawing.Size(159, 30);
             this.l26.TabIndex = 45;
-            this.l26.Text = "Şöför Adı:";
+            this.l26.Text = "Çalışan Adı:";
             this.l26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // l27
@@ -1635,17 +1637,17 @@
             this.AlimPlakalarComboBox.TabIndex = 2;
             this.AlimPlakalarComboBox.SelectedIndexChanged += new System.EventHandler(this.AlimPlakalarComboBox_SelectedIndexChanged);
             // 
-            // AlimSoforComboBox
+            // AlimCalisanComboBox
             // 
-            this.AlimSoforComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AlimSoforComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlimSoforComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AlimSoforComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AlimSoforComboBox.FormattingEnabled = true;
-            this.AlimSoforComboBox.Location = new System.Drawing.Point(168, 123);
-            this.AlimSoforComboBox.Name = "AlimSoforComboBox";
-            this.AlimSoforComboBox.Size = new System.Drawing.Size(489, 26);
-            this.AlimSoforComboBox.TabIndex = 4;
+            this.AlimCalisanComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AlimCalisanComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AlimCalisanComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AlimCalisanComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AlimCalisanComboBox.FormattingEnabled = true;
+            this.AlimCalisanComboBox.Location = new System.Drawing.Point(168, 123);
+            this.AlimCalisanComboBox.Name = "AlimCalisanComboBox";
+            this.AlimCalisanComboBox.Size = new System.Drawing.Size(489, 26);
+            this.AlimCalisanComboBox.TabIndex = 4;
             // 
             // AlimDorseTextBox
             // 
@@ -1755,7 +1757,7 @@
             // SoforKayitTab
             // 
             this.SoforKayitTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(200)))));
-            this.SoforKayitTab.Controls.Add(this.SoforEklemeTableLayoutPanel);
+            this.SoforKayitTab.Controls.Add(this.CalisanEklemeTableLayoutPanel);
             this.SoforKayitTab.Location = new System.Drawing.Point(4, 33);
             this.SoforKayitTab.Name = "SoforKayitTab";
             this.SoforKayitTab.Padding = new System.Windows.Forms.Padding(3);
@@ -1763,59 +1765,51 @@
             this.SoforKayitTab.TabIndex = 2;
             this.SoforKayitTab.Text = "Şöför Ekle";
             // 
-            // SoforEklemeTableLayoutPanel
+            // CalisanEklemeTableLayoutPanel
             // 
-            this.SoforEklemeTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CalisanEklemeTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SoforEklemeTableLayoutPanel.ColumnCount = 2;
-            this.SoforEklemeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.SoforEklemeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.SoforAdresTextBox, 1, 4);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.l58, 0, 1);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.l61, 0, 4);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.SoforTelNoTextBox, 1, 3);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.SoforTcTextBox, 1, 2);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.l60, 0, 3);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.l57, 1, 0);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.SoforAdiTextBox, 1, 1);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.l59, 0, 2);
-            this.SoforEklemeTableLayoutPanel.Controls.Add(this.SoforEklemeButton, 1, 6);
-            this.SoforEklemeTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
-            this.SoforEklemeTableLayoutPanel.Name = "SoforEklemeTableLayoutPanel";
-            this.SoforEklemeTableLayoutPanel.RowCount = 20;
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.00005F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.998836F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.999353F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00003F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00003F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.00014F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.000004F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.000004F));
-            this.SoforEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.000028F));
-            this.SoforEklemeTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
-            this.SoforEklemeTableLayoutPanel.TabIndex = 3;
-            // 
-            // SoforAdresTextBox
-            // 
-            this.SoforAdresTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SoforAdresTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SoforAdresTextBox.Location = new System.Drawing.Point(168, 123);
-            this.SoforAdresTextBox.Multiline = true;
-            this.SoforAdresTextBox.Name = "SoforAdresTextBox";
-            this.SoforAdresTextBox.Size = new System.Drawing.Size(489, 72);
-            this.SoforAdresTextBox.TabIndex = 33;
+            this.CalisanEklemeTableLayoutPanel.ColumnCount = 2;
+            this.CalisanEklemeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.CalisanEklemeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.l58, 0, 1);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.l57, 1, 0);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.CalisanAdiTextBox, 1, 1);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.CalisanEklemeButton, 1, 7);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.CalisanAdresTextBox, 1, 5);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.l61, 0, 5);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.l60, 0, 4);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.CalisanTelNoTextBox, 1, 4);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.CalisanTcTextBox, 1, 3);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.l59, 0, 3);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.lbl65, 0, 2);
+            this.CalisanEklemeTableLayoutPanel.Controls.Add(this.CalisanUnvanTextBox, 1, 2);
+            this.CalisanEklemeTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
+            this.CalisanEklemeTableLayoutPanel.Name = "CalisanEklemeTableLayoutPanel";
+            this.CalisanEklemeTableLayoutPanel.RowCount = 20;
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.999957F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.99989F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.999957F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.999923F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.99931F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.999987F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.999987F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.000097F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.9999955F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.9999955F));
+            this.CalisanEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.000019F));
+            this.CalisanEklemeTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
+            this.CalisanEklemeTableLayoutPanel.TabIndex = 3;
             // 
             // l58
             // 
@@ -1826,51 +1820,8 @@
             this.l58.Name = "l58";
             this.l58.Size = new System.Drawing.Size(159, 30);
             this.l58.TabIndex = 27;
-            this.l58.Text = "Şöför Adı:";
+            this.l58.Text = "Çalışan Adı:";
             this.l58.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // l61
-            // 
-            this.l61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.l61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.l61.ForeColor = System.Drawing.Color.White;
-            this.l61.Location = new System.Drawing.Point(3, 120);
-            this.l61.Name = "l61";
-            this.l61.Size = new System.Drawing.Size(159, 78);
-            this.l61.TabIndex = 92;
-            this.l61.Text = "Şöför Adresi:";
-            this.l61.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // SoforTelNoTextBox
-            // 
-            this.SoforTelNoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SoforTelNoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SoforTelNoTextBox.Location = new System.Drawing.Point(168, 93);
-            this.SoforTelNoTextBox.Name = "SoforTelNoTextBox";
-            this.SoforTelNoTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SoforTelNoTextBox.TabIndex = 32;
-            // 
-            // SoforTcTextBox
-            // 
-            this.SoforTcTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SoforTcTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SoforTcTextBox.Location = new System.Drawing.Point(168, 63);
-            this.SoforTcTextBox.MaxLength = 11;
-            this.SoforTcTextBox.Name = "SoforTcTextBox";
-            this.SoforTcTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SoforTcTextBox.TabIndex = 31;
-            // 
-            // l60
-            // 
-            this.l60.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.l60.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.l60.ForeColor = System.Drawing.Color.White;
-            this.l60.Location = new System.Drawing.Point(3, 90);
-            this.l60.Name = "l60";
-            this.l60.Size = new System.Drawing.Size(159, 30);
-            this.l60.TabIndex = 31;
-            this.l60.Text = "Şöför Telefon No:";
-            this.l60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // l57
             // 
@@ -1880,42 +1831,108 @@
             this.l57.Name = "l57";
             this.l57.Size = new System.Drawing.Size(489, 30);
             this.l57.TabIndex = 3;
-            this.l57.Text = "Şöför Ekleme Alanı";
+            this.l57.Text = "Çalışan Ekleme Alanı";
             this.l57.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SoforAdiTextBox
+            // CalisanAdiTextBox
             // 
-            this.SoforAdiTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SoforAdiTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SoforAdiTextBox.Location = new System.Drawing.Point(168, 33);
-            this.SoforAdiTextBox.Name = "SoforAdiTextBox";
-            this.SoforAdiTextBox.Size = new System.Drawing.Size(489, 26);
-            this.SoforAdiTextBox.TabIndex = 30;
+            this.CalisanAdiTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalisanAdiTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanAdiTextBox.Location = new System.Drawing.Point(168, 33);
+            this.CalisanAdiTextBox.Name = "CalisanAdiTextBox";
+            this.CalisanAdiTextBox.Size = new System.Drawing.Size(489, 26);
+            this.CalisanAdiTextBox.TabIndex = 30;
+            // 
+            // CalisanEklemeButton
+            // 
+            this.CalisanEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CalisanEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanEklemeButton.Location = new System.Drawing.Point(168, 258);
+            this.CalisanEklemeButton.Name = "CalisanEklemeButton";
+            this.CalisanEklemeButton.Size = new System.Drawing.Size(489, 47);
+            this.CalisanEklemeButton.TabIndex = 35;
+            this.CalisanEklemeButton.Text = "ÇALIŞAN KAYDET";
+            this.CalisanEklemeButton.UseVisualStyleBackColor = true;
+            this.CalisanEklemeButton.Click += new System.EventHandler(this.CalisanEklemeButton_Click);
+            // 
+            // CalisanAdresTextBox
+            // 
+            this.CalisanAdresTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanAdresTextBox.Location = new System.Drawing.Point(168, 152);
+            this.CalisanAdresTextBox.Multiline = true;
+            this.CalisanAdresTextBox.Name = "CalisanAdresTextBox";
+            this.CalisanAdresTextBox.Size = new System.Drawing.Size(489, 71);
+            this.CalisanAdresTextBox.TabIndex = 34;
+            // 
+            // l61
+            // 
+            this.l61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.l61.ForeColor = System.Drawing.Color.White;
+            this.l61.Location = new System.Drawing.Point(3, 149);
+            this.l61.Name = "l61";
+            this.l61.Size = new System.Drawing.Size(159, 77);
+            this.l61.TabIndex = 92;
+            this.l61.Text = "Çalışan Adresi:";
+            this.l61.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // l60
+            // 
+            this.l60.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.l60.ForeColor = System.Drawing.Color.White;
+            this.l60.Location = new System.Drawing.Point(3, 120);
+            this.l60.Name = "l60";
+            this.l60.Size = new System.Drawing.Size(159, 29);
+            this.l60.TabIndex = 31;
+            this.l60.Text = "Çalışan Telefon No:";
+            this.l60.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CalisanTelNoTextBox
+            // 
+            this.CalisanTelNoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanTelNoTextBox.Location = new System.Drawing.Point(168, 123);
+            this.CalisanTelNoTextBox.Name = "CalisanTelNoTextBox";
+            this.CalisanTelNoTextBox.Size = new System.Drawing.Size(489, 26);
+            this.CalisanTelNoTextBox.TabIndex = 33;
+            // 
+            // CalisanTcTextBox
+            // 
+            this.CalisanTcTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanTcTextBox.Location = new System.Drawing.Point(168, 93);
+            this.CalisanTcTextBox.MaxLength = 11;
+            this.CalisanTcTextBox.Name = "CalisanTcTextBox";
+            this.CalisanTcTextBox.Size = new System.Drawing.Size(489, 26);
+            this.CalisanTcTextBox.TabIndex = 32;
             // 
             // l59
             // 
-            this.l59.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l59.ForeColor = System.Drawing.Color.White;
-            this.l59.Location = new System.Drawing.Point(3, 60);
+            this.l59.Location = new System.Drawing.Point(3, 90);
             this.l59.Name = "l59";
             this.l59.Size = new System.Drawing.Size(159, 30);
             this.l59.TabIndex = 29;
-            this.l59.Text = "Şöför Tc:";
+            this.l59.Text = "Çalışan Tc:";
             this.l59.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SoforEklemeButton
+            // lbl65
             // 
-            this.SoforEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SoforEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SoforEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.SoforEklemeButton.Location = new System.Drawing.Point(168, 231);
-            this.SoforEklemeButton.Name = "SoforEklemeButton";
-            this.SoforEklemeButton.Size = new System.Drawing.Size(489, 47);
-            this.SoforEklemeButton.TabIndex = 34;
-            this.SoforEklemeButton.Text = "ŞÖFÖRÜ KAYDET";
-            this.SoforEklemeButton.UseVisualStyleBackColor = true;
-            this.SoforEklemeButton.Click += new System.EventHandler(this.SoforEklemeButton_Click);
+            this.lbl65.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl65.ForeColor = System.Drawing.Color.White;
+            this.lbl65.Location = new System.Drawing.Point(3, 60);
+            this.lbl65.Name = "lbl65";
+            this.lbl65.Size = new System.Drawing.Size(159, 30);
+            this.lbl65.TabIndex = 93;
+            this.lbl65.Text = "Çalışan Ünvanı:";
+            this.lbl65.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CalisanUnvanTextBox
+            // 
+            this.CalisanUnvanTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanUnvanTextBox.Location = new System.Drawing.Point(168, 63);
+            this.CalisanUnvanTextBox.MaxLength = 11;
+            this.CalisanUnvanTextBox.Name = "CalisanUnvanTextBox";
+            this.CalisanUnvanTextBox.Size = new System.Drawing.Size(489, 26);
+            this.CalisanUnvanTextBox.TabIndex = 31;
             // 
             // AracKayitTab
             // 
@@ -1941,35 +1958,35 @@
             this.AracEklemeTableLayoutPanel.Controls.Add(this.AracPlakaTextBox, 1, 1);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.l55, 0, 2);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.AracDaraAlButton, 1, 5);
-            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracEklemeButton, 1, 10);
-            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracDorsePlakaTextBox, 1, 8);
-            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracTPL2, 1, 7);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.l56, 0, 7);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.AracDaraTextBox, 1, 3);
             this.AracEklemeTableLayoutPanel.Controls.Add(this.AracTPL1, 1, 2);
+            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracEklemeButton, 1, 10);
+            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracDorsePlakaTextBox, 1, 8);
+            this.AracEklemeTableLayoutPanel.Controls.Add(this.AracTPL2, 1, 7);
             this.AracEklemeTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.AracEklemeTableLayoutPanel.Name = "AracEklemeTableLayoutPanel";
             this.AracEklemeTableLayoutPanel.RowCount = 20;
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.737864F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.737864F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.737864F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.737864F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.854369F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.883495F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.9708738F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.9708738F));
+            this.AracEklemeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.9708738F));
             this.AracEklemeTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
             this.AracEklemeTableLayoutPanel.TabIndex = 2;
             // 
@@ -1979,7 +1996,7 @@
             this.l53.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l53.Location = new System.Drawing.Point(168, 0);
             this.l53.Name = "l53";
-            this.l53.Size = new System.Drawing.Size(489, 30);
+            this.l53.Size = new System.Drawing.Size(489, 29);
             this.l53.TabIndex = 3;
             this.l53.Text = "Araç Ekleme Alanı";
             this.l53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1989,9 +2006,9 @@
             this.l54.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l54.ForeColor = System.Drawing.Color.White;
-            this.l54.Location = new System.Drawing.Point(3, 30);
+            this.l54.Location = new System.Drawing.Point(3, 29);
             this.l54.Name = "l54";
-            this.l54.Size = new System.Drawing.Size(159, 30);
+            this.l54.Size = new System.Drawing.Size(159, 29);
             this.l54.TabIndex = 25;
             this.l54.Text = "Plaka:";
             this.l54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2000,7 +2017,7 @@
             // 
             this.AracPlakaTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AracPlakaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracPlakaTextBox.Location = new System.Drawing.Point(168, 33);
+            this.AracPlakaTextBox.Location = new System.Drawing.Point(168, 32);
             this.AracPlakaTextBox.MaxLength = 7;
             this.AracPlakaTextBox.Name = "AracPlakaTextBox";
             this.AracPlakaTextBox.Size = new System.Drawing.Size(489, 26);
@@ -2011,9 +2028,9 @@
             this.l55.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l55.ForeColor = System.Drawing.Color.White;
-            this.l55.Location = new System.Drawing.Point(3, 60);
+            this.l55.Location = new System.Drawing.Point(3, 58);
             this.l55.Name = "l55";
-            this.l55.Size = new System.Drawing.Size(159, 54);
+            this.l55.Size = new System.Drawing.Size(159, 52);
             this.l55.TabIndex = 27;
             this.l55.Text = "Dara:";
             this.l55.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2024,90 +2041,22 @@
             this.AracDaraAlButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AracDaraAlButton.Enabled = false;
             this.AracDaraAlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracDaraAlButton.Location = new System.Drawing.Point(168, 177);
+            this.AracDaraAlButton.Location = new System.Drawing.Point(168, 171);
             this.AracDaraAlButton.Name = "AracDaraAlButton";
-            this.AracDaraAlButton.Size = new System.Drawing.Size(489, 48);
+            this.AracDaraAlButton.Size = new System.Drawing.Size(489, 46);
             this.AracDaraAlButton.TabIndex = 34;
             this.AracDaraAlButton.Text = "DARA AL";
             this.AracDaraAlButton.UseVisualStyleBackColor = true;
             this.AracDaraAlButton.Click += new System.EventHandler(this.AracDaraAlButton_Click);
-            // 
-            // AracEklemeButton
-            // 
-            this.AracEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AracEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracEklemeButton.Location = new System.Drawing.Point(168, 375);
-            this.AracEklemeButton.Name = "AracEklemeButton";
-            this.AracEklemeButton.Size = new System.Drawing.Size(489, 48);
-            this.AracEklemeButton.TabIndex = 38;
-            this.AracEklemeButton.Text = "ARACI KAYDET";
-            this.AracEklemeButton.UseVisualStyleBackColor = true;
-            this.AracEklemeButton.Click += new System.EventHandler(this.AracEklemeButton_Click);
-            // 
-            // AracDorsePlakaTextBox
-            // 
-            this.AracDorsePlakaTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.AracDorsePlakaTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracDorsePlakaTextBox.Enabled = false;
-            this.AracDorsePlakaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracDorsePlakaTextBox.Location = new System.Drawing.Point(168, 315);
-            this.AracDorsePlakaTextBox.MaxLength = 7;
-            this.AracDorsePlakaTextBox.Name = "AracDorsePlakaTextBox";
-            this.AracDorsePlakaTextBox.Size = new System.Drawing.Size(489, 26);
-            this.AracDorsePlakaTextBox.TabIndex = 37;
-            // 
-            // AracTPL2
-            // 
-            this.AracTPL2.ColumnCount = 2;
-            this.AracTPL2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.AracTPL2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.AracTPL2.Controls.Add(this.AracDorseYokRadioButton, 1, 0);
-            this.AracTPL2.Controls.Add(this.AracDorseVarRadioButton, 0, 0);
-            this.AracTPL2.Location = new System.Drawing.Point(168, 261);
-            this.AracTPL2.Name = "AracTPL2";
-            this.AracTPL2.RowCount = 1;
-            this.AracTPL2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.AracTPL2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.AracTPL2.Size = new System.Drawing.Size(489, 48);
-            this.AracTPL2.TabIndex = 83;
-            // 
-            // AracDorseYokRadioButton
-            // 
-            this.AracDorseYokRadioButton.Checked = true;
-            this.AracDorseYokRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AracDorseYokRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracDorseYokRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracDorseYokRadioButton.Location = new System.Drawing.Point(247, 3);
-            this.AracDorseYokRadioButton.Name = "AracDorseYokRadioButton";
-            this.AracDorseYokRadioButton.Size = new System.Drawing.Size(239, 42);
-            this.AracDorseYokRadioButton.TabIndex = 36;
-            this.AracDorseYokRadioButton.TabStop = true;
-            this.AracDorseYokRadioButton.Text = "Dorse Yok";
-            this.AracDorseYokRadioButton.UseVisualStyleBackColor = true;
-            this.AracDorseYokRadioButton.CheckedChanged += new System.EventHandler(this.AracDorseYokRadioButton_CheckedChanged);
-            // 
-            // AracDorseVarRadioButton
-            // 
-            this.AracDorseVarRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AracDorseVarRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracDorseVarRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracDorseVarRadioButton.Location = new System.Drawing.Point(3, 3);
-            this.AracDorseVarRadioButton.Name = "AracDorseVarRadioButton";
-            this.AracDorseVarRadioButton.Size = new System.Drawing.Size(238, 42);
-            this.AracDorseVarRadioButton.TabIndex = 35;
-            this.AracDorseVarRadioButton.Text = "Dorse Var";
-            this.AracDorseVarRadioButton.UseVisualStyleBackColor = true;
-            this.AracDorseVarRadioButton.CheckedChanged += new System.EventHandler(this.AracDorseVarRadioButton_CheckedChanged);
             // 
             // l56
             // 
             this.l56.Dock = System.Windows.Forms.DockStyle.Fill;
             this.l56.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l56.ForeColor = System.Drawing.Color.White;
-            this.l56.Location = new System.Drawing.Point(3, 258);
+            this.l56.Location = new System.Drawing.Point(3, 249);
             this.l56.Name = "l56";
-            this.l56.Size = new System.Drawing.Size(159, 54);
+            this.l56.Size = new System.Drawing.Size(159, 52);
             this.l56.TabIndex = 87;
             this.l56.Text = "Dorse Plakası:";
             this.l56.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2116,7 +2065,7 @@
             // 
             this.AracDaraTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AracDaraTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.AracDaraTextBox.Location = new System.Drawing.Point(168, 117);
+            this.AracDaraTextBox.Location = new System.Drawing.Point(168, 113);
             this.AracDaraTextBox.Name = "AracDaraTextBox";
             this.AracDaraTextBox.Size = new System.Drawing.Size(489, 26);
             this.AracDaraTextBox.TabIndex = 33;
@@ -2129,12 +2078,13 @@
             this.AracTPL1.Controls.Add(this.AracDaraYokRadioButton, 0, 0);
             this.AracTPL1.Controls.Add(this.AracDaraVarRadioButton, 0, 0);
             this.AracTPL1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracTPL1.Location = new System.Drawing.Point(168, 63);
+            this.AracTPL1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AracTPL1.Location = new System.Drawing.Point(168, 61);
             this.AracTPL1.Name = "AracTPL1";
             this.AracTPL1.RowCount = 1;
             this.AracTPL1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.AracTPL1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.AracTPL1.Size = new System.Drawing.Size(489, 48);
+            this.AracTPL1.Size = new System.Drawing.Size(489, 46);
             this.AracTPL1.TabIndex = 89;
             // 
             // AracDaraYokRadioButton
@@ -2142,10 +2092,10 @@
             this.AracDaraYokRadioButton.Checked = true;
             this.AracDaraYokRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AracDaraYokRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracDaraYokRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AracDaraYokRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.AracDaraYokRadioButton.Location = new System.Drawing.Point(247, 3);
             this.AracDaraYokRadioButton.Name = "AracDaraYokRadioButton";
-            this.AracDaraYokRadioButton.Size = new System.Drawing.Size(239, 42);
+            this.AracDaraYokRadioButton.Size = new System.Drawing.Size(239, 40);
             this.AracDaraYokRadioButton.TabIndex = 32;
             this.AracDaraYokRadioButton.TabStop = true;
             this.AracDaraYokRadioButton.Text = "Dara Alınmayacak";
@@ -2156,14 +2106,84 @@
             // 
             this.AracDaraVarRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AracDaraVarRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracDaraVarRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AracDaraVarRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.AracDaraVarRadioButton.Location = new System.Drawing.Point(3, 3);
             this.AracDaraVarRadioButton.Name = "AracDaraVarRadioButton";
-            this.AracDaraVarRadioButton.Size = new System.Drawing.Size(238, 42);
+            this.AracDaraVarRadioButton.Size = new System.Drawing.Size(238, 40);
             this.AracDaraVarRadioButton.TabIndex = 31;
             this.AracDaraVarRadioButton.Text = "Dara Alınacak";
             this.AracDaraVarRadioButton.UseVisualStyleBackColor = true;
             this.AracDaraVarRadioButton.CheckedChanged += new System.EventHandler(this.AracDaraVarRadioButton_CheckedChanged);
+            // 
+            // AracEklemeButton
+            // 
+            this.AracEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AracEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AracEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AracEklemeButton.Location = new System.Drawing.Point(168, 362);
+            this.AracEklemeButton.Name = "AracEklemeButton";
+            this.AracEklemeButton.Size = new System.Drawing.Size(489, 46);
+            this.AracEklemeButton.TabIndex = 38;
+            this.AracEklemeButton.Text = "ARACI KAYDET";
+            this.AracEklemeButton.UseVisualStyleBackColor = true;
+            this.AracEklemeButton.Click += new System.EventHandler(this.AracEklemeButton_Click);
+            // 
+            // AracDorsePlakaTextBox
+            // 
+            this.AracDorsePlakaTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.AracDorsePlakaTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AracDorsePlakaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AracDorsePlakaTextBox.Location = new System.Drawing.Point(168, 304);
+            this.AracDorsePlakaTextBox.MaxLength = 7;
+            this.AracDorsePlakaTextBox.Name = "AracDorsePlakaTextBox";
+            this.AracDorsePlakaTextBox.Size = new System.Drawing.Size(489, 26);
+            this.AracDorsePlakaTextBox.TabIndex = 37;
+            // 
+            // AracTPL2
+            // 
+            this.AracTPL2.ColumnCount = 2;
+            this.AracTPL2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AracTPL2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AracTPL2.Controls.Add(this.AracDorseYokRadioButton, 1, 0);
+            this.AracTPL2.Controls.Add(this.AracDorseVarRadioButton, 0, 0);
+            this.AracTPL2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AracTPL2.Location = new System.Drawing.Point(168, 252);
+            this.AracTPL2.Name = "AracTPL2";
+            this.AracTPL2.RowCount = 1;
+            this.AracTPL2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AracTPL2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.AracTPL2.Size = new System.Drawing.Size(489, 46);
+            this.AracTPL2.TabIndex = 90;
+            // 
+            // AracDorseYokRadioButton
+            // 
+            this.AracDorseYokRadioButton.Checked = true;
+            this.AracDorseYokRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AracDorseYokRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AracDorseYokRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AracDorseYokRadioButton.Location = new System.Drawing.Point(247, 3);
+            this.AracDorseYokRadioButton.Name = "AracDorseYokRadioButton";
+            this.AracDorseYokRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.AracDorseYokRadioButton.Size = new System.Drawing.Size(239, 40);
+            this.AracDorseYokRadioButton.TabIndex = 92;
+            this.AracDorseYokRadioButton.TabStop = true;
+            this.AracDorseYokRadioButton.Text = "Dorse Yok";
+            this.AracDorseYokRadioButton.UseVisualStyleBackColor = true;
+            this.AracDorseYokRadioButton.CheckedChanged += new System.EventHandler(this.AracDorseYokRadioButton_CheckedChanged_1);
+            // 
+            // AracDorseVarRadioButton
+            // 
+            this.AracDorseVarRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AracDorseVarRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AracDorseVarRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AracDorseVarRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.AracDorseVarRadioButton.Name = "AracDorseVarRadioButton";
+            this.AracDorseVarRadioButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.AracDorseVarRadioButton.Size = new System.Drawing.Size(238, 40);
+            this.AracDorseVarRadioButton.TabIndex = 91;
+            this.AracDorseVarRadioButton.Text = "Dorse Var";
+            this.AracDorseVarRadioButton.UseVisualStyleBackColor = true;
+            this.AracDorseVarRadioButton.CheckedChanged += new System.EventHandler(this.AracDorseVarRadioButton_CheckedChanged_1);
             // 
             // EklemeTabControl
             // 
@@ -2216,7 +2236,7 @@
             this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaTelNoTextBox, 1, 4);
             this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaFaxNoTextBox, 1, 5);
             this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaWebSiteTextBox, 1, 6);
-            this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaEmailTextBoxt, 1, 7);
+            this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaEmailTextBox, 1, 7);
             this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaAdresiTextBox, 1, 8);
             this.FirmaEklemeTableLayoutPanel.Controls.Add(this.FirmaEklemeButton, 1, 11);
             this.FirmaEklemeTableLayoutPanel.Controls.Add(this.l64, 0, 9);
@@ -2413,15 +2433,15 @@
             this.FirmaWebSiteTextBox.Size = new System.Drawing.Size(489, 26);
             this.FirmaWebSiteTextBox.TabIndex = 35;
             // 
-            // FirmaEmailTextBoxt
+            // FirmaEmailTextBox
             // 
-            this.FirmaEmailTextBoxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FirmaEmailTextBoxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.FirmaEmailTextBoxt.Location = new System.Drawing.Point(168, 213);
-            this.FirmaEmailTextBoxt.MaxLength = 255;
-            this.FirmaEmailTextBoxt.Name = "FirmaEmailTextBoxt";
-            this.FirmaEmailTextBoxt.Size = new System.Drawing.Size(489, 26);
-            this.FirmaEmailTextBoxt.TabIndex = 36;
+            this.FirmaEmailTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FirmaEmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FirmaEmailTextBox.Location = new System.Drawing.Point(168, 213);
+            this.FirmaEmailTextBox.MaxLength = 255;
+            this.FirmaEmailTextBox.Name = "FirmaEmailTextBox";
+            this.FirmaEmailTextBox.Size = new System.Drawing.Size(489, 26);
+            this.FirmaEmailTextBox.TabIndex = 36;
             // 
             // FirmaAdresiTextBox
             // 
@@ -2521,13 +2541,13 @@
             this.UrunEklemeTableLayoutPanel.ResumeLayout(false);
             this.UrunEklemeTableLayoutPanel.PerformLayout();
             this.SoforKayitTab.ResumeLayout(false);
-            this.SoforEklemeTableLayoutPanel.ResumeLayout(false);
-            this.SoforEklemeTableLayoutPanel.PerformLayout();
+            this.CalisanEklemeTableLayoutPanel.ResumeLayout(false);
+            this.CalisanEklemeTableLayoutPanel.PerformLayout();
             this.AracKayitTab.ResumeLayout(false);
             this.AracEklemeTableLayoutPanel.ResumeLayout(false);
             this.AracEklemeTableLayoutPanel.PerformLayout();
-            this.AracTPL2.ResumeLayout(false);
             this.AracTPL1.ResumeLayout(false);
+            this.AracTPL2.ResumeLayout(false);
             this.EklemeTabControl.ResumeLayout(false);
             this.FirmaKayitTab.ResumeLayout(false);
             this.FirmaEklemeTableLayoutPanel.ResumeLayout(false);
@@ -2567,7 +2587,7 @@
         private System.Windows.Forms.Label l5;
         private System.Windows.Forms.Label l6;
         private System.Windows.Forms.Label l16;
-        private System.Windows.Forms.ComboBox SatimSoforComboBox;
+        private System.Windows.Forms.ComboBox SatimCalisanComboBox;
         private System.Windows.Forms.ComboBox SatimCıkısAdresiComboBox;
         private System.Windows.Forms.ComboBox SatimVarisAdresiComboBox;
         private System.Windows.Forms.Label l7;
@@ -2644,7 +2664,7 @@
         private System.Windows.Forms.Label l28;
         private System.Windows.Forms.ComboBox AlimCıkısAdresiComboBox;
         private System.Windows.Forms.ComboBox AlimPlakalarComboBox;
-        private System.Windows.Forms.ComboBox AlimSoforComboBox;
+        private System.Windows.Forms.ComboBox AlimCalisanComboBox;
         private System.Windows.Forms.TableLayoutPanel AracEklemeTableLayoutPanel;
         private System.Windows.Forms.Button AracEklemeButton;
         private System.Windows.Forms.Label l53;
@@ -2655,22 +2675,19 @@
         private System.Windows.Forms.TextBox AracDaraTextBox;
         private System.Windows.Forms.Label l55;
         private System.Windows.Forms.Button AracDaraAlButton;
-        private System.Windows.Forms.TableLayoutPanel AracTPL2;
-        private System.Windows.Forms.RadioButton AracDorseYokRadioButton;
-        private System.Windows.Forms.RadioButton AracDorseVarRadioButton;
         private System.Windows.Forms.TabPage FirmaKayitTab;
         private System.Windows.Forms.TableLayoutPanel FirmaEklemeTableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel SoforEklemeTableLayoutPanel;
-        private System.Windows.Forms.TextBox SoforAdresTextBox;
+        private System.Windows.Forms.TableLayoutPanel CalisanEklemeTableLayoutPanel;
+        private System.Windows.Forms.TextBox CalisanAdresTextBox;
         private System.Windows.Forms.Label l58;
         private System.Windows.Forms.Label l61;
-        private System.Windows.Forms.TextBox SoforTelNoTextBox;
-        private System.Windows.Forms.TextBox SoforTcTextBox;
+        private System.Windows.Forms.TextBox CalisanTelNoTextBox;
+        private System.Windows.Forms.TextBox CalisanTcTextBox;
         private System.Windows.Forms.Label l60;
         private System.Windows.Forms.Label l57;
-        private System.Windows.Forms.TextBox SoforAdiTextBox;
+        private System.Windows.Forms.TextBox CalisanAdiTextBox;
         private System.Windows.Forms.Label l59;
-        private System.Windows.Forms.Button SoforEklemeButton;
+        private System.Windows.Forms.Button CalisanEklemeButton;
         private System.Windows.Forms.Label l43;
         private System.Windows.Forms.Label l44;
         private System.Windows.Forms.Label l45;
@@ -2686,7 +2703,7 @@
         private System.Windows.Forms.TextBox FirmaTelNoTextBox;
         private System.Windows.Forms.TextBox FirmaFaxNoTextBox;
         private System.Windows.Forms.TextBox FirmaWebSiteTextBox;
-        private System.Windows.Forms.TextBox FirmaEmailTextBoxt;
+        private System.Windows.Forms.TextBox FirmaEmailTextBox;
         private System.Windows.Forms.TextBox FirmaAdresiTextBox;
         private System.Windows.Forms.Button FirmaEklemeButton;
         private System.Windows.Forms.TableLayoutPanel UrunEklemeTableLayoutPanel;
@@ -2701,5 +2718,10 @@
         private System.Windows.Forms.TextBox FirmaAdresiIkiTextBox;
         private System.Windows.Forms.TextBox AlimDorseTextBox;
         private System.Windows.Forms.TextBox SatimDorseTextBox;
+        private System.Windows.Forms.TableLayoutPanel AracTPL2;
+        private System.Windows.Forms.RadioButton AracDorseYokRadioButton;
+        private System.Windows.Forms.RadioButton AracDorseVarRadioButton;
+        private System.Windows.Forms.Label lbl65;
+        private System.Windows.Forms.TextBox CalisanUnvanTextBox;
     }
 }
