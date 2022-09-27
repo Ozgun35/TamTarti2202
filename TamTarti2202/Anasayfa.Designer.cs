@@ -253,6 +253,7 @@ namespace TamTarti2202
             this.RaporlamaBtn.Text = "Raporlama";
             this.RaporlamaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RaporlamaBtn.UseVisualStyleBackColor = true;
+            this.RaporlamaBtn.Click += new System.EventHandler(this.RaporlamaBtn_Click);
             // 
             // KayitlarVeDuzenlemeBtn
             // 
@@ -276,6 +277,7 @@ namespace TamTarti2202
             this.KayitlarVeDuzenlemeBtn.Text = "Kayıtlar ve Düzenleme";
             this.KayitlarVeDuzenlemeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KayitlarVeDuzenlemeBtn.UseVisualStyleBackColor = true;
+            this.KayitlarVeDuzenlemeBtn.Click += new System.EventHandler(this.KayitlarVeDuzenlemeBtn_Click);
             // 
             // AltMenuPanel
             // 

@@ -13,7 +13,8 @@ namespace TamTarti2202
     {
         private const int cGrip = 16;
         private const int cCaption = 32;
-
+        
+        private static bool openPort = true;
         private DataBaseModifier db = new DataBaseModifier();
         private string connectionForCreate = Properties.KullaniciAyarlari.Default.connectionForCreate;
         private string connectionTartim = Properties.KullaniciAyarlari.Default.connectionTartim;
@@ -141,7 +142,7 @@ namespace TamTarti2202
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + " load configurationsettings");
+                Console.WriteLine(ex.Message);
             }
             CreateDataBaseAndTables();       
         }
@@ -158,7 +159,7 @@ namespace TamTarti2202
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -171,8 +172,7 @@ namespace TamTarti2202
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS FIRMALAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE," +
                     " VERGI_DAIRESI VARCHAR(255), VERGI_NO VARCHAR(10), TELEFON_NO VARCHAR(18), FAX_NO VARCHAR(16), " +
-                    "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, ADRES_2 VARCHAR(255)," +
-                    " PRIMARY KEY(ID))", connectionTartim);
+                    "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, PRIMARY KEY(ID))", connectionTartim);
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(7) NOT NULL UNIQUE, " +
                     "DARA_KG DOUBLE, DORSE_PLAKA VARCHAR(7), PRIMARY KEY(ID))", connectionTartim);
@@ -184,7 +184,7 @@ namespace TamTarti2202
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -192,26 +192,27 @@ namespace TamTarti2202
         private void Anasayfa_Load(object sender, EventArgs e)
         {
             LoadConfigurationSettings();
-           // OpenPortEveryTenSeconds();
+            OpenPortEveryTenSeconds();
         }
 
         private async Task OpenPortEveryTenSeconds()
         {
-            while (true)
+            while (openPort == true)
             {
                 var delayTask = Task.Delay(1000);
                 try
                 {
                     if (!serialPort1.IsOpen)
                     {
+                        Console.WriteLine("port opening");
+                        serialPort1.Open();
                         StartReadSerialPort();
                     }
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message + " openporteverytencsecons");
-                }
-                
+                    Console.WriteLine(ex.Message); ;
+                }               
                 await delayTask;
             }
         }
@@ -220,12 +221,11 @@ namespace TamTarti2202
         {
             try
             {         
-                serialPort1.Open();
                 ReadSerialData();  
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "StartReadSerialPort exception" + serialPort1.IsOpen.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -233,29 +233,34 @@ namespace TamTarti2202
         {
             try
             {
+                Console.WriteLine("thread creating");
                 readSerialDataUsingThread = new Thread(ReadSerial);
                 readSerialDataUsingThread.Start();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "ReadSerialData");
+                Console.WriteLine(ex.Message);
             }
         }
 
         private void ReadSerial()
         {
-            while (serialPort1.IsOpen)
+            try
             {
-                try
+                Console.WriteLine("serial data reading");
+                while (serialPort1.IsOpen)
                 {
                     serialData = serialPort1.ReadLine();
-                    WriteSerialData(serialData.Substring(6, 7));
-                }
-                catch (TimeoutException ex)
-                {
-                    MessageBox.Show(ex.Message + " ReadSerial");
+                    if (serialData.Length == 17)
+                    {
+                        WriteSerialData(serialData.Substring(6, 7));
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }          
         }
 
         private delegate void WriteToLabel(string serialData);
@@ -278,7 +283,7 @@ namespace TamTarti2202
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message + " WriteSerialData");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -286,20 +291,32 @@ namespace TamTarti2202
         {
             try
             {
+                openPort = false;
                 if (serialPort1.IsOpen)
                 {
                     serialPort1.Close();
+                    readSerialDataUsingThread.Abort();
+                    Console.WriteLine("Seri Port Thread is alive = " + readSerialDataUsingThread.IsAlive.ToString());
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + " seriportclose");
+                Console.WriteLine(ex.Message);
             }
         }
 
         public string GetKgData()
         {
             return kgLabelData;
+        }
+
+        private void KayitlarVeDuzenlemeBtn_Click(object sender, EventArgs e)
+        {
+            SeriPortClose();
+        }
+
+        private void RaporlamaBtn_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -17,14 +17,26 @@ namespace TamTarti2202
 {
     public partial class Ayarlar : Form
     {
+        private string connectionTartim = Properties.KullaniciAyarlari.Default.connectionTartim;
+        DataBaseModifier db = new DataBaseModifier();
         public Ayarlar()
         {
             InitializeComponent();
 
-            foreach (var seriPort in SerialPort.GetPortNames())
+            try
             {
-                SeriPortComboBox.Items.Add(seriPort);
+                foreach (var seriPort in SerialPort.GetPortNames())
+                {
+                    SeriPortComboBox.Items.Add(seriPort);
+                }
+                FirmaAyariComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR", connectionTartim);
+                FirmaAyariComboBox.DisplayMember = "ADI";
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
             LoadConfigurationSettings();
         }
@@ -36,6 +48,7 @@ namespace TamTarti2202
             ParityComboBox.Text = Properties.KullaniciAyarlari.Default.Parity.ToString();
             StopBitsComboBox.Text = Properties.KullaniciAyarlari.Default.StopBits.ToString();
             DataBitsComboBox.Text = Properties.KullaniciAyarlari.Default.DataBits.ToString();
+            FirmaAyariComboBox.Text = Properties.KullaniciAyarlari.Default.FirmaAdi.ToString();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -85,6 +98,32 @@ namespace TamTarti2202
                         Application.Restart();
                     }
                     catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
+        }
+
+        private void FirmaAyarlariKaydetButton_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dialogResult = MessageBox.Show("Değişiklikler kaydedilip program yeniden başlatılacak.", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if(FirmaAyariComboBox.SelectedIndex != -1)
+                {
+                    try
+                    {
+                        Properties.KullaniciAyarlari.Default.FirmaAdi = FirmaAyariComboBox.Text;
+                        Properties.KullaniciAyarlari.Default.Save();
+                        MessageBox.Show("Ayarlar başarıyla kayıt edildi program yeniden başlatılıcak!");
+                        Application.Restart();
+                    }
+                    catch(Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
