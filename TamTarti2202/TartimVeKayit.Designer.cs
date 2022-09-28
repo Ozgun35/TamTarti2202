@@ -1893,6 +1893,7 @@
             this.CalisanTcTextBox.Name = "CalisanTcTextBox";
             this.CalisanTcTextBox.Size = new System.Drawing.Size(489, 26);
             this.CalisanTcTextBox.TabIndex = 32;
+            this.CalisanTcTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CalisanTcTextBox_KeyPress);
             // 
             // l59
             // 
@@ -2391,6 +2392,7 @@
             this.FirmaVergiNoTextBox.Name = "FirmaVergiNoTextBox";
             this.FirmaVergiNoTextBox.Size = new System.Drawing.Size(489, 26);
             this.FirmaVergiNoTextBox.TabIndex = 32;
+            this.FirmaVergiNoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirmaVergiNoTextBox_KeyPress);
             // 
             // FirmaTelNoTextBox
             // 
@@ -2459,7 +2461,7 @@
             // TartimVeKayit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(200)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(15)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(1344, 648);
             this.Controls.Add(this.EklemeTabControl);
             this.Controls.Add(this.AlimSatimTabControl);

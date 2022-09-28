@@ -85,7 +85,7 @@ namespace TamTarti2202.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Tam Tartı Makine İnşaat ve Otomasyon Sistemleri San. Tic. Ltd. Şti.")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string FirmaAdi {
             get {
                 return ((string)(this["FirmaAdi"]));
@@ -97,51 +97,97 @@ namespace TamTarti2202.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;database=tartim;uid=root;pwd=1960;Charset=utf8;convert zero date" +
-            "time=True;")]
-        public string connectionTartim {
-            get {
-                return ((string)(this["connectionTartim"]));
-            }
-            set {
-                this["connectionTartim"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;uid=root;pwd=1960;Charset=utf8;convert zero datetime=True;")]
-        public string connectionForCreate {
-            get {
-                return ((string)(this["connectionForCreate"]));
-            }
-            set {
-                this["connectionForCreate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;database=urunler;uid=root;pwd=1960;Charset=utf8;convert zero dat" +
-            "etime=True;")]
-        public string connectionUrunler {
-            get {
-                return ((string)(this["connectionUrunler"]));
-            }
-            set {
-                this["connectionUrunler"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\xampp\\xampp-control.exe")]
-        public string xampPath {
+        public string XampPath {
             get {
-                return ((string)(this["xampPath"]));
+                return ((string)(this["XampPath"]));
             }
             set {
-                this["xampPath"] = value;
+                this["XampPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17")]
+        public int SerialDataLenght {
+            get {
+                return ((int)(this["SerialDataLenght"]));
+            }
+            set {
+                this["SerialDataLenght"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int SerialDataLenghtX {
+            get {
+                return ((int)(this["SerialDataLenghtX"]));
+            }
+            set {
+                this["SerialDataLenghtX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int SerialDataLenghtY {
+            get {
+                return ((int)(this["SerialDataLenghtY"]));
+            }
+            set {
+                this["SerialDataLenghtY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Server {
+            get {
+                return ((string)(this["Server"]));
+            }
+            set {
+                this["Server"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Database {
+            get {
+                return ((string)(this["Database"]));
+            }
+            set {
+                this["Database"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserId {
+            get {
+                return ((string)(this["UserId"]));
+            }
+            set {
+                this["UserId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserPassword {
+            get {
+                return ((string)(this["UserPassword"]));
+            }
+            set {
+                this["UserPassword"] = value;
             }
         }
     }

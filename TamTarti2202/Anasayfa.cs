@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -13,23 +14,25 @@ namespace TamTarti2202
     {
         private const int cGrip = 16;
         private const int cCaption = 32;
-        
-        private static bool openPort = true;
+         
         private DataBaseModifier db = new DataBaseModifier();
-        private string connectionForCreate = Properties.KullaniciAyarlari.Default.connectionForCreate;
-        private string connectionTartim = Properties.KullaniciAyarlari.Default.connectionTartim;
-        private string connectionUrunler = Properties.KullaniciAyarlari.Default.connectionUrunler;
-        private string xampPath = Properties.KullaniciAyarlari.Default.xampPath;
 
+        private string xampPath = Properties.KullaniciAyarlari.Default.XampPath;
+        private int serialDataLenght = Properties.KullaniciAyarlari.Default.SerialDataLenght;
+        private int serialDataLenghtX = Properties.KullaniciAyarlari.Default.SerialDataLenghtX;
+        private int serialDataLenghtY = Properties.KullaniciAyarlari.Default.SerialDataLenghtY;
+
+        private static bool openPort = true;
         private static string kgLabelData;
         private Thread readSerialDataUsingThread;
-        private string serialData;   
+        private string serialData;
 
         public Anasayfa()
         {
             StartXampp();
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
+
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -39,13 +42,17 @@ namespace TamTarti2202
             rc = new Rectangle(0, 0, this.ClientSize.Width, cCaption);
             e.Graphics.FillRectangle(Brushes.DarkBlue, rc);
 
-            if (this.Size.Width >= 1434)
+            if (this.Size.Width >= 1619)
             {
-                KilogramPnl.Location = new Point(1175, 35);
+                KgPnl.Location = new Point(1315, 35);
             }
-            if (this.Size.Width <= 1433)
+            if (this.Size.Width <= 1619)
             {
-                KilogramPnl.Location = new Point(980, 35);
+                KgPnl.Location = new Point(1055, 35);
+            }
+            if (this.Size.Width >= 1879)
+            {
+                KgPnl.Location = new Point(1575, 35);
             }
         }
 
@@ -123,6 +130,7 @@ namespace TamTarti2202
 
         private void TartimveKayitBtn_Click(object sender, EventArgs e)
         {
+            CreateDataBaseAndTables();
             TartimVeKayit t1 = new TartimVeKayit();
             t1.TopLevel = false;
             AltMenuPanel.Controls.Add(t1);
@@ -143,8 +151,7 @@ namespace TamTarti2202
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            CreateDataBaseAndTables();       
+            }    
         }
 
         private void StartXampp()
@@ -167,32 +174,25 @@ namespace TamTarti2202
         {
             try
             {
-                db.RunQuery("CREATE DATABASE IF NOT EXISTS TARTIM CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;", connectionForCreate);
-                db.RunQuery("CREATE DATABASE IF NOT EXISTS URUNLER CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;", connectionForCreate);
+                db.RunQueryCreate("CREATE DATABASE IF NOT EXISTS TARTIM CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;");
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS FIRMALAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE," +
                     " VERGI_DAIRESI VARCHAR(255), VERGI_NO VARCHAR(10), TELEFON_NO VARCHAR(18), FAX_NO VARCHAR(16), " +
-                    "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, PRIMARY KEY(ID))", connectionTartim);
+                    "WEB_SITE VARCHAR(255), EMAIL VARCHAR(255), ADRES VARCHAR(255) NOT NULL, PRIMARY KEY(ID))");
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS ARACLAR(ID INT NOT NULL AUTO_INCREMENT, PLAKA VARCHAR(7) NOT NULL UNIQUE, " +
-                    "DARA_KG DOUBLE, DORSE_PLAKA VARCHAR(7), PRIMARY KEY(ID))", connectionTartim);
+                    "DARA_KG DOUBLE, DORSE_PLAKA VARCHAR(7), PRIMARY KEY(ID))");
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS CALISANLAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL, " +
-                    "UNVAN VARCHAR(255), TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))", connectionTartim);
+                    "UNVAN VARCHAR(255), TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))");
 
-                db.RunQuery("CREATE TABLE IF NOT EXISTS URUNLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE, PRIMARY KEY(ID))", connectionTartim);
+                db.RunQuery("CREATE TABLE IF NOT EXISTS URUNLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE, PRIMARY KEY(ID))");
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-        }
-
-        private void Anasayfa_Load(object sender, EventArgs e)
-        {
-            LoadConfigurationSettings();
-            OpenPortEveryTenSeconds();
         }
 
         private async Task OpenPortEveryTenSeconds()
@@ -251,9 +251,9 @@ namespace TamTarti2202
                 while (serialPort1.IsOpen)
                 {
                     serialData = serialPort1.ReadLine();
-                    if (serialData.Length == 17)
+                    if (serialData.Length == serialDataLenght)
                     {
-                        WriteSerialData(serialData.Substring(6, 7));
+                        WriteSerialData(serialData.Substring(serialDataLenghtX, serialDataLenghtY));
                     }
                 }
             }
@@ -283,6 +283,7 @@ namespace TamTarti2202
             }
             catch(Exception ex)
             {
+                KgLabel.Text = ex.ToString();
                 Console.WriteLine(ex.Message);
             }
         }
@@ -310,13 +311,10 @@ namespace TamTarti2202
             return kgLabelData;
         }
 
-        private void KayitlarVeDuzenlemeBtn_Click(object sender, EventArgs e)
+        private void Anasayfa_Load(object sender, EventArgs e)
         {
-            SeriPortClose();
-        }
-
-        private void RaporlamaBtn_Click(object sender, EventArgs e)
-        {
+            LoadConfigurationSettings();
+            OpenPortEveryTenSeconds();
         }
     }
 }

@@ -7,9 +7,10 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Forms;
 using static System.Resources.ResXFileRef;
 
@@ -17,8 +18,8 @@ namespace TamTarti2202
 {
     public partial class Ayarlar : Form
     {
-        private string connectionTartim = Properties.KullaniciAyarlari.Default.connectionTartim;
         DataBaseModifier db = new DataBaseModifier();
+
         public Ayarlar()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace TamTarti2202
                 {
                     SeriPortComboBox.Items.Add(seriPort);
                 }
-                FirmaAyariComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR", connectionTartim);
+                FirmaAyariComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR");
                 FirmaAyariComboBox.DisplayMember = "ADI";
             }
             catch(Exception ex)
@@ -49,6 +50,14 @@ namespace TamTarti2202
             StopBitsComboBox.Text = Properties.KullaniciAyarlari.Default.StopBits.ToString();
             DataBitsComboBox.Text = Properties.KullaniciAyarlari.Default.DataBits.ToString();
             FirmaAyariComboBox.Text = Properties.KullaniciAyarlari.Default.FirmaAdi.ToString();
+            DataUzunluguTextBox.Text = Properties.KullaniciAyarlari.Default.SerialDataLenght.ToString();
+            DataUzunluguXTextBox.Text = Properties.KullaniciAyarlari.Default.SerialDataLenghtX.ToString();
+            DataUzunluguYTextBox.Text = Properties.KullaniciAyarlari.Default.SerialDataLenghtY.ToString();
+            ServerTextBox.Text = Properties.KullaniciAyarlari.Default.Server;
+            DatabaseTextBox.Text = Properties.KullaniciAyarlari.Default.Database;
+            UserIdTextBox.Text = Properties.KullaniciAyarlari.Default.UserId;
+            UserPasswordTextBox.Text = Properties.KullaniciAyarlari.Default.UserPassword;
+            XampTextBox.Text = Properties.KullaniciAyarlari.Default.XampPath;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -92,6 +101,10 @@ namespace TamTarti2202
                         Properties.KullaniciAyarlari.Default.Parity = (Parity)Enum.Parse(typeof(Parity), ParityComboBox.SelectedItem.ToString());
                         Properties.KullaniciAyarlari.Default.StopBits = (StopBits)Enum.Parse(typeof(StopBits), StopBitsComboBox.SelectedItem.ToString());
                         Properties.KullaniciAyarlari.Default.DataBits = int.Parse(DataBitsComboBox.SelectedItem.ToString());
+                        Properties.KullaniciAyarlari.Default.SerialDataLenght = int.Parse(DataUzunluguTextBox.Text);
+                        Properties.KullaniciAyarlari.Default.SerialDataLenghtX = int.Parse(DataUzunluguXTextBox.Text);
+                        Properties.KullaniciAyarlari.Default.SerialDataLenghtY = int.Parse(DataUzunluguYTextBox.Text);
+
                         Properties.KullaniciAyarlari.Default.Save();
 
                         MessageBox.Show("Ayarlar başarıyla kayıt edildi program yeniden başlatılıcak!");
@@ -132,6 +145,62 @@ namespace TamTarti2202
             else if (dialogResult == DialogResult.No)
             {
             }
+        }
+
+        private void DataUzunluguTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void DataUzunluguXTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void DataUzunluguYTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Değişiklikler kaydedilip program yeniden başlatılacak.", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    Properties.KullaniciAyarlari.Default.Server = ServerTextBox.Text;
+                    Properties.KullaniciAyarlari.Default.Database = DatabaseTextBox.Text;
+                    Properties.KullaniciAyarlari.Default.UserId = UserIdTextBox.Text;
+                    Properties.KullaniciAyarlari.Default.UserPassword = UserPasswordTextBox.Text;
+                    Properties.KullaniciAyarlari.Default.XampPath = XampTextBox.Text;
+
+                    Properties.KullaniciAyarlari.Default.Save();
+                    MessageBox.Show("Ayarlar başarıyla kayıt edildi program yeniden başlatılıcak!");
+                    Application.Restart();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
+        }
+
+        private void FirmaAyarlariKaydetButton_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(db.getCon());
         }
     }
 }

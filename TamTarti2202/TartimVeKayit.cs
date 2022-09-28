@@ -8,7 +8,6 @@ namespace TamTarti2202
 {
     public partial class TartimVeKayit : Form
     {
-        private string connectionTartim = Properties.KullaniciAyarlari.Default.connectionTartim;
         private string anaFirma = Properties.KullaniciAyarlari.Default.FirmaAdi;
 
         private Anasayfa aSayfa = new Anasayfa();
@@ -167,7 +166,7 @@ namespace TamTarti2202
                 AlimUrunIkiComboBox.Enabled = true;
                 AlimUrunUcComboBox.Enabled = true;
                 AlimUrunDortComboBox.Enabled = true;
-                AlimUrunBesComboBox.Enabled = false;
+                AlimUrunBesComboBox.Enabled = true;
             }
         }
 
@@ -282,7 +281,7 @@ namespace TamTarti2202
             {
                 try
                 {
-                    con = new MySqlConnection(connectionTartim);
+                    con = new MySqlConnection(db.getCon());
                     con.Open();
                     cmd = con.CreateCommand();
                     cmd.CommandText = "INSERT INTO FIRMALAR(ADI, VERGI_DAIRESI, VERGI_NO, TELEFON_NO, FAX_NO, WEB_SITE, EMAIL, ADRES) " +
@@ -327,7 +326,7 @@ namespace TamTarti2202
             {
                 try
                 {
-                    con = new MySqlConnection(connectionTartim);
+                    con = new MySqlConnection(db.getCon());
                     con.Open();
                     cmd = con.CreateCommand();
                     cmd.CommandText = "INSERT INTO ARACLAR(PLAKA, DARA_KG, DORSE_PLAKA) " +
@@ -369,7 +368,7 @@ namespace TamTarti2202
             {
                 try
                 {
-                    con = new MySqlConnection(connectionTartim);
+                    con = new MySqlConnection(db.getCon());
                     con.Open();
                     cmd = con.CreateCommand();
                     cmd.CommandText = "INSERT INTO URUNLER(ADI) VALUES(@ADI)";
@@ -397,9 +396,9 @@ namespace TamTarti2202
             try
             {
                 SatimVarisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + SatimFirmalarComboBox.Text.ToString() + "'", connectionTartim);
+                        + SatimFirmalarComboBox.Text.ToString() + "'");
                 SatimCikisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + anaFirma + "'", connectionTartim);
+                        + anaFirma + "'");
             }
             catch (Exception ex)
             {
@@ -412,9 +411,9 @@ namespace TamTarti2202
             try
             {
                 AlimCikisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + AlimFirmalarComboBox.Text.ToString() + "'", connectionTartim);
+                        + AlimFirmalarComboBox.Text.ToString() + "'");
                 AlimVarisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + anaFirma + "'", connectionTartim);
+                        + anaFirma + "'");
             }
             catch (Exception ex)
             {
@@ -429,7 +428,7 @@ namespace TamTarti2202
             {
                 try
                 {
-                    con = new MySqlConnection(connectionTartim);
+                    con = new MySqlConnection(db.getCon());
                     con.Open();
                     cmd = con.CreateCommand();
                     cmd.CommandText = "INSERT INTO CALISANLAR(ADI, UNVAN, TC_NO, TELEFON_NO, ADRES) " +
@@ -466,9 +465,9 @@ namespace TamTarti2202
         {
             try
             {
-                SatimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'", connectionTartim);
+                SatimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'");
                 SatimFirmalarComboBox.DisplayMember = "ADI";
-                AlimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'", connectionTartim);
+                AlimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'");
                 AlimFirmalarComboBox.DisplayMember = "ADI";
             }
             catch (MySqlException ex)
@@ -481,9 +480,9 @@ namespace TamTarti2202
         {
             try
             {
-                SatimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR", connectionTartim);
+                SatimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR");
                 SatimPlakalarComboBox.DisplayMember = "PLAKA";
-                AlimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR", connectionTartim);
+                AlimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR");
                 AlimPlakalarComboBox.DisplayMember = "PLAKA";
             }
             catch (MySqlException ex)
@@ -497,9 +496,9 @@ namespace TamTarti2202
         {
             try
             {
-                SatimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR", connectionTartim);
+                SatimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR");
                 SatimCalisanComboBox.DisplayMember = "ADI";
-                AlimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR", connectionTartim);
+                AlimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR");
                 AlimCalisanComboBox.DisplayMember = "ADI";
             }
             catch (MySqlException ex)
@@ -512,26 +511,26 @@ namespace TamTarti2202
         {
             try
             {
-                SatimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 SatimUrunBirComboBox.DisplayMember = "ADI";
-                SatimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 SatimUrunIkiComboBox.DisplayMember = "ADI";
-                SatimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 SatimUrunUcComboBox.DisplayMember = "ADI";
-                SatimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 SatimUrunDortComboBox.DisplayMember = "ADI";
-                SatimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                SatimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 SatimUrunBesComboBox.DisplayMember = "ADI";
 
-                AlimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 AlimUrunBirComboBox.DisplayMember = "ADI";
-                AlimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 AlimUrunIkiComboBox.DisplayMember = "ADI";
-                AlimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 AlimUrunUcComboBox.DisplayMember = "ADI";
-                AlimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 AlimUrunDortComboBox.DisplayMember = "ADI";
-                AlimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER", connectionTartim);
+                AlimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
                 AlimUrunBesComboBox.DisplayMember = "ADI";
 
 
@@ -566,7 +565,7 @@ namespace TamTarti2202
             try
             {
                 AlimDorseTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '"
-                    + AlimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                    + AlimPlakalarComboBox.Text.ToString() + "'");
             }
             catch (MySqlException ex)
             {
@@ -581,10 +580,10 @@ namespace TamTarti2202
                 if(SatimKayitliDaraRadioButton.Checked)
                 {
                     SatimDaraTextBox.Text = db.GetStringFromQuery("SELECT DARA_KG FROM ARACLAR WHERE PLAKA = '"
-                        + SatimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                        + SatimPlakalarComboBox.Text.ToString() + "'");
                 }
                 SatimDorseTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '"
-                    + SatimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                    + SatimPlakalarComboBox.Text.ToString() + "'");
             }
             catch (MySqlException ex)
             {
@@ -615,7 +614,7 @@ namespace TamTarti2202
                 try
                 {
                     SatimDaraTextBox.Text = db.GetStringFromQuery("SELECT DARA_KG FROM ARACLAR WHERE PLAKA = '"
-                        + SatimPlakalarComboBox.Text.ToString() + "'", connectionTartim);
+                        + SatimPlakalarComboBox.Text.ToString() + "'");
                 }
                 catch (MySqlException ex)
                 {
@@ -655,6 +654,22 @@ namespace TamTarti2202
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FirmaVergiNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CalisanTcTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

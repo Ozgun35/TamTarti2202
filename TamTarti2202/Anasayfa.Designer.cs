@@ -31,10 +31,12 @@ namespace TamTarti2202
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anasayfa));
             this.TartimveKayitBtn = new FontAwesome.Sharp.IconButton();
             this.UstMenuPnl = new System.Windows.Forms.Panel();
+            this.tamtartiPic = new FontAwesome.Sharp.IconPictureBox();
             this.MinimizeBtn = new FontAwesome.Sharp.IconButton();
-            this.KilogramPnl = new System.Windows.Forms.Panel();
+            this.KgPnl = new System.Windows.Forms.Panel();
             this.KgLabel = new System.Windows.Forms.Label();
             this.ResizeBtn = new FontAwesome.Sharp.IconButton();
             this.AyarlarBtn = new FontAwesome.Sharp.IconButton();
@@ -45,7 +47,8 @@ namespace TamTarti2202
             this.AltMenuPanel = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.UstMenuPnl.SuspendLayout();
-            this.KilogramPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tamtartiPic)).BeginInit();
+            this.KgPnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // TartimveKayitBtn
@@ -62,7 +65,7 @@ namespace TamTarti2202
             this.TartimveKayitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.TartimveKayitBtn.IconSize = 36;
             this.TartimveKayitBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TartimveKayitBtn.Location = new System.Drawing.Point(5, 35);
+            this.TartimveKayitBtn.Location = new System.Drawing.Point(160, 35);
             this.TartimveKayitBtn.Margin = new System.Windows.Forms.Padding(5);
             this.TartimveKayitBtn.Name = "TartimveKayitBtn";
             this.TartimveKayitBtn.Size = new System.Drawing.Size(180, 60);
@@ -75,8 +78,9 @@ namespace TamTarti2202
             // UstMenuPnl
             // 
             this.UstMenuPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(25)))), ((int)(((byte)(100)))));
+            this.UstMenuPnl.Controls.Add(this.tamtartiPic);
             this.UstMenuPnl.Controls.Add(this.MinimizeBtn);
-            this.UstMenuPnl.Controls.Add(this.KilogramPnl);
+            this.UstMenuPnl.Controls.Add(this.KgPnl);
             this.UstMenuPnl.Controls.Add(this.ResizeBtn);
             this.UstMenuPnl.Controls.Add(this.AyarlarBtn);
             this.UstMenuPnl.Controls.Add(this.ExitBtn);
@@ -91,6 +95,22 @@ namespace TamTarti2202
             this.UstMenuPnl.Size = new System.Drawing.Size(1360, 100);
             this.UstMenuPnl.TabIndex = 0;
             this.UstMenuPnl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UstMenuPnl_MouseDown);
+            // 
+            // tamtartiPic
+            // 
+            this.tamtartiPic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(25)))), ((int)(((byte)(100)))));
+            this.tamtartiPic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tamtartiPic.BackgroundImage")));
+            this.tamtartiPic.ErrorImage = ((System.Drawing.Image)(resources.GetObject("tamtartiPic.ErrorImage")));
+            this.tamtartiPic.ForeColor = System.Drawing.Color.Transparent;
+            this.tamtartiPic.IconChar = FontAwesome.Sharp.IconChar._42Group;
+            this.tamtartiPic.IconColor = System.Drawing.Color.Transparent;
+            this.tamtartiPic.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.tamtartiPic.IconSize = 50;
+            this.tamtartiPic.Location = new System.Drawing.Point(5, 35);
+            this.tamtartiPic.Name = "tamtartiPic";
+            this.tamtartiPic.Size = new System.Drawing.Size(150, 50);
+            this.tamtartiPic.TabIndex = 9;
+            this.tamtartiPic.TabStop = false;
             // 
             // MinimizeBtn
             // 
@@ -114,30 +134,29 @@ namespace TamTarti2202
             this.MinimizeBtn.UseVisualStyleBackColor = true;
             this.MinimizeBtn.Click += new System.EventHandler(this.MinimizeBtn_Click);
             // 
-            // KilogramPnl
+            // KgPnl
             // 
-            this.KilogramPnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.KgPnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KilogramPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(0)))));
-            this.KilogramPnl.Controls.Add(this.KgLabel);
-            this.KilogramPnl.Location = new System.Drawing.Point(980, 35);
-            this.KilogramPnl.Margin = new System.Windows.Forms.Padding(0);
-            this.KilogramPnl.MaximumSize = new System.Drawing.Size(260, 60);
-            this.KilogramPnl.MinimumSize = new System.Drawing.Size(260, 60);
-            this.KilogramPnl.Name = "KilogramPnl";
-            this.KilogramPnl.Size = new System.Drawing.Size(260, 60);
-            this.KilogramPnl.TabIndex = 0;
+            this.KgPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(0)))));
+            this.KgPnl.Controls.Add(this.KgLabel);
+            this.KgPnl.Location = new System.Drawing.Point(1055, 35);
+            this.KgPnl.Margin = new System.Windows.Forms.Padding(0);
+            this.KgPnl.MaximumSize = new System.Drawing.Size(300, 60);
+            this.KgPnl.MinimumSize = new System.Drawing.Size(300, 60);
+            this.KgPnl.Name = "KgPnl";
+            this.KgPnl.Size = new System.Drawing.Size(300, 60);
+            this.KgPnl.TabIndex = 0;
             // 
             // KgLabel
             // 
-            this.KgLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.KgLabel.AutoSize = true;
+            this.KgLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KgLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.KgLabel.Location = new System.Drawing.Point(66, 8);
+            this.KgLabel.Location = new System.Drawing.Point(0, 0);
             this.KgLabel.Name = "KgLabel";
-            this.KgLabel.Size = new System.Drawing.Size(128, 45);
+            this.KgLabel.Size = new System.Drawing.Size(300, 60);
             this.KgLabel.TabIndex = 0;
-            this.KgLabel.Text = "000000";
+            this.KgLabel.Text = " ";
             this.KgLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ResizeBtn
@@ -176,7 +195,7 @@ namespace TamTarti2202
             this.AyarlarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.AyarlarBtn.IconSize = 36;
             this.AyarlarBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AyarlarBtn.Location = new System.Drawing.Point(730, 35);
+            this.AyarlarBtn.Location = new System.Drawing.Point(885, 35);
             this.AyarlarBtn.Margin = new System.Windows.Forms.Padding(5);
             this.AyarlarBtn.Name = "AyarlarBtn";
             this.AyarlarBtn.Size = new System.Drawing.Size(120, 60);
@@ -222,7 +241,7 @@ namespace TamTarti2202
             this.YazdirmaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.YazdirmaBtn.IconSize = 36;
             this.YazdirmaBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.YazdirmaBtn.Location = new System.Drawing.Point(590, 35);
+            this.YazdirmaBtn.Location = new System.Drawing.Point(745, 35);
             this.YazdirmaBtn.Margin = new System.Windows.Forms.Padding(5);
             this.YazdirmaBtn.Name = "YazdirmaBtn";
             this.YazdirmaBtn.Size = new System.Drawing.Size(135, 60);
@@ -245,7 +264,7 @@ namespace TamTarti2202
             this.RaporlamaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.RaporlamaBtn.IconSize = 36;
             this.RaporlamaBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RaporlamaBtn.Location = new System.Drawing.Point(435, 35);
+            this.RaporlamaBtn.Location = new System.Drawing.Point(590, 35);
             this.RaporlamaBtn.Margin = new System.Windows.Forms.Padding(5);
             this.RaporlamaBtn.Name = "RaporlamaBtn";
             this.RaporlamaBtn.Size = new System.Drawing.Size(150, 60);
@@ -253,7 +272,6 @@ namespace TamTarti2202
             this.RaporlamaBtn.Text = "Raporlama";
             this.RaporlamaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RaporlamaBtn.UseVisualStyleBackColor = true;
-            this.RaporlamaBtn.Click += new System.EventHandler(this.RaporlamaBtn_Click);
             // 
             // KayitlarVeDuzenlemeBtn
             // 
@@ -269,7 +287,7 @@ namespace TamTarti2202
             this.KayitlarVeDuzenlemeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.KayitlarVeDuzenlemeBtn.IconSize = 36;
             this.KayitlarVeDuzenlemeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.KayitlarVeDuzenlemeBtn.Location = new System.Drawing.Point(190, 35);
+            this.KayitlarVeDuzenlemeBtn.Location = new System.Drawing.Point(345, 35);
             this.KayitlarVeDuzenlemeBtn.Margin = new System.Windows.Forms.Padding(5);
             this.KayitlarVeDuzenlemeBtn.Name = "KayitlarVeDuzenlemeBtn";
             this.KayitlarVeDuzenlemeBtn.Size = new System.Drawing.Size(240, 60);
@@ -277,7 +295,6 @@ namespace TamTarti2202
             this.KayitlarVeDuzenlemeBtn.Text = "Kayıtlar ve Düzenleme";
             this.KayitlarVeDuzenlemeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KayitlarVeDuzenlemeBtn.UseVisualStyleBackColor = true;
-            this.KayitlarVeDuzenlemeBtn.Click += new System.EventHandler(this.KayitlarVeDuzenlemeBtn_Click);
             // 
             // AltMenuPanel
             // 
@@ -305,8 +322,8 @@ namespace TamTarti2202
             this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.Load += new System.EventHandler(this.Anasayfa_Load);
             this.UstMenuPnl.ResumeLayout(false);
-            this.KilogramPnl.ResumeLayout(false);
-            this.KilogramPnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tamtartiPic)).EndInit();
+            this.KgPnl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -319,13 +336,14 @@ namespace TamTarti2202
         private FontAwesome.Sharp.IconButton RaporlamaBtn;
         private FontAwesome.Sharp.IconButton KayitlarVeDuzenlemeBtn;
         private FontAwesome.Sharp.IconButton AyarlarBtn;
-        private Panel KilogramPnl;
+        private Panel KgPnl;
         private Label KgLabel;
         private FontAwesome.Sharp.IconButton ExitBtn;
         private FontAwesome.Sharp.IconButton ResizeBtn;
         private FontAwesome.Sharp.IconButton MinimizeBtn;
         private Panel AltMenuPanel;
         private System.IO.Ports.SerialPort serialPort1;
+        private FontAwesome.Sharp.IconPictureBox tamtartiPic;
     }
 }
 
