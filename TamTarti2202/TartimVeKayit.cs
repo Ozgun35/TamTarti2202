@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq.Expressions;
+using System.Windows.Documents;
 using System.Windows.Forms;
+using System.Windows.Input;
 using MySql.Data.MySqlClient;
 
 namespace TamTarti2202
@@ -332,24 +334,94 @@ namespace TamTarti2202
                     cmd.CommandText = "INSERT INTO ARACLAR(PLAKA, DARA_KG, DORSE_PLAKA) " +
                         "VALUES(@PLAKA, @DARA_KG, @DORSE_PLAKA)";
                     cmd.Parameters.AddWithValue("@PLAKA", NullOrEmptyString(AracPlakaTextBox.Text.ToUpper()));
-                    cmd.Parameters.AddWithValue("@DARA_KG", NullOrEmptyString(AracDaraTextBox.Text));
-                    if (!string.IsNullOrWhiteSpace(AracDorsePlakaTextBox.Text) && AracDorsePlakaTextBox.Text.Length == 7 && AracDorseVarRadioButton.Checked)
-                    {
-                        cmd.Parameters.AddWithValue("@DORSE_PLAKA", NullOrEmptyString(AracDorsePlakaTextBox.Text.ToUpper()));
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@DORSE_PLAKA", null);
-                    }
-                    cmd.ExecuteNonQuery();
-                    con.Close();
 
-                    MessageBox.Show("Araç Kaydı Başarılı!");
-                    AraclarComboBoxMembers();
-                    AracPlakaTextBox.Text = "";
-                    AracDorsePlakaTextBox.Text = "";
-                    AracDorseYokRadioButton.Checked = true;
-                    AracDaraYokRadioButton.Checked = true;
+                    if(AracDaraVarRadioButton.Checked == true)
+                    {
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@DARA_KG", Convert.ToDouble(AracDaraTextBox.Text));
+
+                            if(AracDorseVarRadioButton.Checked)
+                            {
+                                if(!string.IsNullOrWhiteSpace(AracDorsePlakaTextBox.Text) && AracDorsePlakaTextBox.Text.Length == 7)
+                                {
+                                    cmd.Parameters.AddWithValue("@DORSE_PLAKA", NullOrEmptyString(AracDorsePlakaTextBox.Text.ToUpper()));
+
+                                    cmd.ExecuteNonQuery();
+                                    con.Close();
+
+                                    MessageBox.Show("Araç Kaydı Başarılı!");
+                                    AraclarComboBoxMembers();
+                                    AracPlakaTextBox.Text = "";
+                                    AracDorsePlakaTextBox.Text = "";
+                                    AracDorseYokRadioButton.Checked = true;
+                                    AracDaraYokRadioButton.Checked = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Dorse Girişi Yanlış!");
+                                }
+                            }
+                            else
+                            {
+                                cmd.Parameters.AddWithValue("@DORSE_PLAKA", null);
+
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                                MessageBox.Show("Araç Kaydı Başarılı!");
+                                AraclarComboBoxMembers();
+                                AracPlakaTextBox.Text = "";
+                                AracDorsePlakaTextBox.Text = "";
+                                AracDorseYokRadioButton.Checked = true;
+                                AracDaraYokRadioButton.Checked = true;
+                            }
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    else if(AracDaraVarRadioButton.Checked == false)
+                    {
+                        cmd.Parameters.AddWithValue("@DARA_KG", NullOrEmptyString(AracDaraTextBox.Text));
+
+                        if (AracDorseVarRadioButton.Checked)
+                        {
+                            if (!string.IsNullOrWhiteSpace(AracDorsePlakaTextBox.Text) && AracDorsePlakaTextBox.Text.Length == 7)
+                            {
+                                cmd.Parameters.AddWithValue("@DORSE_PLAKA", NullOrEmptyString(AracDorsePlakaTextBox.Text.ToUpper()));
+
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                                MessageBox.Show("Araç Kaydı Başarılı!");
+                                AraclarComboBoxMembers();
+                                AracPlakaTextBox.Text = "";
+                                AracDorsePlakaTextBox.Text = "";
+                                AracDorseYokRadioButton.Checked = true;
+                                AracDaraYokRadioButton.Checked = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Dorse Girişi Yanlış!");
+                            }
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@DORSE_PLAKA", null);
+
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            MessageBox.Show("Araç Kaydı Başarılı!");
+                            AraclarComboBoxMembers();
+                            AracPlakaTextBox.Text = "";
+                            AracDorsePlakaTextBox.Text = "";
+                            AracDorseYokRadioButton.Checked = true;
+                            AracDaraYokRadioButton.Checked = true;
+                        }
+                    }
                 }
                 catch (MySqlException ex)
                 {
@@ -577,11 +649,22 @@ namespace TamTarti2202
         {
             try
             {
-                if(SatimKayitliDaraRadioButton.Checked)
+                if ((NullOrEmptyString(db.GetStringFromQuery("SELECT DARA_KG FROM ARACLAR WHERE PLAKA = '"
+                    + SatimPlakalarComboBox.Text.ToString() + "'"))) == null)
+                {
+                    SatimDaraTartRadioButton.Checked = true;
+                }
+                else
+                {
+                    SatimKayitliDaraRadioButton.Checked = true;
+                }
+
+                if (SatimKayitliDaraRadioButton.Checked)
                 {
                     SatimDaraTextBox.Text = db.GetStringFromQuery("SELECT DARA_KG FROM ARACLAR WHERE PLAKA = '"
                         + SatimPlakalarComboBox.Text.ToString() + "'");
                 }
+
                 SatimDorseTextBox.Text = db.GetStringFromQuery("SELECT DORSE_PLAKA FROM ARACLAR WHERE PLAKA = '"
                     + SatimPlakalarComboBox.Text.ToString() + "'");
             }
@@ -659,7 +742,7 @@ namespace TamTarti2202
 
         private void FirmaVergiNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -667,10 +750,700 @@ namespace TamTarti2202
 
         private void CalisanTcTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+        }
+
+        private void SatimDorseTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
+        private void AracDorsePlakaTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
+        private void SatimTartimButton_Click(object sender, EventArgs e)
+        {
+            DateTime dtBaslangic = DateTime.Now;
+            //DARASIZ TARTIM 
+            if(SatimDaraYokRadioButton.Checked == true)
+            {
+                if(SatimTartimSayisiComboBox.SelectedIndex == 0)//DARASIZ TARTIM 1
+                {
+                    if(SatimTartimBirTextBox.Text == "" &&
+                        SatimUrunBirComboBox.SelectedIndex > -1 &&
+                        SatimTartimBosluklar())
+                    {
+                        SatimDisableButtons();
+                        SatimTartimBirTextBox.Text = aSayfa.GetKgData();
+                        SatimTartimButton.BackColor = Color.Green;
+                        SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                    }
+                    else if(SatimTartimBirTextBox.Text != "" && 
+                        ConvertDouble(SatimTartimBirTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)) &&
+                        SatimTartimKayit(dtBaslangic))
+                    {
+                        MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tartım Başarısız!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 1)//DARASIZ TARTIM 2
+                {
+                    if(SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && 
+                        SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 &&
+                        SatimTartimBosluklar())
+                    {
+                        SatimDisableButtons();
+                        SatimTartimBirTextBox.Text = aSayfa.GetKgData();
+                        SatimTartimButton.BackColor = Color.Green;
+                        SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if(SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimBirTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                    {
+                        SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
+                        SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                    }
+                    else if(SatimTartimIkiTextBox.Text != "" && 
+                        ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)) && 
+                        SatimTartimKayit(dtBaslangic))
+                    {
+                        MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tartım Başarısız!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 2)//DARASIZ TARTIM 3
+                {
+                    if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
+                        SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 && SatimUrunUcComboBox.SelectedIndex > -1 &&
+                        SatimTartimBosluklar())
+                    {
+                        SatimDisableButtons();
+                        SatimTartimBirTextBox.Text = aSayfa.GetKgData();
+                        SatimTartimButton.BackColor = Color.Green;
+                        SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimBirTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                    {
+                        SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
+                        SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                    {
+                        SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
+                            (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text))).ToString();
+                        SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimUcTextBox.Text != "" &&
+                        ConvertDouble(SatimTartimUcTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)) &&
+                        SatimTartimKayit(dtBaslangic))
+                    {
+                        MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tartım Başarısız!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 3)//DARASIZ TARTIM 4
+                {
+                    if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
+                        SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 && 
+                        SatimUrunUcComboBox.SelectedIndex > -1 && SatimUrunUcComboBox.SelectedIndex > -1 && SatimUrunDortComboBox.SelectedIndex > -1 &&
+                        SatimTartimBosluklar())
+                    {
+                        SatimDisableButtons();
+                        SatimTartimBirTextBox.Text = aSayfa.GetKgData();
+                        SatimTartimButton.BackColor = Color.Green;
+                        SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimBirTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                    {
+                        SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
+                        SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                    {
+                        SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                            (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text))).ToString();
+                        SatimTartimButton.Text = "DÖRDÜNCÜ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && SatimTartimDortTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimUcTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                    {
+                        SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                            (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
+                            Convert.ToDouble(SatimTartimUcTextBox.Text))).ToString();
+                        SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimDortTextBox.Text != "" &&
+                        ConvertDouble(SatimTartimDortTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)) &&
+                        SatimTartimKayit(dtBaslangic))
+                    {
+                        MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tartım Başarısız!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                }
+                if (SatimTartimSayisiComboBox.SelectedIndex == 4)//DARASIZ TARTIM 5
+                {
+                    if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" 
+                        && SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                        SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 &&
+                        SatimUrunUcComboBox.SelectedIndex > -1 && SatimUrunUcComboBox.SelectedIndex > -1 && 
+                        SatimUrunDortComboBox.SelectedIndex > -1 && SatimUrunBesComboBox.SelectedIndex > -1 &&
+                        SatimTartimBosluklar())
+                    {
+                        SatimDisableButtons();
+                        SatimTartimBirTextBox.Text = aSayfa.GetKgData();
+                        SatimTartimButton.BackColor = Color.Green;
+                        SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && 
+                        SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimBirTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                    {
+                        SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
+                        SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" && 
+                        SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                    {
+                        SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                            (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text))).ToString();
+                        SatimTartimButton.Text = "DÖRDÜNCÜ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && 
+                        SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimUcTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                    {
+                        SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                            (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
+                            Convert.ToDouble(SatimTartimUcTextBox.Text))).ToString();
+                        SatimTartimButton.Text = "BEŞİNCİ TARTIM İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && 
+                        SatimTartimDortTextBox.Text != "" && SatimTartimBesTextBox.Text == "" &&
+                        ConvertDouble(SatimTartimDortTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)))
+                    {
+                        SatimTartimBesTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                            (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
+                            Convert.ToDouble(SatimTartimUcTextBox.Text) + Convert.ToDouble(SatimTartimDortTextBox.Text))).ToString();
+                        SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                    }
+                    else if (SatimTartimBesTextBox.Text != "" &&
+                        ConvertDouble(SatimTartimBesTextBox.Text) &&
+                        SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text)) &&
+                        SatimTartimKayit(dtBaslangic))
+                    {
+                        MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tartım Başarısız!");
+                        SatimTartimButton.Text = "TARTIMA BAŞLA";
+                        SatimTartimButton.UseVisualStyleBackColor = true;
+                        SatimEnableButtons();
+                    }
+                }
+            }
+
+            if (SatimKayitliDaraRadioButton.Checked == true) //KAYITLI DARA TARTIM
+            {
+                if(SatimDaraTextBox.Text != "")
+                {
+                    if (SatimTartimSayisiComboBox.SelectedIndex == 0)//KAYITLI DARA TARTIM 1
+                    {
+                        if (SatimTartimBirTextBox.Text == "" &&
+                            SatimUrunBirComboBox.SelectedIndex > -1 &&
+                            SatimTartimBosluklar())
+                        {
+                            SatimDisableButtons();
+                            SatimTartimBirTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimDaraTextBox.Text)).ToString();
+                            SatimTartimButton.BackColor = Color.Green;
+                            SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" &&
+                            ConvertDouble(SatimTartimBirTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)) &&
+                            SatimTartimKayit(dtBaslangic))
+                        {
+                            MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tartım Başarısız!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                    }
+                    if (SatimTartimSayisiComboBox.SelectedIndex == 1)//KAYITLI DARA TARTIM 2
+                    {
+                        if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" &&
+                            SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 &&
+                            SatimTartimBosluklar())
+                        {
+                            SatimDisableButtons();
+                            SatimTartimBirTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimDaraTextBox.Text)).ToString();
+                            SatimTartimButton.BackColor = Color.Green;
+                            SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimBirTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        {
+                            SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimIkiTextBox.Text != "" &&
+                            ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)) &&
+                            SatimTartimKayit(dtBaslangic))
+                        {
+                            MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tartım Başarısız!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                    }
+                    if (SatimTartimSayisiComboBox.SelectedIndex == 2)//KAYITLI DARA TARTIM 3
+                    {
+                        if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
+                            SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 && SatimUrunUcComboBox.SelectedIndex > -1 &&
+                            SatimTartimBosluklar())
+                        {
+                            SatimDisableButtons();
+                            SatimTartimBirTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimDaraTextBox.Text)).ToString();
+                            SatimTartimButton.BackColor = Color.Green;
+                            SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimBirTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        {
+                            SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        {
+                            SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
+                                Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimUcTextBox.Text != "" &&
+                            ConvertDouble(SatimTartimUcTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)) &&
+                            SatimTartimKayit(dtBaslangic))
+                        {
+                            MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tartım Başarısız!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                    }
+                    if (SatimTartimSayisiComboBox.SelectedIndex == 3)//KAYITLI DARA TARTIM 4
+                    {
+                        if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
+                            SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 &&
+                            SatimUrunUcComboBox.SelectedIndex > -1 && SatimUrunUcComboBox.SelectedIndex > -1 && SatimUrunDortComboBox.SelectedIndex > -1 &&
+                            SatimTartimBosluklar())
+                        {
+                            SatimDisableButtons();
+                            SatimTartimBirTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimDaraTextBox.Text)).ToString();
+                            SatimTartimButton.BackColor = Color.Green;
+                            SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimBirTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        {
+                            SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        {
+                            SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
+                                Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "DÖRDÜNCÜ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && SatimTartimDortTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimUcTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                        {
+                            SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
+                                Convert.ToDouble(SatimTartimUcTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimDortTextBox.Text != "" &&
+                            ConvertDouble(SatimTartimDortTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)) &&
+                            SatimTartimKayit(dtBaslangic))
+                        {
+                            MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tartım Başarısız!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                    }
+                    if (SatimTartimSayisiComboBox.SelectedIndex == 4)//KAYITLI DARA TARTIM 5
+                    {
+                        if (SatimTartimBirTextBox.Text == "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == ""
+                            && SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                            SatimUrunBirComboBox.SelectedIndex > -1 && SatimUrunIkiComboBox.SelectedIndex > -1 &&
+                            SatimUrunUcComboBox.SelectedIndex > -1 && SatimUrunUcComboBox.SelectedIndex > -1 &&
+                            SatimUrunDortComboBox.SelectedIndex > -1 && SatimUrunBesComboBox.SelectedIndex > -1 &&
+                            SatimTartimBosluklar())
+                        {
+                            SatimDisableButtons();
+                            SatimTartimBirTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimDaraTextBox.Text)).ToString();
+                            SatimTartimButton.BackColor = Color.Green;
+                            SatimTartimButton.Text = "İKİNCİ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
+                            SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimBirTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        {
+                            SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
+                            SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimIkiTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        {
+                            SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text)) + 
+                                Convert.ToDouble(SatimDaraTextBox.Text)).ToString();
+                            SatimTartimButton.Text = "DÖRDÜNCÜ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" &&
+                            SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimUcTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                        {
+                            SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
+                                Convert.ToDouble(SatimTartimUcTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "BEŞİNCİ TARTIM İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" &&
+                            SatimTartimDortTextBox.Text != "" && SatimTartimBesTextBox.Text == "" &&
+                            ConvertDouble(SatimTartimDortTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)))
+                        {
+                            SatimTartimBesTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
+                                (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
+                                Convert.ToDouble(SatimTartimUcTextBox.Text) + Convert.ToDouble(SatimTartimDortTextBox.Text) + 
+                                Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
+                            SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
+                        }
+                        else if (SatimTartimBesTextBox.Text != "" &&
+                            ConvertDouble(SatimTartimBesTextBox.Text) &&
+                            SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text)) &&
+                            SatimTartimKayit(dtBaslangic))
+                        {
+                            MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tartım Başarısız!");
+                            SatimTartimButton.Text = "TARTIMA BAŞLA";
+                            SatimTartimButton.UseVisualStyleBackColor = true;
+                            SatimEnableButtons();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Geçersiz Kayıtlı Dara!");
+                }
+            }
+        }
+
+        private bool ConvertDouble(string kg)
+        {
+            try
+            {
+                Convert.ToDouble(kg);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private void SatimDisableButtons()
+        {
+            EklemeTabControl.Enabled = false;
+            AlimTab.Enabled = false;
+            SatimFirmalarComboBox.Enabled = false;
+            SatimPlakalarComboBox.Enabled = false;
+            SatimCalisanComboBox.Enabled = false;
+            SatimDorseTextBox.Enabled = false;
+            SatimCikisAdresiTextBox.Enabled = false;
+            SatimVarisAdresiTextBox.Enabled = false;
+            SatimTartimSayisiComboBox.Enabled = false;
+            SatimDaraYokRadioButton.Enabled = false;
+            SatimDaraTartRadioButton.Enabled = false;
+            SatimKayitliDaraRadioButton.Enabled = false;
+            SatimUrunBirComboBox.Enabled = false;
+            SatimUrunIkiComboBox.Enabled = false;
+            SatimUrunUcComboBox.Enabled = false;
+            SatimUrunDortComboBox.Enabled = false;
+            SatimUrunBesComboBox.Enabled = false;
+
+            Anasayfa aSay = (Anasayfa)this.Owner;
+            Control[] c = aSay.Controls.Find("UstMenuPnl", true);
+            Panel b = (Panel)c[0];
+            b.Enabled = false;
+        }
+
+        private void SatimEnableButtons()
+        {
+            EklemeTabControl.Enabled = true;
+            AlimTab.Enabled = true;
+            SatimFirmalarComboBox.Enabled = true;
+            SatimPlakalarComboBox.Enabled = true;
+            SatimCalisanComboBox.Enabled = true;
+            SatimDorseTextBox.Enabled = true;
+            SatimCikisAdresiTextBox.Enabled = true;
+            SatimVarisAdresiTextBox.Enabled = true;
+            SatimTartimSayisiComboBox.Enabled = true;
+            SatimDaraYokRadioButton.Enabled = true;
+            SatimDaraTartRadioButton.Enabled = true;
+            SatimKayitliDaraRadioButton.Enabled = true;
+            SatimUrunBirComboBox.Enabled = true;
+            SatimTartimBirTextBox.Text = "";
+            SatimTartimIkiTextBox.Text = "";
+            SatimTartimUcTextBox.Text = "";
+            SatimTartimDortTextBox.Text = "";
+            SatimTartimBesTextBox.Text = "";
+            SatimTartimSayisiComboBox.SelectedIndex = 0;
+
+            Anasayfa aSay = (Anasayfa)this.Owner;
+            Control[] c = aSay.Controls.Find("UstMenuPnl", true);
+            Panel b = (Panel)c[0];
+            b.Enabled = true;
+        }
+
+        private bool SatimTartimBosluklar()
+        {
+            if(SatimFirmalarComboBox.SelectedIndex == -1 || SatimPlakalarComboBox.SelectedIndex == -1 || SatimCalisanComboBox.SelectedIndex == -1)
+            {
+                return false;
+
+                if(SatimDorseTextBox.Text != "" || SatimDorseTextBox.Text.Length != 7)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool SatimTartimKayit(DateTime dt)
+        {
+            try
+            {
+                con = new MySqlConnection(db.getCon());
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "INSERT INTO SATIM_TARTIMLARI(FIRMA_ADI, PLAKA, DORSE_PLAKA, CALISAN_ADI, CIKIS_ADRES, VARIS_ADRES, " +
+                    "URUN_1, URUN_1_KG, URUN_2, URUN_2_KG, URUN_3, URUN_3_KG, URUN_4, URUN_4_KG, URUN_5, URUN_5_KG, NOT_1, NOT_2, TARTIM_BASLANGIC) " +
+                    "VALUES(@FIRMA_ADI, @PLAKA, @DORSE_PLAKA, @CALISAN_ADI, @CIKIS_ADRES, @VARIS_ADRES, " +
+                    "@URUN_1, @URUN_1_KG, @URUN_2, @URUN_2_KG, @URUN_3, @URUN_3_KG, @URUN_4, @URUN_4_KG, @URUN_5, @URUN_5_KG, @NOT_1, @NOT_2, @TARTIM_BASLANGIC)";
+                cmd.Parameters.AddWithValue("@FIRMA_ADI", SatimFirmalarComboBox.Text);
+                cmd.Parameters.AddWithValue("@PLAKA", SatimPlakalarComboBox.Text);
+                cmd.Parameters.AddWithValue("@DORSE_PLAKA", NullOrEmptyString(SatimDorseTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@CALISAN_ADI", SatimCalisanComboBox.Text);
+                cmd.Parameters.AddWithValue("@CIKIS_ADRES", NullOrEmptyString(SatimCikisAdresiTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@VARIS_ADRES", NullOrEmptyString(SatimVarisAdresiTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@URUN_1", NullOrEmptyString(SatimUrunBirComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_1_KG", NullOrEmptyString(SatimTartimBirTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_2", NullOrEmptyString(SatimUrunIkiComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_2_KG", NullOrEmptyString(SatimTartimIkiTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_3", NullOrEmptyString(SatimUrunUcComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_3_KG", NullOrEmptyString(SatimTartimUcTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_4", NullOrEmptyString(SatimUrunDortComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_4_KG", NullOrEmptyString(SatimTartimDortTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_5", NullOrEmptyString(SatimUrunBesComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_5_KG", NullOrEmptyString(SatimTartimBesTextBox.Text));
+                cmd.Parameters.AddWithValue("@NOT_1", NullOrEmptyString(SatimNotBirTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@NOT_2", NullOrEmptyString(SatimNotIkiTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@TARTIM_BASLANGIC", dt);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool SatimUrunKayit(string urun_adi, double urun_kg)
+        {
+            try
+            {
+                con = new MySqlConnection(db.getCon());
+                con.Open();
+                cmd = con.CreateCommand();
+                cmd.CommandText = "INSERT INTO SATILANLAR(FIRMA_ADI, URUN_ADI, URUN_KG) " +
+                    "VALUES(@FIRMA_ADI, @URUN_ADI, @URUN_KG)";
+                cmd.Parameters.AddWithValue("@FIRMA_ADI", NullOrEmptyString(SatimFirmalarComboBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@URUN_ADI", urun_adi);
+                cmd.Parameters.AddWithValue("@URUN_KG", urun_kg);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool AlimTartimBosluklar()
+        {
+            if (AlimFirmalarComboBox.SelectedIndex == -1 || AlimFirmalarComboBox.SelectedIndex == -1 || AlimCalisanComboBox.SelectedIndex == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void AlimDisableButtons()
+        {
+            EklemeTabControl.Enabled = false;
+            SatimTab.Enabled = false;
+
+            Anasayfa aSay = (Anasayfa)this.Owner;
+            Control[] c = aSay.Controls.Find("UstMenuPnl", true);
+            Panel b = (Panel)c[0];
+            b.Enabled = false;
+        }
+
+        private void AlimEnableButtons()
+        {
+            EklemeTabControl.Enabled = true;
+            SatimTab.Enabled = true;
+
+            Anasayfa aSay = (Anasayfa)this.Owner;
+            Control[] c = aSay.Controls.Find("UstMenuPnl", true);
+            Panel b = (Panel)c[0];
+            b.Enabled = true;
+        }
+
+        private void AlimTartimButton_Click(object sender, EventArgs e)
+        {
         }
     }
 }

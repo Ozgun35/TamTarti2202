@@ -121,32 +121,6 @@ namespace TamTarti2202
             }
         }
 
-        private void FirmaAyarlariKaydetButton_Click(object sender, EventArgs e)
-        {
-
-            DialogResult dialogResult = MessageBox.Show("Değişiklikler kaydedilip program yeniden başlatılacak.", "", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                if(FirmaAyariComboBox.SelectedIndex != -1)
-                {
-                    try
-                    {
-                        Properties.KullaniciAyarlari.Default.FirmaAdi = FirmaAyariComboBox.Text;
-                        Properties.KullaniciAyarlari.Default.Save();
-                        MessageBox.Show("Ayarlar başarıyla kayıt edildi program yeniden başlatılıcak!");
-                        Application.Restart();
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-            }
-        }
-
         private void DataUzunluguTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -198,9 +172,29 @@ namespace TamTarti2202
             }
         }
 
-        private void FirmaAyarlariKaydetButton_Click_1(object sender, EventArgs e)
+        private void FirmaAyarlariKaydetButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(db.getCon());
+            DialogResult dialogResult = MessageBox.Show("Değişiklikler kaydedilip program yeniden başlatılacak.", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (FirmaAyariComboBox.SelectedIndex != -1)
+                {
+                    try
+                    {
+                        Properties.KullaniciAyarlari.Default.FirmaAdi = FirmaAyariComboBox.Text;
+                        Properties.KullaniciAyarlari.Default.Save();
+                        MessageBox.Show("Ayarlar başarıyla kayıt edildi program yeniden başlatılıcak!");
+                        Application.Restart();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
         }
     }
 }

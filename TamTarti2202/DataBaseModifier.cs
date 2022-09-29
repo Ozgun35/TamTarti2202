@@ -57,7 +57,7 @@ namespace TamTarti2202
             {
                 closeDb();
                 Console.WriteLine(ex.Message);
-                return null;
+                return "";
             }
         }
         public void RunQueryCreate(string query)

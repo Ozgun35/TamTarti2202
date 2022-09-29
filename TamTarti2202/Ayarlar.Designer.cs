@@ -162,33 +162,36 @@
             // FirmaAyarlariKaydetButton
             // 
             this.FirmaAyarlariKaydetButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FirmaAyarlariKaydetButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FirmaAyarlariKaydetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FirmaAyarlariKaydetButton.Location = new System.Drawing.Point(199, 119);
             this.FirmaAyarlariKaydetButton.Name = "FirmaAyarlariKaydetButton";
-            this.FirmaAyarlariKaydetButton.Size = new System.Drawing.Size(438, 47);
+            this.FirmaAyarlariKaydetButton.Size = new System.Drawing.Size(454, 47);
             this.FirmaAyarlariKaydetButton.TabIndex = 99;
             this.FirmaAyarlariKaydetButton.Text = "FİRMA AYARLARINI KAYDET";
             this.FirmaAyarlariKaydetButton.UseVisualStyleBackColor = true;
-            this.FirmaAyarlariKaydetButton.Click += new System.EventHandler(this.FirmaAyarlariKaydetButton_Click_1);
+            this.FirmaAyarlariKaydetButton.Click += new System.EventHandler(this.FirmaAyarlariKaydetButton_Click);
             // 
             // FirmaAyariComboBox
             // 
             this.FirmaAyariComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FirmaAyariComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FirmaAyariComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FirmaAyariComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FirmaAyariComboBox.FormattingEnabled = true;
             this.FirmaAyariComboBox.Location = new System.Drawing.Point(199, 61);
             this.FirmaAyariComboBox.Name = "FirmaAyariComboBox";
-            this.FirmaAyariComboBox.Size = new System.Drawing.Size(190, 26);
+            this.FirmaAyariComboBox.Size = new System.Drawing.Size(454, 26);
             this.FirmaAyariComboBox.TabIndex = 100;
             // 
             // lbl11
             // 
+            this.lbl11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl11.ForeColor = System.Drawing.Color.White;
             this.lbl11.Location = new System.Drawing.Point(3, 58);
             this.lbl11.Name = "lbl11";
-            this.lbl11.Size = new System.Drawing.Size(190, 25);
+            this.lbl11.Size = new System.Drawing.Size(190, 29);
             this.lbl11.TabIndex = 98;
             this.lbl11.Text = "Firma Adı Seçiniz:";
             this.lbl11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

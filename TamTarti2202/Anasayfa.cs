@@ -90,7 +90,7 @@ namespace TamTarti2202
             if (dialogResult == DialogResult.Yes)
             {
                 SeriPortClose();
-                Application.Exit();
+                this.Close();
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -132,6 +132,7 @@ namespace TamTarti2202
         {
             CreateDataBaseAndTables();
             TartimVeKayit t1 = new TartimVeKayit();
+            t1.Owner = this;
             t1.TopLevel = false;
             AltMenuPanel.Controls.Add(t1);
             t1.Dock = DockStyle.Fill;
@@ -187,6 +188,24 @@ namespace TamTarti2202
                     "UNVAN VARCHAR(255), TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))");
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS URUNLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE, PRIMARY KEY(ID))");
+
+                db.RunQuery("CREATE TABLE IF NOT EXISTS ALIM_TARTIMLARI(ID INT NOT NULL AUTO_INCREMENT, FIRMA_ADI VARCHAR(255) NOT NULL," +
+                    " PLAKA VARCHAR(7) NOT NULL, DORSE_PLAKA VARCHAR(7), CALISAN_ADI VARCHAR(255) NOT NULL, CIKIS_ADRES VARCHAR(255) NOT NULL, " +
+                    "VARIS_ADRES VARCHAR(255) NOT NULL, URUN_1 VARCHAR(99), URUN_1_KG DOUBLE, URUN_2 VARCHAR(99), URUN_2_KG DOUBLE, URUN_3 VARCHAR(99), " +
+                    "URUN_3_KG DOUBLE, URUN_4 VARCHAR(99), URUN_4_KG DOUBLE, URUN_5 VARCHAR(99), URUN_5_KG DOUBLE, NOT_1 VARCHAR(255), NOT_2 VARCHAR(255)," +
+                    " TARTIM_BASLANGIC DATETIME, TARTIM_BITIS TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
+
+                db.RunQuery("CREATE TABLE IF NOT EXISTS SATIM_TARTIMLARI(ID INT NOT NULL AUTO_INCREMENT, FIRMA_ADI VARCHAR(255) NOT NULL," +
+                    " PLAKA VARCHAR(7) NOT NULL, DORSE_PLAKA VARCHAR(7), CALISAN_ADI VARCHAR(255) NOT NULL, CIKIS_ADRES VARCHAR(255) NOT NULL, " +
+                    "VARIS_ADRES VARCHAR(255) NOT NULL, URUN_1 VARCHAR(99), URUN_1_KG DOUBLE, URUN_2 VARCHAR(99), URUN_2_KG DOUBLE, URUN_3 VARCHAR(99), " +
+                    "URUN_3_KG DOUBLE, URUN_4 VARCHAR(99), URUN_4_KG DOUBLE, URUN_5 VARCHAR(99), URUN_5_KG DOUBLE, NOT_1 VARCHAR(255), NOT_2 VARCHAR(255)," +
+                    " TARTIM_BASLANGIC DATETIME, TARTIM_BITIS TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
+
+                db.RunQuery("CREATE TABLE IF NOT EXISTS ALINANLAR(ID INT NOT NULL AUTO_INCREMENT, FIRMA_ADI VARCHAR(255) NOT NULL," +
+                    "URUN_ADI VARCHAR(99) NOT NULL, URUN_KG DOUBLE NOT NULL, TARTIM_ZAMANI TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
+
+                db.RunQuery("CREATE TABLE IF NOT EXISTS SATILANLAR(ID INT NOT NULL AUTO_INCREMENT, FIRMA_ADI VARCHAR(255) NOT NULL," +
+                    "URUN_ADI VARCHAR(99) NOT NULL, URUN_KG DOUBLE NOT NULL, TARTIM_ZAMANI TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
             }
             catch (MySqlException ex)
             {
@@ -249,11 +268,11 @@ namespace TamTarti2202
             {
                 Console.WriteLine("serial data reading");
                 while (serialPort1.IsOpen)
-                {
+                { 
                     serialData = serialPort1.ReadLine();
                     if (serialData.Length == serialDataLenght)
                     {
-                        WriteSerialData(serialData.Substring(serialDataLenghtX, serialDataLenghtY));
+                        WriteSerialData(RemoveSpecialCharsAndSpaces(serialData.Substring(serialDataLenghtX, serialDataLenghtY)));
                     }
                 }
             }
@@ -311,6 +330,18 @@ namespace TamTarti2202
             return kgLabelData;
         }
 
+        public static string RemoveSpecialCharsAndSpaces(string str)
+        {
+            string[] chars = new string[] { ",", ".", "/", "!", "@", "#", "$", "%", "^", "&", "*", "'", "\"", ";", "_", "(", ")", ":", "|", "[", "]", " "};
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (str.Contains(chars[i]))
+                {
+                    str = str.Replace(chars[i], "");
+                }
+            }
+            return str;
+        }
         private void Anasayfa_Load(object sender, EventArgs e)
         {
             LoadConfigurationSettings();

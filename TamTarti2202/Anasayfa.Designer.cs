@@ -329,8 +329,6 @@ namespace TamTarti2202
         }
 
         #endregion
-
-        private FontAwesome.Sharp.IconButton TartimveKayitBtn;
         private Panel UstMenuPnl;
         private FontAwesome.Sharp.IconButton YazdirmaBtn;
         private FontAwesome.Sharp.IconButton RaporlamaBtn;
@@ -344,6 +342,7 @@ namespace TamTarti2202
         private Panel AltMenuPanel;
         private System.IO.Ports.SerialPort serialPort1;
         private FontAwesome.Sharp.IconPictureBox tamtartiPic;
+        private FontAwesome.Sharp.IconButton TartimveKayitBtn;
     }
 }
 

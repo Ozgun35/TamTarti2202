@@ -141,7 +141,7 @@
             this.l62 = new System.Windows.Forms.Label();
             this.UrunAdiTextBox = new System.Windows.Forms.TextBox();
             this.l63 = new System.Windows.Forms.Label();
-            this.SoforKayitTab = new System.Windows.Forms.TabPage();
+            this.CalisanKayitTab = new System.Windows.Forms.TabPage();
             this.CalisanEklemeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.l58 = new System.Windows.Forms.Label();
             this.l57 = new System.Windows.Forms.Label();
@@ -214,7 +214,7 @@
             this.AlimTLP4.SuspendLayout();
             this.UrunEkleTab.SuspendLayout();
             this.UrunEklemeTableLayoutPanel.SuspendLayout();
-            this.SoforKayitTab.SuspendLayout();
+            this.CalisanKayitTab.SuspendLayout();
             this.CalisanEklemeTableLayoutPanel.SuspendLayout();
             this.AracKayitTab.SuspendLayout();
             this.AracEklemeTableLayoutPanel.SuspendLayout();
@@ -325,6 +325,7 @@
             this.SatimTartimButton.TabIndex = 24;
             this.SatimTartimButton.Text = "TARTIMA BAŞLA";
             this.SatimTartimButton.UseVisualStyleBackColor = true;
+            this.SatimTartimButton.Click += new System.EventHandler(this.SatimTartimButton_Click);
             // 
             // l2
             // 
@@ -343,6 +344,7 @@
             this.SatimNotIkiTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SatimNotIkiTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimNotIkiTextBox.Location = new System.Drawing.Point(168, 477);
+            this.SatimNotIkiTextBox.MaxLength = 255;
             this.SatimNotIkiTextBox.Name = "SatimNotIkiTextBox";
             this.SatimNotIkiTextBox.Size = new System.Drawing.Size(489, 26);
             this.SatimNotIkiTextBox.TabIndex = 23;
@@ -468,6 +470,7 @@
             this.SatimNotBirTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SatimNotBirTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimNotBirTextBox.Location = new System.Drawing.Point(168, 447);
+            this.SatimNotBirTextBox.MaxLength = 255;
             this.SatimNotBirTextBox.Name = "SatimNotBirTextBox";
             this.SatimNotBirTextBox.Size = new System.Drawing.Size(489, 26);
             this.SatimNotBirTextBox.TabIndex = 22;
@@ -763,6 +766,7 @@
             // SatimDaraTartRadioButton
             // 
             this.SatimDaraTartRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SatimDaraTartRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SatimDaraTartRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimDaraTartRadioButton.Location = new System.Drawing.Point(125, 3);
             this.SatimDaraTartRadioButton.Name = "SatimDaraTartRadioButton";
@@ -941,13 +945,16 @@
             // SatimDorseTextBox
             // 
             this.SatimDorseTextBox.Location = new System.Drawing.Point(168, 93);
+            this.SatimDorseTextBox.MaxLength = 7;
             this.SatimDorseTextBox.Name = "SatimDorseTextBox";
             this.SatimDorseTextBox.Size = new System.Drawing.Size(489, 26);
             this.SatimDorseTextBox.TabIndex = 3;
+            this.SatimDorseTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SatimDorseTextBox_KeyPress);
             // 
             // SatimCikisAdresiTextBox
             // 
             this.SatimCikisAdresiTextBox.Location = new System.Drawing.Point(168, 153);
+            this.SatimCikisAdresiTextBox.MaxLength = 255;
             this.SatimCikisAdresiTextBox.Name = "SatimCikisAdresiTextBox";
             this.SatimCikisAdresiTextBox.Size = new System.Drawing.Size(489, 26);
             this.SatimCikisAdresiTextBox.TabIndex = 5;
@@ -955,6 +962,7 @@
             // SatimVarisAdresiTextBox
             // 
             this.SatimVarisAdresiTextBox.Location = new System.Drawing.Point(168, 183);
+            this.SatimVarisAdresiTextBox.MaxLength = 255;
             this.SatimVarisAdresiTextBox.Name = "SatimVarisAdresiTextBox";
             this.SatimVarisAdresiTextBox.Size = new System.Drawing.Size(489, 26);
             this.SatimVarisAdresiTextBox.TabIndex = 6;
@@ -1421,6 +1429,7 @@
             this.AlimTartimButton.TabIndex = 21;
             this.AlimTartimButton.Text = "TARTIMA BAŞLA";
             this.AlimTartimButton.UseVisualStyleBackColor = true;
+            this.AlimTartimButton.Click += new System.EventHandler(this.AlimTartimButton_Click);
             // 
             // AlimNotIkiTextBox
             // 
@@ -1745,16 +1754,16 @@
             this.l63.Text = "Ürün Adı:";
             this.l63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // SoforKayitTab
+            // CalisanKayitTab
             // 
-            this.SoforKayitTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(200)))));
-            this.SoforKayitTab.Controls.Add(this.CalisanEklemeTableLayoutPanel);
-            this.SoforKayitTab.Location = new System.Drawing.Point(4, 33);
-            this.SoforKayitTab.Name = "SoforKayitTab";
-            this.SoforKayitTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SoforKayitTab.Size = new System.Drawing.Size(662, 603);
-            this.SoforKayitTab.TabIndex = 2;
-            this.SoforKayitTab.Text = "Şöför Ekle";
+            this.CalisanKayitTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(200)))));
+            this.CalisanKayitTab.Controls.Add(this.CalisanEklemeTableLayoutPanel);
+            this.CalisanKayitTab.Location = new System.Drawing.Point(4, 33);
+            this.CalisanKayitTab.Name = "CalisanKayitTab";
+            this.CalisanKayitTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CalisanKayitTab.Size = new System.Drawing.Size(662, 603);
+            this.CalisanKayitTab.TabIndex = 2;
+            this.CalisanKayitTab.Text = "Çalışan Ekle";
             // 
             // CalisanEklemeTableLayoutPanel
             // 
@@ -2130,6 +2139,7 @@
             this.AracDorsePlakaTextBox.Name = "AracDorsePlakaTextBox";
             this.AracDorsePlakaTextBox.Size = new System.Drawing.Size(489, 26);
             this.AracDorsePlakaTextBox.TabIndex = 37;
+            this.AracDorsePlakaTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AracDorsePlakaTextBox_KeyPress);
             // 
             // AracTPL2
             // 
@@ -2184,7 +2194,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EklemeTabControl.Controls.Add(this.FirmaKayitTab);
             this.EklemeTabControl.Controls.Add(this.AracKayitTab);
-            this.EklemeTabControl.Controls.Add(this.SoforKayitTab);
+            this.EklemeTabControl.Controls.Add(this.CalisanKayitTab);
             this.EklemeTabControl.Controls.Add(this.UrunEkleTab);
             this.EklemeTabControl.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.EklemeTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -2508,7 +2518,7 @@
             this.UrunEkleTab.ResumeLayout(false);
             this.UrunEklemeTableLayoutPanel.ResumeLayout(false);
             this.UrunEklemeTableLayoutPanel.PerformLayout();
-            this.SoforKayitTab.ResumeLayout(false);
+            this.CalisanKayitTab.ResumeLayout(false);
             this.CalisanEklemeTableLayoutPanel.ResumeLayout(false);
             this.CalisanEklemeTableLayoutPanel.PerformLayout();
             this.AracKayitTab.ResumeLayout(false);
@@ -2578,7 +2588,7 @@
         private System.Windows.Forms.Label l10;
         private System.Windows.Forms.TabPage AlimTab;
         private System.Windows.Forms.TabPage UrunEkleTab;
-        private System.Windows.Forms.TabPage SoforKayitTab;
+        private System.Windows.Forms.TabPage CalisanKayitTab;
         private System.Windows.Forms.TabPage AracKayitTab;
         private System.Windows.Forms.TabControl EklemeTabControl;
         private System.Windows.Forms.Label l9;
