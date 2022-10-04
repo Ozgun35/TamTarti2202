@@ -14,7 +14,8 @@ namespace TamTarti2202
     {
         private const int cGrip = 16;
         private const int cCaption = 32;
-         
+        private Form currentChildForm;
+        
         private DataBaseModifier db = new DataBaseModifier();
 
         private string xampPath = Properties.KullaniciAyarlari.Default.XampPath;
@@ -33,6 +34,22 @@ namespace TamTarti2202
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
+        }
+        private void OpenChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+            currentChildForm = childForm;
+            childForm.Owner = this;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            AltMenuPanel.Controls.Add(childForm);
+            AltMenuPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -131,12 +148,7 @@ namespace TamTarti2202
         private void TartimveKayitBtn_Click(object sender, EventArgs e)
         {
             CreateDataBaseAndTables();
-            TartimVeKayit t1 = new TartimVeKayit();
-            t1.Owner = this;
-            t1.TopLevel = false;
-            AltMenuPanel.Controls.Add(t1);
-            t1.Dock = DockStyle.Fill;
-            t1.Show();
+            OpenChildForm(new TartimVeKayit());
         }
 
         private void LoadConfigurationSettings()
@@ -201,10 +213,10 @@ namespace TamTarti2202
                     "URUN_3_KG DOUBLE, URUN_4 VARCHAR(99), URUN_4_KG DOUBLE, URUN_5 VARCHAR(99), URUN_5_KG DOUBLE, NOT_1 VARCHAR(255), NOT_2 VARCHAR(255)," +
                     " TARTIM_BASLANGIC DATETIME, TARTIM_BITIS TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
 
-                db.RunQuery("CREATE TABLE IF NOT EXISTS ALINANLAR(ID INT NOT NULL AUTO_INCREMENT, FIRMA_ADI VARCHAR(255) NOT NULL," +
+                db.RunQuery("CREATE TABLE IF NOT EXISTS ALINANLAR(ID INT NOT NULL AUTO_INCREMENT, TARTIM_ID INT, FIRMA_ADI VARCHAR(255) NOT NULL," +
                     "URUN_ADI VARCHAR(99) NOT NULL, URUN_KG DOUBLE NOT NULL, TARTIM_ZAMANI TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
 
-                db.RunQuery("CREATE TABLE IF NOT EXISTS SATILANLAR(ID INT NOT NULL AUTO_INCREMENT, FIRMA_ADI VARCHAR(255) NOT NULL," +
+                db.RunQuery("CREATE TABLE IF NOT EXISTS SATILANLAR(ID INT NOT NULL AUTO_INCREMENT,TARTIM_ID INT, FIRMA_ADI VARCHAR(255) NOT NULL," +
                     "URUN_ADI VARCHAR(99) NOT NULL, URUN_KG DOUBLE NOT NULL, TARTIM_ZAMANI TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(ID))");
             }
             catch (MySqlException ex)
@@ -223,6 +235,7 @@ namespace TamTarti2202
                 {
                     if (!serialPort1.IsOpen)
                     {
+                        KgLabel.Font = new Font(KgLabel.Font.FontFamily, 24);
                         Console.WriteLine("port opening");
                         serialPort1.Open();
                         StartReadSerialPort();
@@ -230,6 +243,8 @@ namespace TamTarti2202
                 }
                 catch(Exception ex)
                 {
+                    KgLabel.Font = new Font(KgLabel.Font.FontFamily, 12);
+                    KgLabel.Text = ex.Message;
                     Console.WriteLine(ex.Message); ;
                 }               
                 await delayTask;
@@ -346,6 +361,23 @@ namespace TamTarti2202
         {
             LoadConfigurationSettings();
             OpenPortEveryTenSeconds();
+        }
+
+        private void KayitlarVeDuzenlemeBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new KayitlarVeDuzenleme());
+        }
+
+        private void tamtartiPic_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                currentChildForm.Close();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows;
 using TamTarti2202.Properties;
+using System.Windows.Forms;
 
 namespace TamTarti2202
 {
@@ -30,7 +31,7 @@ namespace TamTarti2202
             }
             catch(MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -60,6 +61,7 @@ namespace TamTarti2202
                 return "";
             }
         }
+
         public void RunQueryCreate(string query)
         {
             try
@@ -79,7 +81,7 @@ namespace TamTarti2202
             }
         }
 
-        public void RunQuery(string query)
+        public bool RunQuery(string query)
         {
             try
             {
@@ -90,11 +92,13 @@ namespace TamTarti2202
                 reader = cmd.ExecuteReader();
 
                 closeDb();
+                return true;
             }
             catch (Exception ex)
             {
                 closeDb();
                 Console.WriteLine(ex.Message);
+                return false;
             }
         }
 
@@ -124,5 +128,6 @@ namespace TamTarti2202
         {
             return connection;
         }
+
     }
 }

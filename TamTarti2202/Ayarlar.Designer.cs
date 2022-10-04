@@ -110,7 +110,7 @@
             this.FirmaAyarlariTab.Padding = new System.Windows.Forms.Padding(3);
             this.FirmaAyarlariTab.Size = new System.Drawing.Size(662, 603);
             this.FirmaAyarlariTab.TabIndex = 4;
-            this.FirmaAyarlariTab.Text = "Firma Seçimi";
+            this.FirmaAyarlariTab.Text = "Firmanızı Seçin";
             // 
             // FirmaTableLayoutPanel
             // 

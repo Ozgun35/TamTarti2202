@@ -2478,7 +2478,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1344, 648);
             this.Name = "TartimVeKayit";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "TartimVeKayit";
             this.Load += new System.EventHandler(this.TartimVeKayit_Load);
             this.Resize += new System.EventHandler(this.TartimVeKayit_Resize);

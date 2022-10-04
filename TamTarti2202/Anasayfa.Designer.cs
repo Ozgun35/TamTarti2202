@@ -46,6 +46,7 @@ namespace TamTarti2202
             this.KayitlarVeDuzenlemeBtn = new FontAwesome.Sharp.IconButton();
             this.AltMenuPanel = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.UstMenuPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tamtartiPic)).BeginInit();
             this.KgPnl.SuspendLayout();
@@ -78,6 +79,7 @@ namespace TamTarti2202
             // UstMenuPnl
             // 
             this.UstMenuPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(25)))), ((int)(((byte)(100)))));
+            this.UstMenuPnl.Controls.Add(this.comboBox1);
             this.UstMenuPnl.Controls.Add(this.tamtartiPic);
             this.UstMenuPnl.Controls.Add(this.MinimizeBtn);
             this.UstMenuPnl.Controls.Add(this.KgPnl);
@@ -111,6 +113,7 @@ namespace TamTarti2202
             this.tamtartiPic.Size = new System.Drawing.Size(150, 50);
             this.tamtartiPic.TabIndex = 9;
             this.tamtartiPic.TabStop = false;
+            this.tamtartiPic.Click += new System.EventHandler(this.tamtartiPic_Click);
             // 
             // MinimizeBtn
             // 
@@ -295,6 +298,7 @@ namespace TamTarti2202
             this.KayitlarVeDuzenlemeBtn.Text = "Kayıtlar ve Düzenleme";
             this.KayitlarVeDuzenlemeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KayitlarVeDuzenlemeBtn.UseVisualStyleBackColor = true;
+            this.KayitlarVeDuzenlemeBtn.Click += new System.EventHandler(this.KayitlarVeDuzenlemeBtn_Click);
             // 
             // AltMenuPanel
             // 
@@ -304,6 +308,16 @@ namespace TamTarti2202
             this.AltMenuPanel.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.AltMenuPanel.Size = new System.Drawing.Size(1360, 648);
             this.AltMenuPanel.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(1208, 8);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(57, 25);
+            this.comboBox1.TabIndex = 10;
             // 
             // Anasayfa
             // 
@@ -343,6 +357,7 @@ namespace TamTarti2202
         private System.IO.Ports.SerialPort serialPort1;
         private FontAwesome.Sharp.IconPictureBox tamtartiPic;
         private FontAwesome.Sharp.IconButton TartimveKayitBtn;
+        private ComboBox comboBox1;
     }
 }
 

@@ -785,7 +785,7 @@ namespace TamTarti2202
                     }
                     else if(SatimTartimBirTextBox.Text != "" && 
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -814,14 +814,14 @@ namespace TamTarti2202
                     }
                     else if(SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
                         SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
                     }
                     else if(SatimTartimIkiTextBox.Text != "" && 
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)) && 
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")) && 
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -850,14 +850,14 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
                         SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text))).ToString();
@@ -865,7 +865,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimUcTextBox.Text != "" &&
                         ConvertDouble(SatimTartimUcTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -895,14 +895,14 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
                         SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text))).ToString();
@@ -910,7 +910,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && SatimTartimDortTextBox.Text == "" &&
                         ConvertDouble(SatimTartimUcTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
@@ -919,7 +919,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimDortTextBox.Text != "" &&
                         ConvertDouble(SatimTartimDortTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -952,7 +952,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && 
                         SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - Convert.ToDouble(SatimTartimBirTextBox.Text)).ToString();
                         SatimTartimButton.Text = "ÜÇÜNCÜ TARTIM İÇİN TIKLAYIN";
@@ -960,7 +960,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" && 
                         SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text))).ToString();
@@ -969,7 +969,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && 
                         SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimUcTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
@@ -979,7 +979,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && 
                         SatimTartimDortTextBox.Text != "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimDortTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)))
+                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimBesTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
@@ -988,7 +988,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBesTextBox.Text != "" &&
                         ConvertDouble(SatimTartimBesTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1023,7 +1023,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" &&
                             ConvertDouble(SatimTartimBirTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)) &&
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                             SatimTartimKayit(dtBaslangic))
                         {
                             MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1052,7 +1052,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" &&
                             ConvertDouble(SatimTartimBirTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1060,7 +1060,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimIkiTextBox.Text != "" &&
                             ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)) &&
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                             SatimTartimKayit(dtBaslangic))
                         {
                             MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1089,7 +1089,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
                             ConvertDouble(SatimTartimBirTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1097,7 +1097,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                             ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
@@ -1106,7 +1106,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimUcTextBox.Text != "" &&
                             ConvertDouble(SatimTartimUcTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)) &&
+                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                             SatimTartimKayit(dtBaslangic))
                         {
                             MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1136,7 +1136,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
                             ConvertDouble(SatimTartimBirTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1144,7 +1144,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                             ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
@@ -1153,7 +1153,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && SatimTartimDortTextBox.Text == "" &&
                             ConvertDouble(SatimTartimUcTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1162,7 +1162,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimDortTextBox.Text != "" &&
                             ConvertDouble(SatimTartimDortTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)) &&
+                            SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                             SatimTartimKayit(dtBaslangic))
                         {
                             MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1195,7 +1195,7 @@ namespace TamTarti2202
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
                             SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                             ConvertDouble(SatimTartimBirTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                            SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) - 
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1204,7 +1204,7 @@ namespace TamTarti2202
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                             SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                             ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                            SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) + 
@@ -1214,7 +1214,7 @@ namespace TamTarti2202
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" &&
                             SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                             ConvertDouble(SatimTartimUcTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                            SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1224,7 +1224,7 @@ namespace TamTarti2202
                         else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" &&
                             SatimTartimDortTextBox.Text != "" && SatimTartimBesTextBox.Text == "" &&
                             ConvertDouble(SatimTartimDortTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)))
+                            SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                         {
                             SatimTartimBesTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                                 (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1234,7 +1234,7 @@ namespace TamTarti2202
                         }
                         else if (SatimTartimBesTextBox.Text != "" &&
                             ConvertDouble(SatimTartimBesTextBox.Text) &&
-                            SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text)) &&
+                            SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                             SatimTartimKayit(dtBaslangic))
                         {
                             MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1278,7 +1278,7 @@ namespace TamTarti2202
                         SatimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
                     }
                     else if (SatimTartimBirTextBox.Text != "" && ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1316,7 +1316,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) && 
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1324,7 +1324,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimIkiTextBox.Text != "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1364,7 +1364,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1372,7 +1372,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1381,7 +1381,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimUcTextBox.Text != "" &&
                         ConvertDouble(SatimTartimUcTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1421,7 +1421,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" && SatimTartimDortTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1429,7 +1429,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1438,7 +1438,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" && SatimTartimDortTextBox.Text == "" &&
                         ConvertDouble(SatimTartimUcTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1447,7 +1447,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimDortTextBox.Text != "" &&
                         ConvertDouble(SatimTartimDortTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1492,7 +1492,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text == "" && SatimTartimUcTextBox.Text == "" &&
                         SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimBirTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text)))
+                        SatimUrunKayit(SatimUrunBirComboBox.Text, Convert.ToDouble(SatimTartimBirTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimIkiTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimDaraTextBox.Text))).ToString();
@@ -1501,7 +1501,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text == "" &&
                         SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimIkiTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text)))
+                        SatimUrunKayit(SatimUrunIkiComboBox.Text, Convert.ToDouble(SatimTartimIkiTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimUcTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1511,7 +1511,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" &&
                         SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimUcTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text)))
+                        SatimUrunKayit(SatimUrunUcComboBox.Text, Convert.ToDouble(SatimTartimUcTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimDortTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1521,7 +1521,7 @@ namespace TamTarti2202
                     else if (SatimTartimBirTextBox.Text != "" && SatimTartimIkiTextBox.Text != "" && SatimTartimUcTextBox.Text != "" &&
                         SatimTartimDortTextBox.Text != "" && SatimTartimBesTextBox.Text == "" &&
                         ConvertDouble(SatimTartimDortTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text)))
+                        SatimUrunKayit(SatimUrunDortComboBox.Text, Convert.ToDouble(SatimTartimDortTextBox.Text), getLastID("SATIM_TARTIMLARI")))
                     {
                         SatimTartimBesTextBox.Text = (Convert.ToDouble(aSayfa.GetKgData()) -
                             (Convert.ToDouble(SatimTartimBirTextBox.Text) + Convert.ToDouble(SatimTartimIkiTextBox.Text) +
@@ -1531,7 +1531,7 @@ namespace TamTarti2202
                     }
                     else if (SatimTartimBesTextBox.Text != "" &&
                         ConvertDouble(SatimTartimBesTextBox.Text) &&
-                        SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text)) &&
+                        SatimUrunKayit(SatimUrunBesComboBox.Text, Convert.ToDouble(SatimTartimBesTextBox.Text), getLastID("SATIM_TARTIMLARI")) &&
                         SatimTartimKayit(dtBaslangic))
                     {
                         MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1568,28 +1568,36 @@ namespace TamTarti2202
 
         private void SatimDisableButtons()
         {
-            EklemeTabControl.Enabled = false;
-            AlimTab.Enabled = false;
-            SatimFirmalarComboBox.Enabled = false;
-            SatimPlakalarComboBox.Enabled = false;
-            SatimCalisanComboBox.Enabled = false;
-            SatimDorseTextBox.Enabled = false;
-            SatimCikisAdresiTextBox.Enabled = false;
-            SatimVarisAdresiTextBox.Enabled = false;
-            SatimTartimSayisiComboBox.Enabled = false;
-            SatimDaraYokRadioButton.Enabled = false;
-            SatimDaraTartRadioButton.Enabled = false;
-            SatimKayitliDaraRadioButton.Enabled = false;
-            SatimUrunBirComboBox.Enabled = false;
-            SatimUrunIkiComboBox.Enabled = false;
-            SatimUrunUcComboBox.Enabled = false;
-            SatimUrunDortComboBox.Enabled = false;
-            SatimUrunBesComboBox.Enabled = false;
+            try
+            {
+                EklemeTabControl.Enabled = false;
+                AlimTab.Enabled = false;
+                SatimFirmalarComboBox.Enabled = false;
+                SatimPlakalarComboBox.Enabled = false;
+                SatimCalisanComboBox.Enabled = false;
+                SatimDorseTextBox.Enabled = false;
+                SatimCikisAdresiTextBox.Enabled = false;
+                SatimVarisAdresiTextBox.Enabled = false;
+                SatimTartimSayisiComboBox.Enabled = false;
+                SatimDaraYokRadioButton.Enabled = false;
+                SatimDaraTartRadioButton.Enabled = false;
+                SatimKayitliDaraRadioButton.Enabled = false;
+                SatimUrunBirComboBox.Enabled = false;
+                SatimUrunIkiComboBox.Enabled = false;
+                SatimUrunUcComboBox.Enabled = false;
+                SatimUrunDortComboBox.Enabled = false;
+                SatimUrunBesComboBox.Enabled = false;
 
-            Anasayfa aSay = (Anasayfa)this.Owner;
-            Control[] c = aSay.Controls.Find("UstMenuPnl", true);
-            Panel b = (Panel)c[0];
-            b.Enabled = false;
+                Anasayfa aSay = (Anasayfa)this.Owner;
+                Control[] c = aSay.Controls.Find("UstMenuPnl", true);
+                Panel b = (Panel)c[0];
+                b.Enabled = false;
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
 
         private void SatimEnableButtons()
@@ -1679,15 +1687,16 @@ namespace TamTarti2202
             }
         }
 
-        private bool SatimUrunKayit(string urun_Adi, double urun_Kg)
+        private bool SatimUrunKayit(string urun_Adi, double urun_Kg, int lastID)
         {
             try
             {
                 con = new MySqlConnection(db.getCon());
                 con.Open();
                 cmd = con.CreateCommand();
-                cmd.CommandText = "INSERT INTO SATILANLAR(FIRMA_ADI, URUN_ADI, URUN_KG) " +
-                    "VALUES(@FIRMA_ADI, @URUN_ADI, @URUN_KG)";
+                cmd.CommandText = "INSERT INTO SATILANLAR(TARTIM_ID, FIRMA_ADI, URUN_ADI, URUN_KG) " +
+                    "VALUES(@TARTIM_ID, @FIRMA_ADI, @URUN_ADI, @URUN_KG)";
+                cmd.Parameters.AddWithValue("@TARTIM_ID", lastID);
                 cmd.Parameters.AddWithValue("@FIRMA_ADI", NullOrEmptyString(SatimFirmalarComboBox.Text.ToUpper()));
                 cmd.Parameters.AddWithValue("@URUN_ADI", urun_Adi);
                 cmd.Parameters.AddWithValue("@URUN_KG", urun_Kg);
@@ -1714,24 +1723,24 @@ namespace TamTarti2202
                     "URUN_1, URUN_1_KG, URUN_2, URUN_2_KG, URUN_3, URUN_3_KG, URUN_4, URUN_4_KG, URUN_5, URUN_5_KG, NOT_1, NOT_2, TARTIM_BASLANGIC) " +
                     "VALUES(@FIRMA_ADI, @PLAKA, @DORSE_PLAKA, @CALISAN_ADI, @CIKIS_ADRES, @VARIS_ADRES, " +
                     "@URUN_1, @URUN_1_KG, @URUN_2, @URUN_2_KG, @URUN_3, @URUN_3_KG, @URUN_4, @URUN_4_KG, @URUN_5, @URUN_5_KG, @NOT_1, @NOT_2, @TARTIM_BASLANGIC)";
-                cmd.Parameters.AddWithValue("@FIRMA_ADI", SatimFirmalarComboBox.Text);
-                cmd.Parameters.AddWithValue("@PLAKA", SatimPlakalarComboBox.Text);
-                cmd.Parameters.AddWithValue("@DORSE_PLAKA", NullOrEmptyString(SatimDorseTextBox.Text.ToUpper()));
-                cmd.Parameters.AddWithValue("@CALISAN_ADI", SatimCalisanComboBox.Text);
-                cmd.Parameters.AddWithValue("@CIKIS_ADRES", NullOrEmptyString(SatimCikisAdresiTextBox.Text.ToUpper()));
-                cmd.Parameters.AddWithValue("@VARIS_ADRES", NullOrEmptyString(SatimVarisAdresiTextBox.Text.ToUpper()));
-                cmd.Parameters.AddWithValue("@URUN_1", NullOrEmptyString(SatimUrunBirComboBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_1_KG", NullOrEmptyString(SatimTartimBirTextBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_2", NullOrEmptyString(SatimUrunIkiComboBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_2_KG", NullOrEmptyString(SatimTartimIkiTextBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_3", NullOrEmptyString(SatimUrunUcComboBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_3_KG", NullOrEmptyString(SatimTartimUcTextBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_4", NullOrEmptyString(SatimUrunDortComboBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_4_KG", NullOrEmptyString(SatimTartimDortTextBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_5", NullOrEmptyString(SatimUrunBesComboBox.Text));
-                cmd.Parameters.AddWithValue("@URUN_5_KG", NullOrEmptyString(SatimTartimBesTextBox.Text));
-                cmd.Parameters.AddWithValue("@NOT_1", NullOrEmptyString(SatimNotBirTextBox.Text.ToUpper()));
-                cmd.Parameters.AddWithValue("@NOT_2", NullOrEmptyString(SatimNotIkiTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@FIRMA_ADI", AlimFirmalarComboBox.Text);
+                cmd.Parameters.AddWithValue("@PLAKA", AlimPlakalarComboBox.Text);
+                cmd.Parameters.AddWithValue("@DORSE_PLAKA", NullOrEmptyString(AlimDorseTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@CALISAN_ADI", AlimCalisanComboBox.Text);
+                cmd.Parameters.AddWithValue("@CIKIS_ADRES", NullOrEmptyString(AlimCikisAdresiTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@VARIS_ADRES", NullOrEmptyString(AlimVarisAdresiTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@URUN_1", NullOrEmptyString(AlimUrunBirComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_1_KG", NullOrEmptyString(AlimTartimBirTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_2", NullOrEmptyString(AlimUrunIkiComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_2_KG", NullOrEmptyString(AlimTartimIkiTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_3", NullOrEmptyString(AlimUrunUcComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_3_KG", NullOrEmptyString(AlimTartimUcTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_4", NullOrEmptyString(AlimUrunDortComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_4_KG", NullOrEmptyString(AlimTartimDortTextBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_5", NullOrEmptyString(AlimUrunBesComboBox.Text));
+                cmd.Parameters.AddWithValue("@URUN_5_KG", NullOrEmptyString(AlimTartimBesTextBox.Text));
+                cmd.Parameters.AddWithValue("@NOT_1", NullOrEmptyString(AlimNotBirTextBox.Text.ToUpper()));
+                cmd.Parameters.AddWithValue("@NOT_2", NullOrEmptyString(AlimNotIkiTextBox.Text.ToUpper()));
                 cmd.Parameters.AddWithValue("@TARTIM_BASLANGIC", dT);
 
                 cmd.ExecuteNonQuery();
@@ -1745,16 +1754,17 @@ namespace TamTarti2202
             }
         }
 
-        private bool AlimUrunKayit(string urun_Adi, double urun_Kg)
+        private bool AlimUrunKayit(string urun_Adi, double urun_Kg, int lastID)
         {
             try
             {
                 con = new MySqlConnection(db.getCon());
                 con.Open();
                 cmd = con.CreateCommand();
-                cmd.CommandText = "INSERT INTO ALINANLAR(FIRMA_ADI, URUN_ADI, URUN_KG) " +
-                    "VALUES(@FIRMA_ADI, @URUN_ADI, @URUN_KG)";
-                cmd.Parameters.AddWithValue("@FIRMA_ADI", NullOrEmptyString(SatimFirmalarComboBox.Text.ToUpper()));
+                cmd.CommandText = "INSERT INTO ALINANLAR(TARTIM_ID, FIRMA_ADI, URUN_ADI, URUN_KG) " +
+                    "VALUES(@TARTIM_ID, @FIRMA_ADI, @URUN_ADI, @URUN_KG)";
+                cmd.Parameters.AddWithValue("@TARTIM_ID", lastID);
+                cmd.Parameters.AddWithValue("@FIRMA_ADI", NullOrEmptyString(AlimFirmalarComboBox.Text.ToUpper()));
                 cmd.Parameters.AddWithValue("@URUN_ADI", urun_Adi);
                 cmd.Parameters.AddWithValue("@URUN_KG", urun_Kg);
 
@@ -1775,7 +1785,7 @@ namespace TamTarti2202
             {
                 return false;
 
-                if (SatimDorseTextBox.Text != "" || SatimDorseTextBox.Text.Length != 7)
+                if (AlimDorseTextBox.Text != "" || AlimDorseTextBox.Text.Length != 7)
                 {
                     return false;
                 }
@@ -1822,10 +1832,6 @@ namespace TamTarti2202
             AlimVarisAdresiTextBox.Enabled = true;
             AlimTartimSayisiComboBox.Enabled = true;
             AlimUrunBirComboBox.Enabled = true;
-            AlimUrunIkiComboBox.Enabled = true;
-            AlimUrunUcComboBox.Enabled = true;
-            AlimUrunDortComboBox.Enabled = true;
-            AlimUrunBesComboBox.Enabled = true;
             AlimTartimBirTextBox.Text = "";
             AlimTartimIkiTextBox.Text = "";
             AlimTartimUcTextBox.Text = "";
@@ -1847,7 +1853,6 @@ namespace TamTarti2202
             if (AlimTartimSayisiComboBox.SelectedIndex == 0)//ALIM TARTIM 1
             {
                 if (AlimTartimBirTextBox.Text == "" && AlimToplamTextBox.Text == "" && 
-                    ConvertDouble(AlimToplamTextBox.Text) &&
                     AlimUrunBirComboBox.SelectedIndex > -1 &&
                     AlimTartimBosluklar())
                 {
@@ -1864,7 +1869,7 @@ namespace TamTarti2202
                     AlimTartimButton.Text = "TARTIMI KAYDETMEK İÇİN TIKLAYIN";
                 }
                 else if (AlimTartimBirTextBox.Text != "" && ConvertDouble(AlimTartimBirTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text)) &&
+                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text), getLastID("ALIM_TARTIMLARI")) &&
                     AlimTartimKayit(dtBaslangic))
                 {
                     MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1899,7 +1904,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text == "" &&
                     ConvertDouble(AlimTartimBirTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text)))
+                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimIkiTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(aSayfa.GetKgData()))).ToString();
@@ -1907,7 +1912,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimIkiTextBox.Text != "" &&
                     ConvertDouble(AlimTartimIkiTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text)) &&
+                    AlimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text), getLastID("ALIM_TARTIMLARI")) &&
                     AlimTartimKayit(dtBaslangic))
                 {
                     MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -1944,7 +1949,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text == "" && AlimTartimUcTextBox.Text == "" &&
                     ConvertDouble(AlimTartimBirTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text)))
+                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimIkiTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(aSayfa.GetKgData()))).ToString();
@@ -1952,7 +1957,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text != "" && AlimTartimUcTextBox.Text == "" &&
                     ConvertDouble(AlimTartimIkiTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text)))
+                    AlimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimUcTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(AlimTartimIkiTextBox.Text) +
@@ -1961,7 +1966,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimUcTextBox.Text != "" &&
                     ConvertDouble(AlimTartimUcTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunUcComboBox.Text, Convert.ToDouble(AlimTartimUcTextBox.Text)) &&
+                    AlimUrunKayit(AlimUrunUcComboBox.Text, Convert.ToDouble(AlimTartimUcTextBox.Text), getLastID("ALIM_TARTIMLARI")) &&
                     AlimTartimKayit(dtBaslangic))
                 {
                     MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -2000,7 +2005,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text == "" && AlimTartimUcTextBox.Text == "" && AlimTartimDortTextBox.Text == "" &&
                     ConvertDouble(AlimTartimBirTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text)))
+                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimIkiTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(aSayfa.GetKgData()))).ToString();
@@ -2008,7 +2013,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text != "" && AlimTartimUcTextBox.Text == "" &&
                     ConvertDouble(AlimTartimIkiTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text)))
+                    AlimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimUcTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(AlimTartimIkiTextBox.Text) +
@@ -2018,7 +2023,7 @@ namespace TamTarti2202
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text != "" && AlimTartimUcTextBox.Text != "" && 
                     AlimTartimDortTextBox.Text == "" &&
                     ConvertDouble(AlimTartimUcTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunUcComboBox.Text, Convert.ToDouble(AlimTartimUcTextBox.Text)))
+                    AlimUrunKayit(AlimUrunUcComboBox.Text, Convert.ToDouble(AlimTartimUcTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimDortTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(AlimTartimIkiTextBox.Text) +
@@ -2027,7 +2032,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimDortTextBox.Text != "" &&
                     ConvertDouble(AlimTartimDortTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunDortComboBox.Text, Convert.ToDouble(AlimTartimDortTextBox.Text)) &&
+                    AlimUrunKayit(AlimUrunDortComboBox.Text, Convert.ToDouble(AlimTartimDortTextBox.Text), getLastID("ALIM_TARTIMLARI")) &&
                     AlimTartimKayit(dtBaslangic))
                 {
                     MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -2043,7 +2048,7 @@ namespace TamTarti2202
                     AlimEnableButtons();
                 }
             }
-            if (SatimTartimSayisiComboBox.SelectedIndex == 4)//ALIM TARTIM 5
+            if (AlimTartimSayisiComboBox.SelectedIndex == 4)//ALIM TARTIM 5
             {
                 if (AlimTartimBirTextBox.Text == "" && AlimTartimIkiTextBox.Text == "" && AlimTartimUcTextBox.Text == "" && 
                     AlimTartimDortTextBox.Text == "" && AlimTartimBesTextBox.Text == "" && AlimToplamTextBox.Text == "" &&
@@ -2068,7 +2073,7 @@ namespace TamTarti2202
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text == "" && AlimTartimUcTextBox.Text == "" &&
                     SatimTartimDortTextBox.Text == "" && SatimTartimBesTextBox.Text == "" &&
                     ConvertDouble(AlimTartimBirTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text)))
+                    AlimUrunKayit(AlimUrunBirComboBox.Text, Convert.ToDouble(AlimTartimBirTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimIkiTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(aSayfa.GetKgData()))).ToString();
@@ -2077,7 +2082,7 @@ namespace TamTarti2202
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text != "" && AlimTartimUcTextBox.Text == "" &&
                     AlimTartimDortTextBox.Text == "" && AlimTartimBesTextBox.Text == "" &&
                     ConvertDouble(AlimTartimIkiTextBox.Text) &&
-                    SatimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text)))
+                    SatimUrunKayit(AlimUrunIkiComboBox.Text, Convert.ToDouble(AlimTartimIkiTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimUcTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(AlimTartimIkiTextBox.Text) +
@@ -2087,7 +2092,7 @@ namespace TamTarti2202
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text != "" && AlimTartimUcTextBox.Text != "" &&
                     AlimTartimDortTextBox.Text == "" && AlimTartimBesTextBox.Text == "" &&
                     ConvertDouble(AlimTartimUcTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunUcComboBox.Text, Convert.ToDouble(AlimTartimUcTextBox.Text)))
+                    AlimUrunKayit(AlimUrunUcComboBox.Text, Convert.ToDouble(AlimTartimUcTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimDortTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(AlimTartimIkiTextBox.Text) +
@@ -2097,7 +2102,7 @@ namespace TamTarti2202
                 else if (AlimTartimBirTextBox.Text != "" && AlimTartimIkiTextBox.Text != "" && AlimTartimUcTextBox.Text != "" &&
                     AlimTartimDortTextBox.Text != "" && AlimTartimBesTextBox.Text == "" &&
                     ConvertDouble(AlimTartimDortTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunDortComboBox.Text, Convert.ToDouble(AlimTartimDortTextBox.Text)))
+                    AlimUrunKayit(AlimUrunDortComboBox.Text, Convert.ToDouble(AlimTartimDortTextBox.Text), getLastID("ALIM_TARTIMLARI")))
                 {
                     AlimTartimDortTextBox.Text = (Convert.ToDouble(AlimToplamTextBox.Text) -
                         (Convert.ToDouble(AlimTartimBirTextBox.Text) + Convert.ToDouble(AlimTartimIkiTextBox.Text) +
@@ -2107,7 +2112,7 @@ namespace TamTarti2202
                 }
                 else if (AlimTartimBesTextBox.Text != "" &&
                     ConvertDouble(AlimTartimBesTextBox.Text) &&
-                    AlimUrunKayit(AlimUrunBesComboBox.Text, Convert.ToDouble(AlimTartimBesTextBox.Text)) &&
+                    AlimUrunKayit(AlimUrunBesComboBox.Text, Convert.ToDouble(AlimTartimBesTextBox.Text), getLastID("ALIM_TARTIMLARI")) &&
                     AlimTartimKayit(dtBaslangic))
                 {
                     MessageBox.Show("Tartım Başarıyla Kayıt Edildi!");
@@ -2122,6 +2127,20 @@ namespace TamTarti2202
                     AlimTartimButton.UseVisualStyleBackColor = true;
                     AlimEnableButtons();
                 }
+            }
+        }
+
+        private int getLastID(string tableName)
+        {
+            try
+            {
+                int lastID = Convert.ToInt16(db.GetStringFromQuery("SELECT MAX(ID) FROM " + tableName));
+                lastID++;
+                return lastID;
+            }
+            catch(Exception ex)
+            {
+                return 1;
             }
         }
     }
