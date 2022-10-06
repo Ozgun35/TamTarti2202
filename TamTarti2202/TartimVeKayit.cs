@@ -34,9 +34,9 @@ namespace TamTarti2202
             AlimTartimSayisiComboBox.SelectedIndex = 0;
         }
 
-        private string NullOrEmptyString(string s)
+        private void TartimVeKayit_Load(object sender, EventArgs e)
         {
-            return string.IsNullOrEmpty(s) ? null : s;
+            ComboBoxMembers();
         }
 
         private void ResizeControlTabs()
@@ -62,6 +62,38 @@ namespace TamTarti2202
         private void TartimVeKayit_Resize(object sender, EventArgs e)
         {
             ResizeControlTabs();
+        }
+
+        private string NullOrEmptyString(string s)
+        {
+            return string.IsNullOrEmpty(s) ? null : s;
+        }
+
+        private bool ConvertDouble(string kg)
+        {
+            try
+            {
+                Convert.ToDouble(kg);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private int getLastID(string tableName)
+        {
+            try
+            {
+                int lastID = Convert.ToInt16(db.GetStringFromQuery("SELECT MAX(ID) FROM " + tableName));
+                lastID++;
+                return lastID;
+            }
+            catch (Exception ex)
+            {
+                return 1;
+            }
         }
 
         private void SatimTartimSayisiComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -277,6 +309,97 @@ namespace TamTarti2202
             }
         }
 
+        private void UrunlerComboBoxMembers()
+        {
+            try
+            {
+                SatimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                SatimUrunBirComboBox.DisplayMember = "ADI";
+                SatimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                SatimUrunIkiComboBox.DisplayMember = "ADI";
+                SatimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                SatimUrunUcComboBox.DisplayMember = "ADI";
+                SatimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                SatimUrunDortComboBox.DisplayMember = "ADI";
+                SatimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                SatimUrunBesComboBox.DisplayMember = "ADI";
+
+                AlimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                AlimUrunBirComboBox.DisplayMember = "ADI";
+                AlimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                AlimUrunIkiComboBox.DisplayMember = "ADI";
+                AlimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                AlimUrunUcComboBox.DisplayMember = "ADI";
+                AlimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                AlimUrunDortComboBox.DisplayMember = "ADI";
+                AlimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
+                AlimUrunBesComboBox.DisplayMember = "ADI";
+
+                TartimSayisiLoad();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FirmalarComboBoxMembers()
+        {
+            try
+            {
+                SatimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'");
+                SatimFirmalarComboBox.DisplayMember = "ADI";
+                AlimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'");
+                AlimFirmalarComboBox.DisplayMember = "ADI";
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void AraclarComboBoxMembers()
+        {
+            try
+            {
+                SatimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR");
+                SatimPlakalarComboBox.DisplayMember = "PLAKA";
+                AlimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR");
+                AlimPlakalarComboBox.DisplayMember = "PLAKA";
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void CalisanlarComboBoxMembers()
+        {
+            try
+            {
+                SatimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR");
+                SatimCalisanComboBox.DisplayMember = "ADI";
+                AlimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR");
+                AlimCalisanComboBox.DisplayMember = "ADI";
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ComboBoxMembers()
+        {
+            FirmalarComboBoxMembers();
+            AraclarComboBoxMembers();
+            CalisanlarComboBoxMembers();
+            UrunlerComboBoxMembers();
+
+            SatimCikisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
+                    + anaFirma + "'");
+        }
+
         private void FirmaEklemeButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(FirmaAdiTextBox.Text) && !string.IsNullOrWhiteSpace(FirmaAdresiTextBox.Text))
@@ -463,37 +586,6 @@ namespace TamTarti2202
             }
         }
 
-        private void SatimFirmalarComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SatimVarisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + SatimFirmalarComboBox.Text.ToString() + "'");
-                SatimCikisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + anaFirma + "'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void AlimFirmalarComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                AlimCikisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + AlimFirmalarComboBox.Text.ToString() + "'");
-                AlimVarisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
-                        + anaFirma + "'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
         private void CalisanEklemeButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(CalisanAdiTextBox.Text))
@@ -533,80 +625,12 @@ namespace TamTarti2202
             }
         }
 
-        private void FirmalarComboBoxMembers()
+        private void SatimFirmalarComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                SatimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'");
-                SatimFirmalarComboBox.DisplayMember = "ADI";
-                AlimFirmalarComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR WHERE ADI != '" + anaFirma + "'");
-                AlimFirmalarComboBox.DisplayMember = "ADI";
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void AraclarComboBoxMembers()
-        {
-            try
-            {
-                SatimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR");
-                SatimPlakalarComboBox.DisplayMember = "PLAKA";
-                AlimPlakalarComboBox.DataSource = db.GetTable("SELECT PLAKA FROM ARACLAR");
-                AlimPlakalarComboBox.DisplayMember = "PLAKA";
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void CalisanlarComboBoxMembers()
-        {
-            try
-            {
-                SatimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR");
-                SatimCalisanComboBox.DisplayMember = "ADI";
-                AlimCalisanComboBox.DataSource = db.GetTable("SELECT ADI FROM CALISANLAR");
-                AlimCalisanComboBox.DisplayMember = "ADI";
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void UrunlerComboBoxMembers()
-        {
-            try
-            {
-                SatimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                SatimUrunBirComboBox.DisplayMember = "ADI";
-                SatimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                SatimUrunIkiComboBox.DisplayMember = "ADI";
-                SatimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                SatimUrunUcComboBox.DisplayMember = "ADI";
-                SatimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                SatimUrunDortComboBox.DisplayMember = "ADI";
-                SatimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                SatimUrunBesComboBox.DisplayMember = "ADI";
-
-                AlimUrunBirComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                AlimUrunBirComboBox.DisplayMember = "ADI";
-                AlimUrunIkiComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                AlimUrunIkiComboBox.DisplayMember = "ADI";
-                AlimUrunUcComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                AlimUrunUcComboBox.DisplayMember = "ADI";
-                AlimUrunDortComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                AlimUrunDortComboBox.DisplayMember = "ADI";
-                AlimUrunBesComboBox.DataSource = db.GetTable("SELECT ADI FROM URUNLER");
-                AlimUrunBesComboBox.DisplayMember = "ADI";
-
-
-                TartimSayisiLoad();
+                SatimVarisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
+                        + SatimFirmalarComboBox.Text.ToString() + "'");
             }
             catch (Exception ex)
             {
@@ -614,20 +638,23 @@ namespace TamTarti2202
             }
         }
 
-        private void ComboBoxMembers()
+        private void AlimFirmalarComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FirmalarComboBoxMembers();
-            AraclarComboBoxMembers();
-            CalisanlarComboBoxMembers();
-            UrunlerComboBoxMembers();
+            try
+            {
+                AlimCikisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
+                        + AlimFirmalarComboBox.Text.ToString() + "'");
+                AlimVarisAdresiTextBox.Text = db.GetStringFromQuery("SELECT ADRES FROM FIRMALAR WHERE ADI = '"
+                        + anaFirma + "'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void AlimSatimTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBoxMembers();
-        }
-
-        private void TartimVeKayit_Load(object sender, EventArgs e)
         {
             ComboBoxMembers();
         }
@@ -795,6 +822,7 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
                         MessageBox.Show("Tartım Başarısız!");
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
                         SatimTartimButton.UseVisualStyleBackColor = true;
@@ -831,6 +859,9 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
                         SatimTartimButton.UseVisualStyleBackColor = true;
@@ -875,6 +906,10 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
                         SatimTartimButton.UseVisualStyleBackColor = true;
@@ -929,6 +964,11 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
                         SatimTartimButton.UseVisualStyleBackColor = true;
@@ -998,6 +1038,12 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
                         SatimTartimButton.UseVisualStyleBackColor = true;
@@ -1033,6 +1079,8 @@ namespace TamTarti2202
                         }
                         else
                         {
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                             MessageBox.Show("Tartım Başarısız!");
                             SatimTartimButton.Text = "TARTIMA BAŞLA";
                             SatimTartimButton.UseVisualStyleBackColor = true;
@@ -1070,6 +1118,9 @@ namespace TamTarti2202
                         }
                         else
                         {
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                             MessageBox.Show("Tartım Başarısız!");
                             SatimTartimButton.Text = "TARTIMA BAŞLA";
                             SatimTartimButton.UseVisualStyleBackColor = true;
@@ -1116,6 +1167,10 @@ namespace TamTarti2202
                         }
                         else
                         {
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                             MessageBox.Show("Tartım Başarısız!");
                             SatimTartimButton.Text = "TARTIMA BAŞLA";
                             SatimTartimButton.UseVisualStyleBackColor = true;
@@ -1172,6 +1227,11 @@ namespace TamTarti2202
                         }
                         else
                         {
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                             MessageBox.Show("Tartım Başarısız!");
                             SatimTartimButton.Text = "TARTIMA BAŞLA";
                             SatimTartimButton.UseVisualStyleBackColor = true;
@@ -1244,6 +1304,12 @@ namespace TamTarti2202
                         }
                         else
                         {
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                            TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                             MessageBox.Show("Tartım Başarısız!");
                             SatimTartimButton.Text = "TARTIMA BAŞLA";
                             SatimTartimButton.UseVisualStyleBackColor = true;
@@ -1289,6 +1355,8 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimDaraTextBox.Text = "";
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
@@ -1335,6 +1403,9 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimDaraTextBox.Text = "";
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
@@ -1392,6 +1463,10 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimDaraTextBox.Text = "";
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
@@ -1458,6 +1533,11 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimDaraTextBox.Text = "";
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
@@ -1542,6 +1622,12 @@ namespace TamTarti2202
                     }
                     else
                     {
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+                        TartimIptal(getLastID("SATIM_TARTIMLARI"), "SATILANLAR");
+
                         MessageBox.Show("Tartım Başarısız!");
                         SatimDaraTextBox.Text = "";
                         SatimTartimButton.Text = "TARTIMA BAŞLA";
@@ -1553,51 +1639,30 @@ namespace TamTarti2202
             }
         }
 
-        private bool ConvertDouble(string kg)
-        {
-            try
-            {
-                Convert.ToDouble(kg);
-                return true;
-            }
-            catch(Exception ex)
-            {
-                return false;
-            }
-        }
-
         private void SatimDisableButtons()
         {
-            try
-            {
-                EklemeTabControl.Enabled = false;
-                AlimTab.Enabled = false;
-                SatimFirmalarComboBox.Enabled = false;
-                SatimPlakalarComboBox.Enabled = false;
-                SatimCalisanComboBox.Enabled = false;
-                SatimDorseTextBox.Enabled = false;
-                SatimCikisAdresiTextBox.Enabled = false;
-                SatimVarisAdresiTextBox.Enabled = false;
-                SatimTartimSayisiComboBox.Enabled = false;
-                SatimDaraYokRadioButton.Enabled = false;
-                SatimDaraTartRadioButton.Enabled = false;
-                SatimKayitliDaraRadioButton.Enabled = false;
-                SatimUrunBirComboBox.Enabled = false;
-                SatimUrunIkiComboBox.Enabled = false;
-                SatimUrunUcComboBox.Enabled = false;
-                SatimUrunDortComboBox.Enabled = false;
-                SatimUrunBesComboBox.Enabled = false;
+            EklemeTabControl.Enabled = false;
+            AlimTab.Enabled = false;
+            SatimFirmalarComboBox.Enabled = false;
+            SatimPlakalarComboBox.Enabled = false;
+            SatimCalisanComboBox.Enabled = false;
+            SatimDorseTextBox.Enabled = false;
+            SatimCikisAdresiTextBox.Enabled = false;
+            SatimVarisAdresiTextBox.Enabled = false;
+            SatimTartimSayisiComboBox.Enabled = false;
+            SatimDaraYokRadioButton.Enabled = false;
+            SatimDaraTartRadioButton.Enabled = false;
+            SatimKayitliDaraRadioButton.Enabled = false;
+            SatimUrunBirComboBox.Enabled = false;
+            SatimUrunIkiComboBox.Enabled = false;
+            SatimUrunUcComboBox.Enabled = false;
+            SatimUrunDortComboBox.Enabled = false;
+            SatimUrunBesComboBox.Enabled = false;
 
-                Anasayfa aSay = (Anasayfa)this.Owner;
-                Control[] c = aSay.Controls.Find("UstMenuPnl", true);
-                Panel b = (Panel)c[0];
-                b.Enabled = false;
-            }
-            catch(Exception ex)
-            {
-
-            }
-
+            Anasayfa aSay = (Anasayfa)this.Owner;
+            Control[] c = aSay.Controls.Find("UstMenuPnl", true);
+            Panel b = (Panel)c[0];
+            b.Enabled = false;
         }
 
         private void SatimEnableButtons()
@@ -1630,7 +1695,9 @@ namespace TamTarti2202
 
         private bool SatimTartimBosluklar()
         {
-            if(SatimFirmalarComboBox.SelectedIndex == -1 || SatimPlakalarComboBox.SelectedIndex == -1 || SatimCalisanComboBox.SelectedIndex == -1)
+            if(SatimFirmalarComboBox.SelectedIndex == -1 || SatimPlakalarComboBox.SelectedIndex == -1 || SatimCalisanComboBox.SelectedIndex == -1 
+                || string.IsNullOrWhiteSpace(SatimVarisAdresiTextBox.Text) || string.IsNullOrWhiteSpace(SatimCikisAdresiTextBox.Text) 
+                /*|| ConvertDouble(aSayfa.GetKgData())*/)
             {
                 return false;
 
@@ -1781,7 +1848,9 @@ namespace TamTarti2202
 
         private bool AlimTartimBosluklar()
         {
-            if (AlimFirmalarComboBox.SelectedIndex == -1 || AlimFirmalarComboBox.SelectedIndex == -1 || AlimCalisanComboBox.SelectedIndex == -1)
+            if (AlimFirmalarComboBox.SelectedIndex == -1 || AlimFirmalarComboBox.SelectedIndex == -1 || AlimCalisanComboBox.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(AlimVarisAdresiTextBox.Text) || string.IsNullOrWhiteSpace(AlimCikisAdresiTextBox.Text) 
+                /*|| ConvertDouble(aSayfa.GetKgData())*/)
             {
                 return false;
 
@@ -1879,6 +1948,8 @@ namespace TamTarti2202
                 }
                 else
                 {
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+
                     MessageBox.Show("Tartım Başarısız!");
                     AlimTartimButton.Text = "TARTIMA BAŞLA";
                     AlimEnableButtons();
@@ -1922,6 +1993,9 @@ namespace TamTarti2202
                 }
                 else
                 {
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+
                     MessageBox.Show("Tartım Başarısız!");
                     AlimTartimButton.Text = "TARTIMA BAŞLA";
                     AlimTartimButton.UseVisualStyleBackColor = true;
@@ -1976,6 +2050,10 @@ namespace TamTarti2202
                 }
                 else
                 {
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+
                     MessageBox.Show("Tartım Başarısız!");
                     AlimTartimButton.Text = "TARTIMA BAŞLA";
                     AlimTartimButton.UseVisualStyleBackColor = true;
@@ -2042,6 +2120,11 @@ namespace TamTarti2202
                 }
                 else
                 {
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+
                     MessageBox.Show("Tartım Başarısız!");
                     AlimTartimButton.Text = "TARTIMA BAŞLA";
                     AlimTartimButton.UseVisualStyleBackColor = true;
@@ -2122,6 +2205,12 @@ namespace TamTarti2202
                 }
                 else
                 {
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+                    TartimIptal(getLastID("SATIM_TARTIMLARI"), "ALINANLAR");
+
                     MessageBox.Show("Tartım Başarısız!");
                     AlimTartimButton.Text = "TARTIMA BAŞLA";
                     AlimTartimButton.UseVisualStyleBackColor = true;
@@ -2130,18 +2219,9 @@ namespace TamTarti2202
             }
         }
 
-        private int getLastID(string tableName)
+        private void TartimIptal(int id, string tartimAlimSatim)
         {
-            try
-            {
-                int lastID = Convert.ToInt16(db.GetStringFromQuery("SELECT MAX(ID) FROM " + tableName));
-                lastID++;
-                return lastID;
-            }
-            catch(Exception ex)
-            {
-                return 1;
-            }
+            db.RunQuery("DELETE FROM " + tartimAlimSatim + " WHERE TARTIM_ID =" + id);
         }
     }
 }

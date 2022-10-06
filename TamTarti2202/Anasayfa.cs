@@ -35,6 +35,7 @@ namespace TamTarti2202
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
         }
+
         private void OpenChildForm(Form childForm)
         {
             if (currentChildForm != null)
@@ -235,7 +236,6 @@ namespace TamTarti2202
                 {
                     if (!serialPort1.IsOpen)
                     {
-                        KgLabel.Font = new Font(KgLabel.Font.FontFamily, 24);
                         Console.WriteLine("port opening");
                         serialPort1.Open();
                         StartReadSerialPort();
@@ -281,7 +281,7 @@ namespace TamTarti2202
         {
             try
             {
-                Console.WriteLine("serial data reading");
+                KgLabel.Font = new Font(KgLabel.Font.FontFamily, 24);
                 while (serialPort1.IsOpen)
                 { 
                     serialData = serialPort1.ReadLine();
@@ -317,6 +317,7 @@ namespace TamTarti2202
             }
             catch(Exception ex)
             {
+                KgLabel.Font = new Font(KgLabel.Font.FontFamily, 12);
                 KgLabel.Text = ex.ToString();
                 Console.WriteLine(ex.Message);
             }
@@ -357,6 +358,7 @@ namespace TamTarti2202
             }
             return str;
         }
+
         private void Anasayfa_Load(object sender, EventArgs e)
         {
             LoadConfigurationSettings();
