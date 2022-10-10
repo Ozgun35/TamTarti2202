@@ -29,14 +29,14 @@ namespace TamTarti2202
             tartimVeKayitOrjinalSize = this.Size;
             alimSatimOrjinalRect = new Rectangle(AlimSatimTabControl.Location.X, AlimSatimTabControl.Location.Y, AlimSatimTabControl.Width, AlimSatimTabControl.Height);
             eklemeOrjinalRect = new Rectangle(EklemeTabControl.Location.X, EklemeTabControl.Location.Y, EklemeTabControl.Width, EklemeTabControl.Height);
-
-            SatimTartimSayisiComboBox.SelectedIndex = 0;
-            AlimTartimSayisiComboBox.SelectedIndex = 0;
         }
 
         private void TartimVeKayit_Load(object sender, EventArgs e)
         {
             ComboBoxMembers();
+
+            SatimTartimSayisiComboBox.SelectedIndex = 0;
+            AlimTartimSayisiComboBox.SelectedIndex = 0;
         }
 
         private void ResizeControlTabs()
@@ -78,6 +78,8 @@ namespace TamTarti2202
             }
             catch (Exception ex)
             {
+
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -92,6 +94,7 @@ namespace TamTarti2202
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return 1;
             }
         }
@@ -1696,15 +1699,10 @@ namespace TamTarti2202
         private bool SatimTartimBosluklar()
         {
             if(SatimFirmalarComboBox.SelectedIndex == -1 || SatimPlakalarComboBox.SelectedIndex == -1 || SatimCalisanComboBox.SelectedIndex == -1 
-                || string.IsNullOrWhiteSpace(SatimVarisAdresiTextBox.Text) || string.IsNullOrWhiteSpace(SatimCikisAdresiTextBox.Text) 
-                /*|| ConvertDouble(aSayfa.GetKgData())*/)
+                || string.IsNullOrWhiteSpace(SatimVarisAdresiTextBox.Text) || string.IsNullOrWhiteSpace(SatimCikisAdresiTextBox.Text) ||
+                SatimDorseTextBox.Text != "" || SatimDorseTextBox.Text.Length != 7/*|| ConvertDouble(aSayfa.GetKgData())*/)
             {
                 return false;
-
-                if(SatimDorseTextBox.Text != "" || SatimDorseTextBox.Text.Length != 7)
-                {
-                    return false;
-                }
             }
             else
             {
@@ -1849,15 +1847,10 @@ namespace TamTarti2202
         private bool AlimTartimBosluklar()
         {
             if (AlimFirmalarComboBox.SelectedIndex == -1 || AlimFirmalarComboBox.SelectedIndex == -1 || AlimCalisanComboBox.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(AlimVarisAdresiTextBox.Text) || string.IsNullOrWhiteSpace(AlimCikisAdresiTextBox.Text) 
-                /*|| ConvertDouble(aSayfa.GetKgData())*/)
+                string.IsNullOrWhiteSpace(AlimVarisAdresiTextBox.Text) || string.IsNullOrWhiteSpace(AlimCikisAdresiTextBox.Text) || 
+                AlimDorseTextBox.Text != "" || AlimDorseTextBox.Text.Length != 7/*|| ConvertDouble(aSayfa.GetKgData())*/)
             {
                 return false;
-
-                if (AlimDorseTextBox.Text != "" || AlimDorseTextBox.Text.Length != 7)
-                {
-                    return false;
-                }
             }
             else
             {

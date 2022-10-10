@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace TamTarti2202
@@ -15,14 +16,19 @@ namespace TamTarti2202
     public partial class KayitlarVeDuzenleme : Form
     {
         DataBaseModifier db = new DataBaseModifier();
-
+        int currentCellId = -1;
+        string tableColumnName = "";
         public KayitlarVeDuzenleme()
         {
             InitializeComponent();
-            TablolarComboBox.Items.Add("Tablo Seçiniz:");
-            TablolarComboBox.Text = "Tablo Seçiniz:";
-            TablolarDataGridView.EnableHeadersVisualStyles = false;
-            TablolarDataGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = TablolarDataGridView.ColumnHeadersDefaultCellStyle.BackColor;       
+        }
+
+        private void disableSort()
+        {
+            foreach (DataGridViewColumn column in TablolarDataGridView.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void TablolarComboBox_DropDown(object sender, EventArgs e)
@@ -46,18 +52,126 @@ namespace TamTarti2202
         {
             TablolarDataGridView.DataSource = db.GetTable("SELECT * FROM " + TablolarComboBox.Text);
             TablolarTab.Text = TablolarComboBox.Text;
+            disableSort();
+            if(TablolarComboBox.SelectedIndex <= 3)
+            {
+                TablolarDataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            }
+            else
+            {
+                TablolarDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            }
         }
 
-        private void TablolarDataGridView_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void m_itemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            ToolStripItem item = e.ClickedItem;
             try
             {
-                MessageBox.Show(TablolarDataGridView.Rows[TablolarDataGridView.CurrentRow.Index].Cells[0].Value.ToString());
+                if(item.ToString() == "Sil")
+                {
+                    string yeniDeger = Interaction.InputBox("Silmek İçin Yeni EVET Yazıp Tamama Basınız.:", tableColumnName,
+                        "", 250, 250);
+
+                    if(yeniDeger.ToUpper() == "EVET")
+                    {
+                        if (db.RunQuery("DELETE FROM " + TablolarComboBox.Text + " WHERE ID = " + currentCellId))
+                        {
+                            MessageBox.Show("Başarıyla Silindi!!");
+                            TablolarDataGridView.DataSource = db.GetTable("SELECT * FROM " + TablolarComboBox.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Silinemedi!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Silinemedi!");
+                    }
+                }
+                if(item.ToString() == "Güncelle")
+                {
+                    string yeniDeger = Interaction.InputBox("Güncellemek İçin Yeni " + tableColumnName + " Değerini Giriniz:", tableColumnName,
+                        TablolarDataGridView.CurrentCell.Value.ToString(), 250, 250);
+
+                    if (!string.IsNullOrWhiteSpace(yeniDeger) && tableColumnName != "ID")
+                    {
+                        if (db.RunQuery("UPDATE " + TablolarComboBox.Text + " SET " + tableColumnName +
+                            " = '" + yeniDeger.ToUpper() + "' WHERE ID = " + currentCellId))
+                        {
+                            MessageBox.Show("Başarıyla Güncellendi!");
+                            TablolarDataGridView.DataSource = db.GetTable("SELECT * FROM " + TablolarComboBox.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Güncellenemedi!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Güncellenemedi!");
+                    }
+                }
             }
             catch (NullReferenceException ex)
             {
                 MessageBox.Show("Tablo Seçimi Yapınız! Hata:" + ex.Message);
             }
+        }
+
+        private void TablolarDataGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                currentCellId = Convert.ToInt16(TablolarDataGridView.Rows[TablolarDataGridView.CurrentRow.Index].Cells[0].Value);
+                tableColumnName = TablolarDataGridView.CurrentCell.OwningColumn.Name;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (TablolarComboBox.SelectedIndex <= 3)
+            {
+                if (e.RowIndex != -1)
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        ContextMenuStrip m = new ContextMenuStrip();
+                        m.Font = new Font("Segoe UI", 18F);
+                        m.Items.Add("Güncelle");
+                        m.Items.Add("Sil");
+                        m.Items.Add("İptal");
+                        m.Show(TablolarDataGridView, new Point(e.X, e.Y));
+                        m.ItemClicked += new ToolStripItemClickedEventHandler(m_itemClicked);
+                    }
+                }
+            }
+            else
+            {
+                if (e.RowIndex != -1)
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        ContextMenuStrip m = new ContextMenuStrip();
+                        m.Font = new Font("Segoe UI", 18F); 
+                        m.Items.Add("Sil");
+                        m.Items.Add("İptal");
+                        m.Show(TablolarDataGridView, new Point(e.X, e.Y));
+                        m.ItemClicked += new ToolStripItemClickedEventHandler(m_itemClicked);
+                    }
+                }
+            }
+            
+        }
+
+        private void KayitlarVeDuzenleme_Load(object sender, EventArgs e)
+        {
+            TablolarComboBox.Items.Add("Tablo Seçiniz:");
+            TablolarComboBox.Text = "Tablo Seçiniz:";
+            TablolarDataGridView.EnableHeadersVisualStyles = false;
+            TablolarDataGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = TablolarDataGridView.ColumnHeadersDefaultCellStyle.BackColor;
         }
     }
 }

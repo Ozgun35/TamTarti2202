@@ -82,7 +82,7 @@
             this.TablolarDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TablolarDataGridView.Size = new System.Drawing.Size(1324, 408);
             this.TablolarDataGridView.TabIndex = 0;
-            this.TablolarDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TablolarDataGridView_MouseDoubleClick);
+            this.TablolarDataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TablolarDataGridView_CellMouseClick);
             // 
             // ExcelKayitButton
             // 
@@ -152,6 +152,7 @@
             this.MinimumSize = new System.Drawing.Size(1344, 648);
             this.Name = "KayitlarVeDuzenleme";
             this.Text = "KayitlarVeDuzenleme";
+            this.Load += new System.EventHandler(this.KayitlarVeDuzenleme_Load);
             this.TablolarTabControl.ResumeLayout(false);
             this.TablolarTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TablolarDataGridView)).EndInit();

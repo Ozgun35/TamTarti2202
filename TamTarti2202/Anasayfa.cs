@@ -198,7 +198,7 @@ namespace TamTarti2202
                     "DARA_KG DOUBLE, DORSE_PLAKA VARCHAR(7), PRIMARY KEY(ID))");
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS CALISANLAR(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL, " +
-                    "UNVAN VARCHAR(255), TC_NO VARCHAR(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))");
+                    "UNVAN VARCHAR(255), TC_NO INT(11) NULL UNIQUE, TELEFON_NO VARCHAR(18), ADRES VARCHAR(255), PRIMARY KEY(ID))");
 
                 db.RunQuery("CREATE TABLE IF NOT EXISTS URUNLER(ID INT NOT NULL AUTO_INCREMENT, ADI VARCHAR(255) NOT NULL UNIQUE, PRIMARY KEY(ID))");
 
@@ -362,7 +362,7 @@ namespace TamTarti2202
         private void Anasayfa_Load(object sender, EventArgs e)
         {
             LoadConfigurationSettings();
-            OpenPortEveryTenSeconds();
+           // OpenPortEveryTenSeconds();
         }
 
         private void KayitlarVeDuzenlemeBtn_Click(object sender, EventArgs e)
@@ -378,7 +378,7 @@ namespace TamTarti2202
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
     }

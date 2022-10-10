@@ -23,23 +23,6 @@ namespace TamTarti2202
         public Ayarlar()
         {
             InitializeComponent();
-
-            try
-            {
-                foreach (var seriPort in SerialPort.GetPortNames())
-                {
-                    SeriPortComboBox.Items.Add(seriPort);
-                }
-                FirmaAyariComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR");
-                FirmaAyariComboBox.DisplayMember = "ADI";
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
-            LoadConfigurationSettings();
         }
 
         private void LoadConfigurationSettings()
@@ -195,6 +178,25 @@ namespace TamTarti2202
             else if (dialogResult == DialogResult.No)
             {
             }
+        }
+
+        private void Ayarlar_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (var seriPort in SerialPort.GetPortNames())
+                {
+                    SeriPortComboBox.Items.Add(seriPort);
+                }
+                FirmaAyariComboBox.DataSource = db.GetTable("SELECT ADI FROM FIRMALAR");
+                FirmaAyariComboBox.DisplayMember = "ADI";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            LoadConfigurationSettings();
         }
     }
 }

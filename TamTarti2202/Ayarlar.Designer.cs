@@ -70,6 +70,7 @@
             this.UserPasswordTextBox = new System.Windows.Forms.TextBox();
             this.XampTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.FirmaAyarlariTab.SuspendLayout();
             this.FirmaTableLayoutPanel.SuspendLayout();
             this.IndikatorAyarlariTab.SuspendLayout();
@@ -704,12 +705,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(523, 1);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 24;
+            // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(15)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(680, 675);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.AyarlarTabControl);
             this.Controls.Add(this.ExitBtn);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -717,6 +727,7 @@
             this.MaximumSize = new System.Drawing.Size(680, 675);
             this.MinimumSize = new System.Drawing.Size(680, 675);
             this.Name = "Ayarlar";
+            this.Load += new System.EventHandler(this.Ayarlar_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Ayarlar_MouseDown);
             this.FirmaAyarlariTab.ResumeLayout(false);
             this.FirmaTableLayoutPanel.ResumeLayout(false);
@@ -775,5 +786,6 @@
         private System.Windows.Forms.TextBox UserPasswordTextBox;
         private System.Windows.Forms.TextBox XampTextBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
