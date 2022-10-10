@@ -18,6 +18,7 @@ namespace TamTarti2202
         DataBaseModifier db = new DataBaseModifier();
         int currentCellId = -1;
         string tableColumnName = "";
+
         public KayitlarVeDuzenleme()
         {
             InitializeComponent();
@@ -51,7 +52,6 @@ namespace TamTarti2202
         private void TablolarComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             TablolarDataGridView.DataSource = db.GetTable("SELECT * FROM " + TablolarComboBox.Text);
-            TablolarTab.Text = TablolarComboBox.Text;
             disableSort();
             if(TablolarComboBox.SelectedIndex <= 3)
             {
@@ -172,6 +172,45 @@ namespace TamTarti2202
             TablolarComboBox.Text = "Tablo Seçiniz:";
             TablolarDataGridView.EnableHeadersVisualStyles = false;
             TablolarDataGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = TablolarDataGridView.ColumnHeadersDefaultCellStyle.BackColor;
+        }
+
+        private void ExcelKayitButton_Click(object sender, EventArgs e)
+        {
+            ExcelDisaAktar(TablolarDataGridView);
+        }
+
+        public void ExcelDisaAktar(DataGridView dataGridView1)
+        {
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.OverwritePrompt = false;
+            save.Title = "Excel Dosyaları";
+            save.DefaultExt = "xlsx";
+            save.Filter = "xlsx Dosyaları (*.xlsx)|*.xlsx|Tüm Dosyalar(*.*)|*.*";
+
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                app.Visible = true;
+                worksheet = workbook.Sheets["Sayfa1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Excel Dışa Aktarım";
+                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                {
+                    worksheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                workbook.SaveAs(save.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                app.Quit();
+            }
         }
     }
 }

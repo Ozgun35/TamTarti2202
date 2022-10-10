@@ -229,7 +229,7 @@
             this.AlimSatimTabControl.Controls.Add(this.SatimTab);
             this.AlimSatimTabControl.Controls.Add(this.AlimTab);
             this.AlimSatimTabControl.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.AlimSatimTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.AlimSatimTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AlimSatimTabControl.Location = new System.Drawing.Point(2, 4);
             this.AlimSatimTabControl.Name = "AlimSatimTabControl";
             this.AlimSatimTabControl.SelectedIndex = 0;
@@ -241,10 +241,10 @@
             // 
             this.SatimTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(120)))), ((int)(((byte)(200)))));
             this.SatimTab.Controls.Add(this.SatimTableLayoutPanel);
-            this.SatimTab.Location = new System.Drawing.Point(4, 29);
+            this.SatimTab.Location = new System.Drawing.Point(4, 33);
             this.SatimTab.Name = "SatimTab";
             this.SatimTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SatimTab.Size = new System.Drawing.Size(662, 607);
+            this.SatimTab.Size = new System.Drawing.Size(662, 603);
             this.SatimTab.TabIndex = 0;
             this.SatimTab.Text = "Satım               ";
             // 
@@ -310,14 +310,14 @@
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
             this.SatimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.SatimTableLayoutPanel.Size = new System.Drawing.Size(660, 604);
+            this.SatimTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
             this.SatimTableLayoutPanel.TabIndex = 1;
             // 
             // SatimTartimButton
             // 
             this.SatimTartimButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SatimTartimButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SatimTartimButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.SatimTartimButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.SatimTartimButton.Location = new System.Drawing.Point(168, 537);
             this.SatimTartimButton.Name = "SatimTartimButton";
             this.SatimTartimButton.Size = new System.Drawing.Size(489, 48);
@@ -329,7 +329,7 @@
             // l2
             // 
             this.l2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.l2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.l2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.l2.ForeColor = System.Drawing.Color.White;
             this.l2.Location = new System.Drawing.Point(3, 30);
             this.l2.Name = "l2";
@@ -939,6 +939,7 @@
             // SatimDorseTextBox
             // 
             this.SatimDorseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SatimDorseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.SatimDorseTextBox.Location = new System.Drawing.Point(168, 93);
             this.SatimDorseTextBox.MaxLength = 7;
             this.SatimDorseTextBox.Name = "SatimDorseTextBox";
@@ -949,6 +950,7 @@
             // SatimCikisAdresiTextBox
             // 
             this.SatimCikisAdresiTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SatimCikisAdresiTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.SatimCikisAdresiTextBox.Location = new System.Drawing.Point(168, 153);
             this.SatimCikisAdresiTextBox.MaxLength = 255;
             this.SatimCikisAdresiTextBox.Name = "SatimCikisAdresiTextBox";
@@ -958,6 +960,7 @@
             // SatimVarisAdresiTextBox
             // 
             this.SatimVarisAdresiTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SatimVarisAdresiTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.SatimVarisAdresiTextBox.Location = new System.Drawing.Point(168, 183);
             this.SatimVarisAdresiTextBox.MaxLength = 255;
             this.SatimVarisAdresiTextBox.Name = "SatimVarisAdresiTextBox";
@@ -968,10 +971,10 @@
             // 
             this.AlimTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(110)))), ((int)(((byte)(200)))));
             this.AlimTab.Controls.Add(this.AlimTableLayoutPanel);
-            this.AlimTab.Location = new System.Drawing.Point(4, 29);
+            this.AlimTab.Location = new System.Drawing.Point(4, 33);
             this.AlimTab.Name = "AlimTab";
             this.AlimTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AlimTab.Size = new System.Drawing.Size(662, 607);
+            this.AlimTab.Size = new System.Drawing.Size(662, 603);
             this.AlimTab.TabIndex = 1;
             this.AlimTab.Text = "Alım                ";
             // 
@@ -1013,6 +1016,7 @@
             this.AlimTableLayoutPanel.Controls.Add(this.AlimDorseTextBox, 1, 3);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimVarisAdresiTextBox, 1, 6);
             this.AlimTableLayoutPanel.Controls.Add(this.AlimTLP7, 1, 13);
+            this.AlimTableLayoutPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AlimTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.AlimTableLayoutPanel.Name = "AlimTableLayoutPanel";
             this.AlimTableLayoutPanel.RowCount = 20;
@@ -1036,7 +1040,7 @@
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
             this.AlimTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1F));
-            this.AlimTableLayoutPanel.Size = new System.Drawing.Size(660, 604);
+            this.AlimTableLayoutPanel.Size = new System.Drawing.Size(660, 600);
             this.AlimTableLayoutPanel.TabIndex = 3;
             // 
             // AlimCikisAdresiTextBox
@@ -1351,7 +1355,7 @@
             // 
             this.AlimTartimButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AlimTartimButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlimTartimButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AlimTartimButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AlimTartimButton.Location = new System.Drawing.Point(168, 537);
             this.AlimTartimButton.Name = "AlimTartimButton";
             this.AlimTartimButton.Size = new System.Drawing.Size(489, 48);
@@ -1693,7 +1697,7 @@
             // 
             this.UrunEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UrunEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UrunEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.UrunEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.UrunEklemeButton.Location = new System.Drawing.Point(168, 93);
             this.UrunEklemeButton.Name = "UrunEklemeButton";
             this.UrunEklemeButton.Size = new System.Drawing.Size(489, 48);
@@ -1827,7 +1831,7 @@
             // 
             this.CalisanEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CalisanEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CalisanEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalisanEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.CalisanEklemeButton.Location = new System.Drawing.Point(168, 258);
             this.CalisanEklemeButton.Name = "CalisanEklemeButton";
             this.CalisanEklemeButton.Size = new System.Drawing.Size(489, 47);
@@ -2030,7 +2034,7 @@
             this.AracDaraAlButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AracDaraAlButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AracDaraAlButton.Enabled = false;
-            this.AracDaraAlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AracDaraAlButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AracDaraAlButton.Location = new System.Drawing.Point(168, 171);
             this.AracDaraAlButton.Name = "AracDaraAlButton";
             this.AracDaraAlButton.Size = new System.Drawing.Size(489, 46);
@@ -2109,7 +2113,7 @@
             // 
             this.AracEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AracEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AracEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AracEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AracEklemeButton.Location = new System.Drawing.Point(168, 362);
             this.AracEklemeButton.Name = "AracEklemeButton";
             this.AracEklemeButton.Size = new System.Drawing.Size(489, 46);
@@ -2186,7 +2190,7 @@
             this.EklemeTabControl.Controls.Add(this.CalisanKayitTab);
             this.EklemeTabControl.Controls.Add(this.UrunEkleTab);
             this.EklemeTabControl.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.EklemeTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.EklemeTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.EklemeTabControl.Location = new System.Drawing.Point(670, 4);
             this.EklemeTabControl.Name = "EklemeTabControl";
             this.EklemeTabControl.SelectedIndex = 0;
@@ -2448,7 +2452,7 @@
             // 
             this.FirmaEklemeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FirmaEklemeButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FirmaEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FirmaEklemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FirmaEklemeButton.Location = new System.Drawing.Point(168, 351);
             this.FirmaEklemeButton.Name = "FirmaEklemeButton";
             this.FirmaEklemeButton.Size = new System.Drawing.Size(489, 48);

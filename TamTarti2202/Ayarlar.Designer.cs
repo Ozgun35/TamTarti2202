@@ -69,7 +69,7 @@
             this.UserIdTextBox = new System.Windows.Forms.TextBox();
             this.UserPasswordTextBox = new System.Windows.Forms.TextBox();
             this.XampTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BaglantiAyarlariKaydetBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.FirmaAyarlariTab.SuspendLayout();
             this.FirmaTableLayoutPanel.SuspendLayout();
@@ -164,7 +164,7 @@
             // 
             this.FirmaAyarlariKaydetButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FirmaAyarlariKaydetButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FirmaAyarlariKaydetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.FirmaAyarlariKaydetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FirmaAyarlariKaydetButton.Location = new System.Drawing.Point(199, 119);
             this.FirmaAyarlariKaydetButton.Name = "FirmaAyarlariKaydetButton";
             this.FirmaAyarlariKaydetButton.Size = new System.Drawing.Size(454, 47);
@@ -465,7 +465,7 @@
             // 
             this.IndikatorAyarlariKaydetButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.IndikatorAyarlariKaydetButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IndikatorAyarlariKaydetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.IndikatorAyarlariKaydetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.IndikatorAyarlariKaydetButton.Location = new System.Drawing.Point(199, 293);
             this.IndikatorAyarlariKaydetButton.Name = "IndikatorAyarlariKaydetButton";
             this.IndikatorAyarlariKaydetButton.Size = new System.Drawing.Size(454, 47);
@@ -513,7 +513,7 @@
             this.AyarlarTabControl.Controls.Add(this.FirmaAyarlariTab);
             this.AyarlarTabControl.Controls.Add(this.DatabaseAyarlariTabControl);
             this.AyarlarTabControl.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.AyarlarTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.AyarlarTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.AyarlarTabControl.Location = new System.Drawing.Point(5, 25);
             this.AyarlarTabControl.Name = "AyarlarTabControl";
             this.AyarlarTabControl.SelectedIndex = 0;
@@ -547,7 +547,7 @@
             this.BaglantiTableLayoutPanel.Controls.Add(this.UserIdTextBox, 1, 4);
             this.BaglantiTableLayoutPanel.Controls.Add(this.UserPasswordTextBox, 1, 5);
             this.BaglantiTableLayoutPanel.Controls.Add(this.XampTextBox, 1, 6);
-            this.BaglantiTableLayoutPanel.Controls.Add(this.button1, 1, 8);
+            this.BaglantiTableLayoutPanel.Controls.Add(this.BaglantiAyarlariKaydetBtn, 1, 8);
             this.BaglantiTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BaglantiTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.BaglantiTableLayoutPanel.Name = "BaglantiTableLayoutPanel";
@@ -692,18 +692,18 @@
             this.XampTextBox.Size = new System.Drawing.Size(454, 24);
             this.XampTextBox.TabIndex = 108;
             // 
-            // button1
+            // BaglantiAyarlariKaydetBtn
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(199, 235);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(454, 47);
-            this.button1.TabIndex = 109;
-            this.button1.Text = "FİRMA AYARLARINI KAYDET";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BaglantiAyarlariKaydetBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BaglantiAyarlariKaydetBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BaglantiAyarlariKaydetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BaglantiAyarlariKaydetBtn.Location = new System.Drawing.Point(199, 235);
+            this.BaglantiAyarlariKaydetBtn.Name = "BaglantiAyarlariKaydetBtn";
+            this.BaglantiAyarlariKaydetBtn.Size = new System.Drawing.Size(454, 47);
+            this.BaglantiAyarlariKaydetBtn.TabIndex = 109;
+            this.BaglantiAyarlariKaydetBtn.Text = "BAĞLANTI AYARLARINI KAYDET";
+            this.BaglantiAyarlariKaydetBtn.UseVisualStyleBackColor = true;
+            this.BaglantiAyarlariKaydetBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox1
             // 
@@ -785,7 +785,7 @@
         private System.Windows.Forms.TextBox UserIdTextBox;
         private System.Windows.Forms.TextBox UserPasswordTextBox;
         private System.Windows.Forms.TextBox XampTextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BaglantiAyarlariKaydetBtn;
         private System.Windows.Forms.ComboBox comboBox1;
     }
 }

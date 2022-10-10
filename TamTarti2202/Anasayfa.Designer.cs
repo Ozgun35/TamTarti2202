@@ -41,11 +41,11 @@ namespace TamTarti2202
             this.ResizeBtn = new FontAwesome.Sharp.IconButton();
             this.AyarlarBtn = new FontAwesome.Sharp.IconButton();
             this.ExitBtn = new FontAwesome.Sharp.IconButton();
-            this.YazdirmaBtn = new FontAwesome.Sharp.IconButton();
             this.RaporlamaBtn = new FontAwesome.Sharp.IconButton();
             this.KayitlarVeDuzenlemeBtn = new FontAwesome.Sharp.IconButton();
             this.AltMenuPanel = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.YazdirmaBtn = new FontAwesome.Sharp.IconButton();
             this.UstMenuPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tamtartiPic)).BeginInit();
             this.KgPnl.SuspendLayout();
@@ -228,29 +228,6 @@ namespace TamTarti2202
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
-            // YazdirmaBtn
-            // 
-            this.YazdirmaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.YazdirmaBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.YazdirmaBtn.FlatAppearance.BorderSize = 0;
-            this.YazdirmaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.YazdirmaBtn.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.YazdirmaBtn.ForeColor = System.Drawing.Color.White;
-            this.YazdirmaBtn.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.YazdirmaBtn.IconColor = System.Drawing.Color.White;
-            this.YazdirmaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.YazdirmaBtn.IconSize = 36;
-            this.YazdirmaBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.YazdirmaBtn.Location = new System.Drawing.Point(745, 35);
-            this.YazdirmaBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.YazdirmaBtn.Name = "YazdirmaBtn";
-            this.YazdirmaBtn.Size = new System.Drawing.Size(135, 60);
-            this.YazdirmaBtn.TabIndex = 4;
-            this.YazdirmaBtn.Text = "Yazdırma";
-            this.YazdirmaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.YazdirmaBtn.UseVisualStyleBackColor = true;
-            // 
             // RaporlamaBtn
             // 
             this.RaporlamaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -273,6 +250,7 @@ namespace TamTarti2202
             this.RaporlamaBtn.Text = "Raporlama";
             this.RaporlamaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RaporlamaBtn.UseVisualStyleBackColor = true;
+            this.RaporlamaBtn.Click += new System.EventHandler(this.RaporlamaBtn_Click);
             // 
             // KayitlarVeDuzenlemeBtn
             // 
@@ -307,6 +285,29 @@ namespace TamTarti2202
             this.AltMenuPanel.Size = new System.Drawing.Size(1360, 648);
             this.AltMenuPanel.TabIndex = 1;
             // 
+            // YazdirmaBtn
+            // 
+            this.YazdirmaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.YazdirmaBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.YazdirmaBtn.FlatAppearance.BorderSize = 0;
+            this.YazdirmaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.YazdirmaBtn.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.YazdirmaBtn.ForeColor = System.Drawing.Color.White;
+            this.YazdirmaBtn.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.YazdirmaBtn.IconColor = System.Drawing.Color.White;
+            this.YazdirmaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.YazdirmaBtn.IconSize = 36;
+            this.YazdirmaBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.YazdirmaBtn.Location = new System.Drawing.Point(745, 35);
+            this.YazdirmaBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.YazdirmaBtn.Name = "YazdirmaBtn";
+            this.YazdirmaBtn.Size = new System.Drawing.Size(135, 60);
+            this.YazdirmaBtn.TabIndex = 4;
+            this.YazdirmaBtn.Text = "Yazdırma";
+            this.YazdirmaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.YazdirmaBtn.UseVisualStyleBackColor = true;
+            // 
             // Anasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -332,7 +333,6 @@ namespace TamTarti2202
 
         #endregion
         private Panel UstMenuPnl;
-        private FontAwesome.Sharp.IconButton YazdirmaBtn;
         private FontAwesome.Sharp.IconButton RaporlamaBtn;
         private FontAwesome.Sharp.IconButton KayitlarVeDuzenlemeBtn;
         private FontAwesome.Sharp.IconButton AyarlarBtn;
@@ -345,6 +345,7 @@ namespace TamTarti2202
         private System.IO.Ports.SerialPort serialPort1;
         private FontAwesome.Sharp.IconPictureBox tamtartiPic;
         private FontAwesome.Sharp.IconButton TartimveKayitBtn;
+        private FontAwesome.Sharp.IconButton YazdirmaBtn;
     }
 }
 

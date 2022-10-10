@@ -381,5 +381,10 @@ namespace TamTarti2202
                 Console.WriteLine(ex.Message);
             }
         }
+
+        private void RaporlamaBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Raporlama());
+        }
     }
 }
